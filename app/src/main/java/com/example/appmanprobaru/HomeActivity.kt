@@ -2,13 +2,16 @@ package com.example.appmanprobaru
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationItemView
+import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
+@Suppress("DEPRECATION")
 class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_btn_active_page)
+        setContentView(R.layout.main_screen_with_navbar)
 
-        val bottomNav = findViewById<BottomNavigationItemView>(R.id.bot_nav_static)
     }
+
 }
+

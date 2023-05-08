@@ -1,10 +1,11 @@
-package com.example.appmanprobaru
+package com.example.appmnprobaru
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.appmanprobaru.R
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -13,10 +14,10 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [bot_navbar_home.newInstance] factory method to
+ * Use the [btn_home_active.newInstance] factory method to
  * create an instance of this fragment.
  */
-class bot_navbar_home : Fragment() {
+class btn_home_active : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -34,7 +35,7 @@ class bot_navbar_home : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_bot_navbar_home, container, false)
+        return inflater.inflate(R.layout.fragment_btn_home_active, container, false)
     }
 
     companion object {
@@ -44,12 +45,12 @@ class bot_navbar_home : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment bot_navbar_home.
+         * @return A new instance of fragment btn_home_active.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            bot_navbar_home().apply {
+            btn_home_active().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
