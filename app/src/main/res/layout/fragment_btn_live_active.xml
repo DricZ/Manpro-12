@@ -26,6 +26,7 @@
         android:layout_marginTop="24dp"
         android:background="@drawable/rounded_bg_box"
         android:entries="@array/isi_spinner"
+        android:paddingStart="10dp"
         android:drawSelectorOnTop="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.492"
