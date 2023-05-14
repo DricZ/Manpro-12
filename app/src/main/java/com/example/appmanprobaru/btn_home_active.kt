@@ -1,11 +1,14 @@
-package com.example.appmnprobaru
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
+import com.example.appmanprobaru.home_page_recyclerView_Data
+import com.example.appmanprobaru.rvHome_Adapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +24,14 @@ class btn_home_active : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var adapter: rvHome_Adapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var datalist: ArrayList<home_page_recyclerView_Data>
+
+    private lateinit var imageId: Array<Int>
+    private lateinit var title: Array<String>
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,5 +67,49 @@ class btn_home_active : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        dataInit()
+        val layoutManager = GridLayoutManager(context,2)
+        recyclerView = view.findViewById(R.id.rv_item)
+        recyclerView.layoutManager = layoutManager
+        adapter = rvHome_Adapter(datalist)
+        recyclerView.adapter = adapter
+
+
+    }
+
+
+    private fun dataInit(){
+        datalist =  arrayListOf<home_page_recyclerView_Data>()
+
+        imageId = arrayOf(
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square,
+            R.drawable.mountain_dummy_square
+        )
+
+        title = arrayOf(
+            "Gereja - Gereja Diseluruh Dunia"
+        )
+
+
+        for (i in imageId.indices){
+            val rvhome = home_page_recyclerView_Data(imageId[0],title[0])
+            datalist.add(rvhome)
+        }
+
+
     }
 }

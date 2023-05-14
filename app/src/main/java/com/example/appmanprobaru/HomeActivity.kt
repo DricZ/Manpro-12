@@ -3,7 +3,7 @@ package com.example.appmanprobaru
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.example.appmnprobaru.btn_home_active
+import btn_home_active
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -28,6 +28,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_navbar_profile->{
+                    loadFragment(btn_profile_active())
                     true
                 }
                 else ->{
