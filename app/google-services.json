@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "854417031503",
+    "project_id": "manpro-12",
+    "storage_bucket": "manpro-12.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:854417031503:android:f6d51abc23e5a3d1abc53a",
+        "android_client_info": {
+          "package_name": "com.example.appmanprobaru"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "854417031503-lhcst54isff40o7d1slailvig1s1pp8e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4vyt0fN3ZAaRBRZgdWrEqhKuY49HhGlU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "854417031503-lhcst54isff40o7d1slailvig1s1pp8e.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

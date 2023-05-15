@@ -1,5 +1,6 @@
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
 import com.example.appmanprobaru.home_page_recyclerView_Data
 import com.example.appmanprobaru.rvHome_Adapter
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -31,7 +34,14 @@ class btn_home_active : Fragment() {
 
     private lateinit var imageId: Array<Int>
     private lateinit var title: Array<String>
+    private var _id : MutableList<String> = emptyList<String>().toMutableList()
 
+    private var _name : MutableList<String> = emptyList<String>().toMutableList()
+    private var _desc : MutableList<String> = emptyList<String>().toMutableList()
+    private var _location : MutableList<String> = emptyList<String>().toMutableList()
+    private var _date : MutableList<String> = emptyList<String>().toMutableList()
+    private var _category : MutableList<String> = emptyList<String>().toMutableList()
+    private var _maxPeserta : MutableList<String> = emptyList<String>().toMutableList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -72,11 +82,36 @@ class btn_home_active : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         dataInit()
-        val layoutManager = GridLayoutManager(context,2)
         recyclerView = view.findViewById(R.id.rv_item)
-        recyclerView.layoutManager = layoutManager
-        adapter = rvHome_Adapter(datalist)
-        recyclerView.adapter = adapter
+        val layoutManager = GridLayoutManager(context,2)
+        val db = Firebase.firestore
+        var dbevent = db.collection("event")
+        var listdata = arrayListOf<home_page_recyclerView_Data>()
+        dbevent.get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    _id.add(document.id.toString())
+                    _name.add(document.data["name"].toString())
+                    _desc.add(document.data["desc"].toString())
+                    _category.add(document.data["category"].toString())
+                    _date.add(document.data["date"].toString())
+                    _location.add(document.data["location"].toString())
+                    _maxPeserta.add(document.data["maxpeserta"].toString())
+//                    Log.d("GET DATA", "${document.id} => ${document.data}")
+                }
+                for (x in 0.._id.size-1){
+                    val eventdata = home_page_recyclerView_Data(1, _name[x],_desc[x],_category[x],_date[x],_location[x],_maxPeserta[x])
+                    datalist.add(eventdata)
+                }
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = rvHome_Adapter(datalist)
+
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET DATA", "Error getting documents: ", exception)
+            }
+
 
 
     }
@@ -105,10 +140,10 @@ class btn_home_active : Fragment() {
         )
 
 
-        for (i in imageId.indices){
-            val rvhome = home_page_recyclerView_Data(imageId[0],title[0])
-            datalist.add(rvhome)
-        }
+//        for (i in imageId.indices){
+//            val rvhome = home_page_recyclerView_Data(imageId[0],title[0])
+//            datalist.add(rvhome)
+//        }
 
 
     }

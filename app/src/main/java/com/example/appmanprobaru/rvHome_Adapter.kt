@@ -20,8 +20,8 @@ class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_pag
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val currentItem =  home_page_recyclerView_Data[position]
-        holder.image.setImageResource(currentItem.titleImage)
-        holder.title.text = currentItem.titleText
+//        holder.image.setImageResource(currentItem.titleImage)
+        holder.title.text = currentItem.Name
     }
 
     override fun getItemCount(): Int {
