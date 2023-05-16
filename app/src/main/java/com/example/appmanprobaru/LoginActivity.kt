@@ -12,6 +12,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import com.example.appmanprobaru.admin.HomeAdmin
 import com.google.firebase.firestore.FirebaseFirestore
 
 @Suppress("DEPRECATION")
@@ -20,6 +21,7 @@ class LoginActivity : AppCompatActivity() {
     private var _userN : MutableList<String> = emptyList<String>().toMutableList()
     private var _pass : MutableList<String> = emptyList<String>().toMutableList()
     private var _id : MutableList<String> = emptyList<String>().toMutableList()
+    private var _isAdmin : MutableList<String> = emptyList<String>().toMutableList()
     private lateinit var et_email: EditText
     private lateinit var et_password: EditText
     private lateinit var button_login: Button
@@ -57,6 +59,7 @@ class LoginActivity : AppCompatActivity() {
                     _userN.add(document.data["username"].toString())
                     _pass.add(document.data["password"].toString())
                     _id.add(document.id.toString())
+                    _isAdmin.add(document.data["is_admin"].toString())
                     Log.d("CEK DATA", "CEK ${_userN}")
                     Log.d("GET DATA", "${document.id} => ${document.data}")
                 }
@@ -93,8 +96,14 @@ class LoginActivity : AppCompatActivity() {
 
                     editor.putString("id_user", _id[x].toString())
                     editor.apply()
-                    val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
-                    startActivity(eIntent)
+                    if (_isAdmin[x] == "true"){
+                        val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
+                        startActivity(eIntent)
+                    }else{
+                        val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        startActivity(eIntent)
+                    }
+
               }
             }
             if (!cek){
