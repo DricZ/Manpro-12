@@ -25,6 +25,7 @@ class HomeActivity : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_navbar_events ->{
+                    loadFragment(btn_event_active())
                     true
                 }
                 R.id.bottom_navbar_profile->{

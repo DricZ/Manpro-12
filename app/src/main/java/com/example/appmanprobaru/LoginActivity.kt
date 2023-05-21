@@ -6,7 +6,6 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Html
-import android.text.SpannableString
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
@@ -99,6 +98,8 @@ class LoginActivity : AppCompatActivity() {
                     if (_isAdmin[x] == "true"){
                         val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
                         startActivity(eIntent)
+                        }
+
                     }else{
                         val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(eIntent)
@@ -118,4 +119,3 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-}
