@@ -12,6 +12,16 @@
         android:theme="@style/Theme.AppManproBaru"
         tools:targetApi="31">
         <activity
+            android:name=".admin.adminListAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.jemaatListAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.eventListAdmin"
+            android:exported="false" />
+        <activity
+            android:name=".admin.PeopleAdmin"
             android:name=".detail_event"
             android:exported="false" />
         <activity
