@@ -53,7 +53,8 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
         category: String,
         date: String,
         location: String,
-        maxPeserta: String
+        maxPeserta: String,
+        img: String
     ) {
         val bundle = Bundle()
         bundle.putInt("titleImage",titleImage)
@@ -63,6 +64,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
         bundle.putString("date", date)
         bundle.putString("location", location)
         bundle.putString("maxPeserta", maxPeserta)
+        bundle.putString("img", img)
 
         val transaction = this.supportFragmentManager.beginTransaction()
         val fragmentDetail = detail_event()

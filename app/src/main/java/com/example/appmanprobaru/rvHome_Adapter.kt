@@ -1,6 +1,7 @@
 package com.example.appmanprobaru
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,7 +9,11 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 
 class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_page_recyclerView_Data>): RecyclerView.Adapter<rvHome_Adapter.ViewHolder>() {
 
@@ -22,9 +27,36 @@ class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_pag
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 
+
+
         val currentItem =  home_page_recyclerView_Data[position]
 //        holder.image.setImageResource(currentItem.titleImage)
         holder.title.text = currentItem.Name
+
+
+//      GET IMAGE DR STORAGE FIREBASE KE LOCAL. UDA PAKE CACHEING
+        if (currentItem.img.equals("")){
+
+        }else{
+            // Dapatkan referensi storage yang sesuai dengan path gambar Anda di Firebase Storage
+            val storage = Firebase.storage("gs://manpro-12.appspot.com")
+
+            val storageRef = storage.reference
+
+            // Create a reference with an initial file path and name
+            val pathReference = storageRef.child("events/"+currentItem.img).downloadUrl
+
+            pathReference.addOnSuccessListener { uri ->
+                Glide.with(holder.itemView.context)
+                    .load(uri)
+                    .into(holder.image)
+            }
+                .addOnFailureListener{
+                    err ->
+                    Log.d("ERROR GET", err.toString())
+                }
+        }
+
 
     }
 

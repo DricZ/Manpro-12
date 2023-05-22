@@ -9,5 +9,6 @@ data class home_page_recyclerView_Data(
     val date:String,
     val location:String,
     val maxPeserta:String,
-    val kategoriPeserta:String
+    val kategoriPeserta:String,
+    val img:String
     )
