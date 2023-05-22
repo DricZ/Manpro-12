@@ -7,9 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appmanprobaru.R
-import com.example.appmanprobaru.home_page_recyclerView_Data
-import com.example.appmanprobaru.rvHome_Adapter
+import com.example.appmanprobaru.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -24,6 +22,7 @@ private const val ARG_PARAM2 = "param2"
  * create an instance of this fragment.
  */
 class btn_home_active : Fragment() {
+    private lateinit var detail_event: Interface_Detail_Event
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -42,6 +41,7 @@ class btn_home_active : Fragment() {
     private var _date : MutableList<String> = emptyList<String>().toMutableList()
     private var _category : MutableList<String> = emptyList<String>().toMutableList()
     private var _maxPeserta : MutableList<String> = emptyList<String>().toMutableList()
+    private var _kategoriPeserta : MutableList<String> = emptyList<String>().toMutableList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -97,10 +97,11 @@ class btn_home_active : Fragment() {
                     _date.add(document.data["date"].toString())
                     _location.add(document.data["location"].toString())
                     _maxPeserta.add(document.data["maxpeserta"].toString())
+                    _kategoriPeserta.add(document.data["kategoripeserta"].toString())
 //                    Log.d("GET DATA", "${document.id} => ${document.data}")
                 }
                 for (x in 0.._id.size-1){
-                    val eventdata = home_page_recyclerView_Data(1, _name[x],_desc[x],_category[x],_date[x],_location[x],_maxPeserta[x])
+                    val eventdata = home_page_recyclerView_Data(1, _name[x],_desc[x],_category[x],_date[x],_location[x],_maxPeserta[x],_kategoriPeserta[x])
                     datalist.add(eventdata)
                 }
                 recyclerView.layoutManager = layoutManager

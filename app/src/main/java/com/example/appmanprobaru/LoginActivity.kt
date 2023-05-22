@@ -17,15 +17,15 @@ import com.google.firebase.firestore.FirebaseFirestore
 @Suppress("DEPRECATION")
 class LoginActivity : AppCompatActivity() {
     lateinit var db: FirebaseFirestore
-    private var _userN : MutableList<String> = emptyList<String>().toMutableList()
-    private var _pass : MutableList<String> = emptyList<String>().toMutableList()
-    private var _id : MutableList<String> = emptyList<String>().toMutableList()
-    private var _isAdmin : MutableList<String> = emptyList<String>().toMutableList()
+    private var _userN: MutableList<String> = emptyList<String>().toMutableList()
+    private var _pass: MutableList<String> = emptyList<String>().toMutableList()
+    private var _id: MutableList<String> = emptyList<String>().toMutableList()
+    private var _isAdmin: MutableList<String> = emptyList<String>().toMutableList()
     private lateinit var et_email: EditText
     private lateinit var et_password: EditText
     private lateinit var button_login: Button
-    private lateinit var forgot_pass : TextView
-    private lateinit var sign_up : TextView
+    private lateinit var forgot_pass: TextView
+    private lateinit var sign_up: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login)
@@ -36,8 +36,10 @@ class LoginActivity : AppCompatActivity() {
         forgot_pass = findViewById<TextView>(R.id.textView_forgotpass)
         sign_up = findViewById<TextView>(R.id.tv_NewUser)
 
-       sign_up.text = Html.fromHtml("<font color=${Color.BLACK}>New user? </font>" +
-       "<font color=${Color.BLUE}>Create an Account. </font>")
+        sign_up.text = Html.fromHtml(
+            "<font color=${Color.BLACK}>New user? </font>" +
+                    "<font color=${Color.BLUE}>Create an Account. </font>"
+        )
 
         forgot_pass.setOnClickListener {
 
@@ -74,18 +76,17 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    private fun login(){
+    private fun login() {
         var cek = false
         val email = et_email.text.toString()
         val pass = et_password.text.toString()
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        if (email.isBlank() || pass.isBlank()){
+        if (email.isBlank() || pass.isBlank()) {
             Toast.makeText(this, "Username and Password cant be blank", Toast.LENGTH_SHORT).show()
-        }
-        else{
-            for (x in 0.._userN.size-1){
-                if (email.equals(_userN[x].toString()) and pass.equals(_pass[x].toString())){
+        } else {
+            for (x in 0.._userN.size - 1) {
+                if (email.equals(_userN[x].toString()) and pass.equals(_pass[x].toString())) {
                     cek = true
                     Toast.makeText(
                         this@LoginActivity,
@@ -95,19 +96,17 @@ class LoginActivity : AppCompatActivity() {
 
                     editor.putString("id_user", _id[x].toString())
                     editor.apply()
-                    if (_isAdmin[x] == "true"){
+                    if (_isAdmin[x] == "true") {
                         val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
                         startActivity(eIntent)
-                        }
-
-                    }else{
+                    } else {
                         val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(eIntent)
                     }
 
-              }
+                }
             }
-            if (!cek){
+            if (!cek) {
                 Toast.makeText(
                     this@LoginActivity,
                     "Email atau Password Salah!",
@@ -117,5 +116,5 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
+}
 
