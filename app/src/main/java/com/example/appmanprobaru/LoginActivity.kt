@@ -78,7 +78,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
         var cek = false
-        val email = et_email.text.toString()
+        val email = et_email.text.toString().lowercase()
         val pass = et_password.text.toString()
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()

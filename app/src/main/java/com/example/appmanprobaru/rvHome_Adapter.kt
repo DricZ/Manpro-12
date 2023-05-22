@@ -69,6 +69,5 @@ class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_pag
         val title: TextView = itemView.findViewById(R.id.rvHome_Title)
         val card: CardView = itemView.findViewById(R.id.rvHome_card)
 
-
     }
 }
