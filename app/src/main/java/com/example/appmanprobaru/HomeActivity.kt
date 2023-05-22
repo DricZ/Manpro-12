@@ -7,7 +7,7 @@ import btn_home_active
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
     lateinit var bottomNav : BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +45,32 @@ class HomeActivity : AppCompatActivity() {
         transaction.replace(R.id.Main_fragment,fragment)
         transaction.commit()
     }
+
+    override fun passData(
+        titleImage: Int,
+        Name: String,
+        desc: String,
+        category: String,
+        date: String,
+        location: String,
+        maxPeserta: String
+    ) {
+        val bundle = Bundle()
+        bundle.putInt("titleImage",titleImage)
+        bundle.putString("name", Name)
+        bundle.putString("description", desc)
+        bundle.putString("category", category)
+        bundle.putString("date", date)
+        bundle.putString("location", location)
+        bundle.putString("maxPeserta", maxPeserta)
+
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragmentDetail = detail_event()
+        fragmentDetail.arguments = bundle
+        transaction.replace(R.id.Main_fragment,fragmentDetail)
+        transaction.commit()
+    }
+
 
 }
 

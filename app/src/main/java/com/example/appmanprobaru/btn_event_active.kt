@@ -109,9 +109,12 @@ class btn_event_active : Fragment() {
         )
 
 
-            val rvEvent = event_page_recyclerView_Data(titleId[0], imageId[0])
-            datalistMingguan.add(rvEvent)
-            datalistHarian.add(rvEvent)
+            for(i in imageId.indices) {
+                val rvEvent = event_page_recyclerView_Data(titleId[0], imageId[0])
+                datalistMingguan.add(rvEvent)
+                datalistHarian.add(rvEvent)
+            }
+
 
 
 

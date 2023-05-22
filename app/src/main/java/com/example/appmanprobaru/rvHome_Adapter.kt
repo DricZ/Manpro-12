@@ -1,5 +1,6 @@
 package com.example.appmanprobaru
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -20,12 +21,11 @@ class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_pag
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+
         val currentItem =  home_page_recyclerView_Data[position]
 //        holder.image.setImageResource(currentItem.titleImage)
         holder.title.text = currentItem.Name
-        holder.card.setOnClickListener {
 
-        }
     }
 
     override fun getItemCount(): Int {
