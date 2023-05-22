@@ -1,10 +1,12 @@
 package com.example.appmanprobaru
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -27,6 +29,8 @@ class btn_profile_active : Fragment() {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+
     }
 
     override fun onCreateView(
@@ -55,5 +59,22 @@ class btn_profile_active : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        val _signupbtn = view.findViewById<Button>(R.id.signup_btn)
+        val _signinbtn = view.findViewById<Button>(R.id.signin_btn)
+
+        _signinbtn?.setOnClickListener {
+            val eIntent = Intent(view.context, LoginActivity::class.java)
+            startActivity(eIntent)
+        }
+
+        _signupbtn?.setOnClickListener {
+            val eIntent = Intent(view.context, SignUpActivity::class.java)
+            startActivity(eIntent)
+        }
     }
 }

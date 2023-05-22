@@ -30,8 +30,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
-    <Spinner
-        android:id="@+id/spinner_profile"
+    <Button
+        android:id="@+id/signup_btn"
+        android:text="Sign Up"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
@@ -44,8 +45,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
-    <Spinner
-        android:id="@+id/spinner_event"
+    <Button
+        android:id="@+id/signin_btn"
+        android:text="Sign In"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
@@ -57,6 +59,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_btn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

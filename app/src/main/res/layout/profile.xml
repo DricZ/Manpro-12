@@ -26,7 +26,7 @@
         app:labelVisibilityMode="unlabeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_event"
+        app:layout_constraintTop_toBottomOf="@+id/signin_btn2"
         app:layout_constraintVertical_bias="1.0"
         app:menu="@menu/bottom_navbar">
 
@@ -45,8 +45,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView6" />
 
-    <Spinner
-        android:id="@+id/spinner_profile"
+    <Button
+        android:id="@+id/signup_btn2"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="32dp"
@@ -54,13 +54,14 @@
         android:backgroundTint="#9F9F9F"
         android:elevation="14dp"
         android:spinnerMode="dropdown"
+        android:text="Sign UP"
         app:circularflow_radiusInDP="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/profile_name" />
 
-    <Spinner
-        android:id="@+id/spinner_event"
+    <Button
+        android:id="@+id/signin_btn2"
         android:layout_width="320dp"
         android:layout_height="45dp"
         android:layout_marginTop="24dp"
@@ -68,10 +69,11 @@
         android:backgroundTint="#9F9F9F"
         android:elevation="14dp"
         android:spinnerMode="dropdown"
+        android:text="Sign In"
         app:circularflow_radiusInDP="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner_profile" />
+        app:layout_constraintTop_toBottomOf="@+id/signup_btn2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

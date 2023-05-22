@@ -21,8 +21,10 @@
             android:name=".admin.eventListAdmin"
             android:exported="false" />
         <activity
-            android:name=".admin.PeopleAdmin"
             android:name=".detail_event"
+            android:exported="false" />
+        <activity
+            android:name=".admin.PeopleAdmin"
             android:exported="false" />
         <activity
             android:name=".admin.HomeAdmin"
