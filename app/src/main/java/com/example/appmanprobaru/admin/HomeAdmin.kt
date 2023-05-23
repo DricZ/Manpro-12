@@ -9,11 +9,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
-import com.example.appmanprobaru.btn_event_active
-import com.example.appmanprobaru.btn_live_active
-import com.example.appmanprobaru.btn_profile_active
-import com.example.appmanprobaru.home_page_recyclerView_Data
-import com.example.appmanprobaru.rvHome_Adapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -41,31 +36,31 @@ class HomeAdmin : AppCompatActivity() {
         datalist =  arrayListOf<HomeEvent>()
 
         _rvHomeEventAdmin = findViewById<RecyclerView>(R.id.rvHomeEventAdmin)
-//        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
-//        _navbarAdmin.setOnItemSelectedListener {
-//            when (it.itemId){
-//                R.id.bottom_navbar_home->{
-//                    true
-//                }
-//                R.id.bottom_navbar_people->{
-//                    val intent = Intent(this@HomeAdmin, PeopleAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//                R.id.bottom_navbar_events ->{
-//                    val intent = Intent(this@HomeAdmin, eventListAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//                R.id.bottom_navbar_logout->{
-//
-//                    true
-//                }
-//                else ->{
-//                    true
-//                }
-//            }
-//        }
+        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
+        _navbarAdmin.setOnItemSelectedListener {
+            when (it.itemId){
+                R.id.bottom_navbar_home->{
+                    true
+                }
+                R.id.bottom_navbar_people->{
+                    val intent = Intent(this@HomeAdmin, PeopleAdmin::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.bottom_navbar_events ->{
+                    val intent = Intent(this@HomeAdmin, eventListAdmin::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.bottom_navbar_logout->{
+
+                    true
+                }
+                else ->{
+                    true
+                }
+            }
+        }
 
         datainit()
 
