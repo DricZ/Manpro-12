@@ -25,7 +25,7 @@ class adapterHomeAdmin(private val listForum : ArrayList<HomeEvent>) : RecyclerV
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var HomeEvent = listForum[position]
 
-        holder._ivImage.setImageResource(HomeEvent.img)
+//        holder._ivImage.setImageResource(HomeEvent.img)
         holder._tvTitle.setText(HomeEvent.title)
         holder._tvDate.setText(HomeEvent.date)
         holder._tvTime.setText(HomeEvent.time)

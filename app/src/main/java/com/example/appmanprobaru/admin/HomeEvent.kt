@@ -1,8 +1,8 @@
 package com.example.appmanprobaru.admin
 
 data class HomeEvent(
-    var id:Int,
-    var img:Int,
+    var id:String,
+    var img:String,
     var title:String,
     var date:String,
     var time:String
