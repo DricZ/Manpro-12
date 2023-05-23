@@ -6,9 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
-import com.example.appmanprobaru.btn_event_active
-import com.example.appmanprobaru.btn_live_active
-import com.example.appmanprobaru.btn_profile_active
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomeAdmin : AppCompatActivity() {

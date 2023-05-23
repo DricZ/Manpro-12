@@ -25,7 +25,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
                     true
                 }
                 R.id.bottom_navbar_events ->{
-                    loadFragment(btn_event_active())
+                    loadFragment(btn_about_us_active())
                     true
                 }
                 R.id.bottom_navbar_profile->{
@@ -73,6 +73,23 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
         transaction.commit()
     }
 
+    override fun passModel(model: home_page_recyclerView_Data) {
+        val bundle = Bundle()
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragmentDetail = detail_event()
+        fragmentDetail.arguments = bundle
+        transaction.replace(R.id.Main_fragment,fragmentDetail)
+        transaction.commit()
+    }
+    override fun passCategory(kategori: String) {
+        val bundle = Bundle()
+        bundle.putString("Kategori", kategori)
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragmentHome = btn_home_active()
+        fragmentHome.arguments = bundle
+        transaction.replace(R.id.Main_fragment, fragmentHome)
+        transaction.commit()
+    }
 
 }
 
