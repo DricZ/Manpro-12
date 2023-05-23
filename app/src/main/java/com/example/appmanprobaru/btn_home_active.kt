@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.*
@@ -26,6 +27,17 @@ class btn_home_active : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+
+    private lateinit var passingmodel: Interface_Detail_Event
+    private lateinit var main : HomeActivity
+
+    private lateinit var kategori: String
+    private lateinit var model: home_page_recyclerView_Data
+
+    private lateinit var btn_harian: Button
+    private lateinit var btn_mingguan: Button
+    private lateinit var btn_bulanan: Button
+    private lateinit var btn_insidentil: Button
 
     private lateinit var adapter: rvHome_Adapter
     private lateinit var recyclerView: RecyclerView
@@ -57,7 +69,26 @@ class btn_home_active : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_btn_home_active, container, false)
+        val view = inflater.inflate(R.layout.fragment_btn_home_active, container, false)
+        passingmodel = activity as Interface_Detail_Event
+        main = activity as HomeActivity
+        btn_harian = view.findViewById<Button>(R.id.button_harian)
+        btn_harian.setOnClickListener {
+            main.passModel(datalist[0])
+        }
+        btn_mingguan = view.findViewById<Button>(R.id.button_mingguan)
+        btn_mingguan.setOnClickListener {
+            main.passCategory("Mingguan")
+        }
+        btn_bulanan = view.findViewById<Button>(R.id.button_bulanan)
+        btn_bulanan.setOnClickListener {
+            main.passCategory("Bulanan")
+        }
+        btn_insidentil = view.findViewById<Button>(R.id.button_Insidentil)
+        btn_insidentil.setOnClickListener {
+            main.passCategory("Insidentil")
+        }
+        return view
     }
 
     companion object {

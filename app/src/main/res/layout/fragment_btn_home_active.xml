@@ -1,18 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout3"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
-    android:paddingTop="30dp"
     android:paddingStart="20dp"
+    android:paddingTop="30dp"
     android:paddingEnd="20dp"
-    tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="0dp"
-    >
+    tools:layout_editor_absoluteX="-17dp"
+    tools:layout_editor_absoluteY="-143dp">
 
 
     <SearchView
@@ -65,107 +63,119 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/search_bar">
 
-        <Button
-            android:id="@+id/buttonBaru"
-            android:layout_width="75dp"
-            android:layout_height="48dp"
-            android:backgroundTint="@color/btn_primary"
-            android:text="Baru"
-            android:layout_marginStart="4dp"
-            android:padding="0dp"
-            android:textAllCaps="false"
-            android:textSize="13sp"
-            app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.03" />
 
         <Button
-            android:id="@+id/button_Tahunan"
+            android:id="@+id/button_all"
             android:layout_width="75dp"
             android:layout_height="48dp"
-            android:layout_marginBottom="48dp"
+            android:padding="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            app:cornerRadius="20dp"
+            android:backgroundTint="@color/btn_primary"
+            android:text="Show all"
+            android:textAllCaps="false"
+            app:layout_constraintTop_toBottomOf="@id/button_Insidentil"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+            app:layout_constraintStart_toEndOf="@id/btn_remaja"
+
+
+            />
+
+        <Button
+            android:id="@+id/button_Insidentil"
+            android:layout_width="75dp"
+            android:layout_height="48dp"
             android:layout_marginStart="8dp"
             android:backgroundTint="@color/btn_not_active"
             android:padding="0dp"
-            android:text="Tahunan"
+            android:text="Insidentil"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_bulanan" />
+            app:layout_constraintStart_toEndOf="@id/button_bulanan"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout"
+            tools:layout_editor_absoluteX="244dp"
+
+            />
 
         <Button
             android:id="@+id/button_harian"
             android:layout_width="70dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/btn_not_active"
-            android:layout_marginStart="4dp"
             android:padding="0dp"
             android:text="Harian"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonBaru"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toStartOf="@id/constraintLayout"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout"
+            tools:layout_editor_absoluteX="4dp"
+            tools:layout_editor_absoluteY="48dp" />
 
         <Button
             android:id="@+id/btn_pemuda"
             android:layout_width="75dp"
             android:layout_height="48dp"
+            android:layout_marginTop="8dp"
             android:backgroundTint="@color/btn_not_active"
             android:padding="0dp"
-            android:layout_marginStart="4dp"
             android:text="Pemuda"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_harian"
-            app:layout_constraintVertical_bias="0.25" />
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+            app:layout_constraintStart_toStartOf="@id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/button_harian"
+            tools:layout_editor_absoluteX="4dp"
+            tools:layout_editor_absoluteY="48dp"
+
+
+            />
 
         <Button
             android:id="@+id/btn_umum"
             android:layout_width="75dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/btn_not_active"
+            android:padding="0dp"
+            android:layout_marginTop="8dp"
             android:layout_marginStart="8dp"
             android:text="Umum"
-            android:padding="0dp"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="13sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_pemuda"
-            app:layout_constraintTop_toBottomOf="@+id/button_mingguan"
-            app:layout_constraintVertical_bias="0.222" />
+            tools:layout_editor_absoluteX="86dp"
+            tools:layout_editor_absoluteY="56dp"
+            app:layout_constraintStart_toEndOf="@id/btn_pemuda"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+            app:layout_constraintTop_toBottomOf="@id/button_mingguan"
+            />
 
         <Button
             android:id="@+id/btn_remaja"
             android:layout_width="75dp"
             android:layout_height="48dp"
             android:backgroundTint="@color/btn_not_active"
-            android:layout_marginStart="8dp"
             android:padding="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:text="Remaja"
             android:textAllCaps="false"
             android:textColor="@color/black"
             android:textSize="13sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/btn_umum"
-            app:layout_constraintTop_toBottomOf="@+id/button_mingguan"
-            app:layout_constraintVertical_bias="0.218" />
+            tools:layout_editor_absoluteX="166dp"
+            tools:layout_editor_absoluteY="56dp"
+            app:layout_constraintBottom_toBottomOf="@id/constraintLayout"
+            app:layout_constraintStart_toEndOf="@id/btn_umum"
+            app:layout_constraintTop_toBottomOf="@id/button_bulanan"
+            />
 
         <Button
             android:id="@+id/button_mingguan"
@@ -179,17 +189,18 @@
             android:textColor="@color/black"
             android:textSize="10sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_harian"
-            app:layout_constraintTop_toBottomOf="@+id/buttonBaru"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintStart_toEndOf="@id/button_harian"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout"
+            tools:layout_editor_absoluteX="78dp"
+            tools:layout_editor_absoluteY="48dp"
+
+            />
 
         <Button
             android:id="@+id/button_bulanan"
             android:layout_width="75dp"
             android:layout_height="48dp"
             android:layout_marginStart="8dp"
-            android:layout_marginBottom="48dp"
             android:backgroundTint="@color/btn_not_active"
             android:padding="0dp"
             android:text="Bulanan"
@@ -197,19 +208,20 @@
             android:textColor="@color/black"
             android:textSize="12sp"
             app:cornerRadius="20dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/button_mingguan" />
+            app:layout_constraintStart_toEndOf="@id/button_mingguan"
+            app:layout_constraintTop_toTopOf="@id/constraintLayout"
+            tools:layout_editor_absoluteX="161dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="480dp"
-        android:layout_marginTop="265dp"
+        android:layout_height="450dp"
+        android:layout_marginTop="20dp"
+        android:scrollbars="none"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:scrollbars="none">
+        app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_item"
@@ -217,8 +229,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:nestedScrollingEnabled="false"
-            android:paddingStart="5dp"
             android:overScrollMode="never"
+            android:paddingStart="5dp"
             android:paddingBottom="60dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             app:spanCount="2"
