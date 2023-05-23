@@ -36,6 +36,7 @@ class btn_home_active : Fragment() {
     private var _id : MutableList<String> = emptyList<String>().toMutableList()
 
     private var _name : MutableList<String> = emptyList<String>().toMutableList()
+    private var _img : MutableList<String> = emptyList<String>().toMutableList()
     private var _desc : MutableList<String> = emptyList<String>().toMutableList()
     private var _location : MutableList<String> = emptyList<String>().toMutableList()
     private var _date : MutableList<String> = emptyList<String>().toMutableList()
@@ -92,6 +93,7 @@ class btn_home_active : Fragment() {
                 for (document in documents) {
                     _id.add(document.id.toString())
                     _name.add(document.data["name"].toString())
+                    _img.add(document.data["imgloc"].toString())
                     _desc.add(document.data["desc"].toString())
                     _category.add(document.data["category"].toString())
                     _date.add(document.data["date"].toString())
@@ -101,7 +103,7 @@ class btn_home_active : Fragment() {
 //                    Log.d("GET DATA", "${document.id} => ${document.data}")
                 }
                 for (x in 0.._id.size-1){
-                    val eventdata = home_page_recyclerView_Data(1, _name[x],_desc[x],_category[x],_date[x],_location[x],_maxPeserta[x],_kategoriPeserta[x])
+                    val eventdata = home_page_recyclerView_Data(1, _name[x],_desc[x],_category[x],_date[x],_location[x],_maxPeserta[x],_kategoriPeserta[x], _img[x])
                     datalist.add(eventdata)
                 }
                 recyclerView.layoutManager = layoutManager
@@ -112,7 +114,6 @@ class btn_home_active : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w("GET DATA", "Error getting documents: ", exception)
             }
-
 
 
     }
