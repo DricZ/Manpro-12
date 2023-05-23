@@ -1,6 +1,7 @@
 package com.example.appmanprobaru.admin
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.RecyclerView
@@ -24,15 +25,17 @@ class HomeAdmin : AppCompatActivity() {
 
                     true
                 }
-                R.id.bottom_navbar_live->{
-
+                R.id.bottom_navbar_people->{
+                    val intent = Intent(this@HomeAdmin, PeopleAdmin::class.java)
+                    startActivity(intent)
                     true
                 }
                 R.id.bottom_navbar_events ->{
-
+                    val intent = Intent(this@HomeAdmin, eventListAdmin::class.java)
+                    startActivity(intent)
                     true
                 }
-                R.id.bottom_navbar_profile->{
+                R.id.bottom_navbar_logout->{
 
                     true
                 }
