@@ -17,6 +17,12 @@
         android:theme="@style/Theme.AppManproBaru"
         tools:targetApi="31">
         <activity
+            android:name=".btn_detail_profile"
+            android:exported="false" />
+        <activity
+            android:name=".profile_login"
+            android:exported="false" />
+        <activity
             android:name=".admin.addJemaat"
             android:exported="false" />
         <activity
