@@ -7,12 +7,8 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center|right"
+        android:layout_height="wrap_content"
         android:background="@color/background"
-        android:onClick="@string/spinner_dropdown"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:context=".profile_login">
@@ -22,7 +18,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="20dp"
-            android:paddingEnd="20dp">
+            android:paddingEnd="20dp"
+            android:paddingBottom="100dp">
 
             <ImageView
                 android:id="@+id/pplogin"
@@ -48,7 +45,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/pplogin" />
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView6"
+                android:id="@+id/isi_profile"
                 android:layout_width="336dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-25sp"
@@ -94,7 +91,7 @@
                         android:paddingRight="15sp">
 
                         <TextView
-                            android:id="@+id/textView8"
+                            android:id="@+id/profile_username"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="audrico"
@@ -113,7 +110,7 @@
                             android:id="@+id/textView9"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="email"
+                            android:text="Email"
                             android:textColor="@color/live_object_bg"
                             android:textSize="18sp" />
                     </TableRow>
@@ -126,12 +123,11 @@
                         android:paddingRight="15sp">
 
                         <TextView
-                            android:id="@+id/textView10"
+                            android:id="@+id/profile_email"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="gmail.com"
-                            android:textColor="@color/live_object_bg"
-                            android:textSize="17sp" />
+                            android:textColor="@color/live_object_bg" />
                     </TableRow>
 
                     <TableRow
@@ -146,9 +142,9 @@
                             android:id="@+id/textView16"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:scrollbarSize="18sp"
                             android:text="Phone"
-                            android:textColor="@color/live_object_bg" />
+                            android:textColor="@color/live_object_bg"
+                            android:textSize="18sp" />
 
                     </TableRow>
 
@@ -160,10 +156,44 @@
                         android:paddingRight="15sp">
 
                         <TextView
-                            android:id="@+id/textView17"
+                            android:id="@+id/profile_nohp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="nomer"
+                            android:textColor="@color/live_object_bg" />
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="15dp"
+                        android:gravity="center|left"
+                        android:paddingLeft="15sp"
+                        android:paddingRight="15sp">
+
+                        <TextView
+                            android:id="@+id/textView161"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Alamat"
+                            android:textColor="@color/live_object_bg"
+                            android:textSize="18sp" />
+
+                    </TableRow>
+
+                    <TableRow
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:gravity="center|left"
+                        android:paddingLeft="15sp"
+                        android:paddingRight="15sp"
+                        android:paddingBottom="15sp">
+
+                        <TextView
+                            android:id="@+id/profile_alamat"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="alamat"
                             android:textColor="@color/live_object_bg" />
                     </TableRow>
 
@@ -209,7 +239,7 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/cardView7"
+                android:id="@+id/isi_event"
                 android:layout_width="336dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="-30sp"
@@ -217,7 +247,7 @@
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/detail_eventbtn">
+                app:layout_constraintTop_toBottomOf="@+id/detail_event">
 
                 <TableLayout
                     android:id="@+id/tableLayout3"
@@ -282,15 +312,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/detail_eventbtn"
+                android:id="@+id/detail_event"
                 android:layout_width="336dp"
                 android:layout_height="40dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="32dp"
                 android:foregroundGravity="center"
                 app:cardCornerRadius="20dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView6">
+                app:layout_constraintTop_toBottomOf="@+id/isi_profile">
 
                 <TextView
                     android:id="@+id/textView1411"
@@ -322,15 +352,17 @@
                 android:id="@+id/button_logut"
                 android:layout_width="108dp"
                 android:layout_height="51dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/btn_primary"
                 android:text="Log out"
                 android:textColor="#FFFFFF"
                 android:textStyle="bold"
                 app:cornerRadius="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/cardView7" />
+                app:layout_constraintTop_toBottomOf="@+id/isi_event" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

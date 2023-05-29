@@ -3,6 +3,7 @@ package com.example.appmanprobaru
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,6 +13,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.cardview.widget.CardView
 import btn_home_active
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -90,6 +92,11 @@ class btn_profile_active : Fragment() {
         val _alamat = view.findViewById<TextView>(R.id.profile_alamat)
         val _nohp = view.findViewById<TextView>(R.id.profile_nohp)
 
+        val _profile = view.findViewById<CardView>(R.id.detail_profile)
+        val _event = view.findViewById<CardView>(R.id.detail_event)
+        val _isiprofile = view.findViewById<CardView>(R.id.isi_profile)
+        val _isievent = view.findViewById<CardView>(R.id.isi_event)
+
         val sharedPreferences = activity?.getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
 
         if (sharedPreferences?.contains("id_user") == true) {
@@ -99,9 +106,24 @@ class btn_profile_active : Fragment() {
             _alamat.setText(sharedPreferences.getString("alamat_user","null"))
             _nohp.setText(sharedPreferences.getString("nohp_user","null"))
 
-        } else {
+            _profile.setOnClickListener {
+                if (_isiprofile.visibility == View.VISIBLE){
+                    _isiprofile.visibility = View.GONE
+                } else{
+                    _isiprofile.visibility = View.VISIBLE
+                }
+            }
 
+            _event.setOnClickListener {
+                if (_isievent.visibility == View.VISIBLE){
+                    _isievent.visibility = View.GONE
+                } else{
+                    _isievent.visibility = View.VISIBLE
+                }
+            }
         }
+
+
 
         _signinbtn?.setOnClickListener {
             val eIntent = Intent(view.context, LoginActivity::class.java)
