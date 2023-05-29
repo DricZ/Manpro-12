@@ -3,6 +3,7 @@ package com.example.appmanprobaru.admin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -12,6 +13,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
 
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var _tvName : TextView = itemView.findViewById(R.id.tvName)
+        var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -23,6 +25,9 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
         var people = listForum[position]
 
         holder._tvName.setText(people.name)
+        holder._btnDelete.setOnClickListener {
+            
+        }
     }
 
     override fun getItemCount(): Int {
