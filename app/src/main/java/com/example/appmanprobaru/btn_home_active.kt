@@ -444,7 +444,7 @@ class btn_home_active : Fragment() {
             override fun onItemClick(position: Int) {
                 println("TOASTNYA DISINI")
 
-                home_active.passModel(datalist[position])
+                home_active.passModel(datalistFilter2[position])
             }
         })
 
@@ -468,7 +468,7 @@ class btn_home_active : Fragment() {
             override fun onItemClick(position: Int) {
                 println("TOASTNYA DISINI")
 
-                home_active.passDetail(datalist[position])
+                home_active.passDetail(datalistFilter2[position])
             }
         })
     }
@@ -489,7 +489,7 @@ class btn_home_active : Fragment() {
             override fun onItemClick(position: Int) {
                 println("TOASTNYA DISINI")
 
-                home_active.passDetail(datalist[position])
+                home_active.passDetail(datalistFilter[position])
             }
         })
 
@@ -512,7 +512,7 @@ class btn_home_active : Fragment() {
             override fun onItemClick(position: Int) {
                 println("TOASTNYA DISINI")
 
-                home_active.passDetail(datalist[position])
+                home_active.passDetail(datalistFilter[position])
             }
         })
     }
@@ -531,7 +531,7 @@ class btn_home_active : Fragment() {
         adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 println("TOASTNYA DISINI")
-                home_active.passDetail(datalist[position])
+                home_active.passDetail(datalistFilter[position])
 
             }
         })
