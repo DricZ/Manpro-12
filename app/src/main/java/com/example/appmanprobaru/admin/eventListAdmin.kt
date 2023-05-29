@@ -90,7 +90,7 @@ class eventListAdmin : AppCompatActivity() {
 
                 }
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this)
-                _rvHomeEventAdmin.adapter = adapterHomeAdmin(datalist)
+                _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
 
 
             }

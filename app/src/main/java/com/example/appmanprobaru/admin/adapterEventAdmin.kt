@@ -11,9 +11,9 @@ import com.example.appmanprobaru.R
 class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : RecyclerView.Adapter<adapterEventAdmin.ListViewHolder>(){
 
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
-        var _tvTitle : TextView = itemView.findViewById(R.id.TVTitle)
-        var _tvDate : TextView = itemView.findViewById(R.id.TVDate)
-        var _tvTime : TextView = itemView.findViewById(R.id.TVTime)
+        var tvName : TextView = itemView.findViewById(R.id.tvName)
+        var tvDate : TextView = itemView.findViewById(R.id.tvDate)
+        var tvTime : TextView = itemView.findViewById(R.id.tvTime)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -24,9 +24,9 @@ class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : Recycle
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var HomeEvent = listForum[position]
 
-        holder._tvTitle.setText(HomeEvent.title)
-        holder._tvDate.setText(HomeEvent.date)
-        holder._tvTime.setText(HomeEvent.time)
+        holder.tvName.setText(HomeEvent.title)
+        holder.tvDate.setText(HomeEvent.date)
+        holder.tvTime.setText(HomeEvent.time)
     }
 
     override fun getItemCount(): Int {
