@@ -16,9 +16,11 @@
     <SearchView
         android:id="@+id/search_bar_home"
         style="@style/SearchViewStyle"
+        android:scrollbars="none"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColorHint="@color/black"
+        android:searchHintIcon="@color/black"
         android:background="@drawable/rounded_bg_box"
         android:iconifiedByDefault="false"
         android:queryHint="Search"

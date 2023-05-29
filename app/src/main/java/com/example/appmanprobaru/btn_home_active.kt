@@ -7,14 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appmanprobaru.HomeActivity
-import com.example.appmanprobaru.Interface_Detail_Event
-import com.example.appmanprobaru.R
-import com.example.appmanprobaru.home_page_recyclerView_Data
-import com.example.appmanprobaru.rvHome_Adapter
+import com.example.appmanprobaru.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -30,6 +27,7 @@ private const val ARG_PARAM2 = "param2"
  */
 class btn_home_active : Fragment() {
     private lateinit var detail_event: Interface_Detail_Event
+    private lateinit var home_active : HomeActivity
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -166,6 +164,8 @@ class btn_home_active : Fragment() {
         btn_remaja = view.findViewById(R.id.btn_remaja)
         btn_all = view.findViewById(R.id.button_all)
         recyclerView = view.findViewById(R.id.rv_item)
+        home_active = activity as HomeActivity
+
         var category = ""
 
         val searchView = view.findViewById<SearchView>(R.id.search_bar_home)
@@ -438,7 +438,16 @@ class btn_home_active : Fragment() {
         val datalistFilter2 = datalistFilter.filter(predicate)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = rvHome_Adapter(datalistFilter2 as ArrayList<home_page_recyclerView_Data>)
+        adapter = rvHome_Adapter(datalistFilter2 as ArrayList<home_page_recyclerView_Data>)
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("TOASTNYA DISINI")
+
+                home_active.passModel(datalist[position])
+            }
+        })
+
     }
 
     private fun searchEventUmur(recyclerView: RecyclerView, query: MutableList<String>, kategori: String) {
@@ -454,7 +463,14 @@ class btn_home_active : Fragment() {
         val datalistFilter2 = datalistFilter.filter(predicate)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = rvHome_Adapter(datalistFilter2 as ArrayList<home_page_recyclerView_Data>)
+        adapter = rvHome_Adapter(datalistFilter2 as ArrayList<home_page_recyclerView_Data>)
+        adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("TOASTNYA DISINI")
+
+                home_active.passDetail(datalist[position])
+            }
+        })
     }
 
     private fun searchEventAll(recyclerView: RecyclerView, query: MutableList<String>) {
@@ -467,9 +483,18 @@ class btn_home_active : Fragment() {
         val datalistFilter = datalist.filter(predicate)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+        adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("TOASTNYA DISINI")
+
+                home_active.passDetail(datalist[position])
+            }
+        })
 
     }
+
 
     private fun printEvent(recyclerView: RecyclerView, kategori: String) {
         val layoutManager = GridLayoutManager(context, 2)
@@ -481,7 +506,15 @@ class btn_home_active : Fragment() {
         val datalistFilter = datalist.filter(predicate)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+        adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("TOASTNYA DISINI")
+
+                home_active.passDetail(datalist[position])
+            }
+        })
     }
 
     private fun printEventUmur(recyclerView: RecyclerView, kategoriPeserta: String) {
@@ -493,14 +526,30 @@ class btn_home_active : Fragment() {
         val datalistFilter = datalist.filter(predicate)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+        adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("TOASTNYA DISINI")
+                home_active.passDetail(datalist[position])
+
+            }
+        })
     }
 
     private fun printEvent(recyclerView: RecyclerView) {
         val layoutManager = GridLayoutManager(context, 2)
 
         recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = rvHome_Adapter(datalist)
+        adapter = rvHome_Adapter(datalist)
+        recyclerView.adapter = adapter
+        adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+            override fun onItemClick(position: Int) {
+                println("TOASTNYA DISINI")
+                home_active.passDetail(datalist[position])
+
+            }
+        })
     }
 
     private fun initEvent(recyclerView: RecyclerView) {
@@ -546,7 +595,14 @@ class btn_home_active : Fragment() {
                     datalist.add(eventdata)
                 }
                 recyclerView.layoutManager = layoutManager
-                recyclerView.adapter = rvHome_Adapter(datalist)
+                adapter = rvHome_Adapter(datalist)
+                recyclerView.adapter = adapter
+                adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
+                    override fun onItemClick(position: Int) {
+                        println("TOASTNYA DISINI")
+                        home_active.passDetail(datalist[position])
+                    }
+                })
             }
             .addOnFailureListener { exception ->
                 Log.w("GET DATA", "Error getting documents: ", exception)
@@ -584,4 +640,6 @@ class btn_home_active : Fragment() {
 
 
     }
+
+
 }

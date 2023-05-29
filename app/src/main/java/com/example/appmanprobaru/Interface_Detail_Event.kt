@@ -6,6 +6,6 @@ interface Interface_Detail_Event {
     fun passModel(model: home_page_recyclerView_Data)
     fun passCategory(kategori: String)
 
-
+    fun passDetail(model:home_page_recyclerView_Data)
 
 }

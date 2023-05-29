@@ -117,5 +117,20 @@
             app:layout_constraintStart_toStartOf="@id/csLayout"
             app:layout_constraintEnd_toEndOf="@id/csLayout"
             android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula, risus ut viverra malesuada, turpis magna tincidunt leo, vestibulum vehicula ante nulla eu odio. " />
+
+        <Button
+            android:id="@+id/detail_daftar_sekarang"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="@color/btn_primary"
+            android:width="300dp"
+            android:textSize="18sp"
+            android:text="Daftar Sekarang"
+            android:textAllCaps="false"
+            app:cornerRadius="10dp"
+            app:layout_constraintEnd_toEndOf="@id/csLayout"
+            app:layout_constraintStart_toStartOf="@id/csLayout"
+            app:layout_constraintTop_toBottomOf="@id/detail_event_deskripsi" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

@@ -54,3 +54,4 @@ local.properties
 .idea/compiler.xml
 .idea/kotlinc.xml
 .idea/misc.xml
+local.properties

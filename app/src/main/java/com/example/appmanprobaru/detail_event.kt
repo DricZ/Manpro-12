@@ -1,10 +1,17 @@
 package com.example.appmanprobaru
 
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.PopupMenu
+import android.widget.PopupWindow
+import android.widget.TextView
+import androidx.appcompat.app.AlertDialog
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,6 +28,34 @@ class detail_event : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private var name: String? =""
+    private var desc: String? =""
+    private var category: String? =""
+    private var date: String? = ""
+    private var location: String? = ""
+    private var maxPeserta: String? = ""
+    private var kategoriPeserta: String? = ""
+    private var img: String? = ""
+
+    private lateinit var event_image: ImageView
+    private lateinit var event_title: TextView
+    private lateinit var event_tanggal: TextView
+    private lateinit var event_durasi: TextView
+    private lateinit var event_deskripsi: TextView
+    private lateinit var event_datar: Button
+
+    private lateinit var alertDialog: AlertDialog
+    private lateinit var alertJemput: AlertDialog
+
+    private lateinit var pop_daftar_No: Button
+    private lateinit var pop_daftar_Yes: Button
+    private lateinit var pop_jemput_No: Button
+    private lateinit var pop_jemput_Yes: Button
+
+
+
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -34,7 +69,38 @@ class detail_event : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_detail_event, container, false)
+        val view = inflater.inflate(R.layout.fragment_detail_event, container, false)
+
+        name = arguments?.getString("Name", "Nan")
+        desc = arguments?.getString("desc", "Nan")
+        category = arguments?.getString("category","Nan")
+        date = arguments?.getString("date", "Nan")
+        location = arguments?.getString("location", "Nan")
+        maxPeserta = arguments?.getString("maxPeserta", "Nan")
+        kategoriPeserta = arguments?.getString("kategoriPeserta", "Nan")
+        img = arguments?.getString("img", "Nan")
+
+        event_image = view.findViewById(R.id.detail_event_image)
+        event_title = view.findViewById(R.id.detail_event_title)
+        event_durasi = view.findViewById(R.id.detail_event_durasi)
+        event_tanggal = view.findViewById(R.id.detail_event_date)
+        event_deskripsi = view.findViewById(R.id.detail_event_deskripsi)
+        event_datar = view.findViewById(R.id.detail_daftar_sekarang)
+
+        event_datar.setOnClickListener {
+            showKonfirmasiDaftar()
+        }
+
+        event_title.text = name
+        event_deskripsi.text = desc
+        event_tanggal.text = date
+
+
+
+
+
+
+        return view
     }
 
     companion object {
@@ -55,5 +121,49 @@ class detail_event : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    fun showKonfirmasiDaftar() {
+        val inflater: LayoutInflater = this.layoutInflater
+        val dialogView: View = inflater.inflate(R.layout.pop_menu_daftar,null)
+
+        pop_daftar_No = dialogView.findViewById(R.id.pop_menu_daftar_No)
+        pop_daftar_Yes = dialogView.findViewById(R.id.pop_menu_daftar_Yes)
+
+        pop_daftar_No.setOnClickListener {
+            alertDialog.hide()
+        }
+
+        pop_daftar_Yes.setOnClickListener {
+            showKonfirmasiJemput()
+        }
+
+        val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setView(dialogView)
+
+        alertDialog = dialogBuilder.create()
+        alertDialog.show()
+    }
+
+    fun showKonfirmasiJemput(){
+        alertDialog.hide()
+        val inflater: LayoutInflater = this.layoutInflater
+        val dialogView: View = inflater.inflate(R.layout.pop_menu_jemput, null)
+
+        pop_daftar_No = dialogView.findViewById(R.id.pop_menu_jemput_No)
+        pop_daftar_Yes = dialogView.findViewById(R.id.pop_menu_jemput_Yes)
+
+        pop_daftar_No.setOnClickListener {
+
+        }
+
+        pop_daftar_Yes.setOnClickListener {
+
+        }
+        val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
+        dialogBuilder.setView(dialogView)
+
+        alertJemput = dialogBuilder.create()
+        alertJemput.show()
     }
 }

@@ -17,12 +17,23 @@ import com.google.firebase.storage.ktx.storage
 
 class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_page_recyclerView_Data>): RecyclerView.Adapter<rvHome_Adapter.ViewHolder>() {
 
+    private lateinit var mListener: onItemClickListener
+
+    interface onItemClickListener{
+        fun onItemClick(position: Int)
+    }
+
+
+    fun setOnItemClickListener(listener: onItemClickListener){
+        mListener = listener
+    }
+
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.event_box_layout,
         parent, false)
-        return ViewHolder(itemView)
+        return ViewHolder(itemView,mListener)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -64,10 +75,17 @@ class rvHome_Adapter(private val home_page_recyclerView_Data: ArrayList<home_pag
         return home_page_recyclerView_Data.size
     }
 
-    class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+    class ViewHolder(itemView: View, listener: onItemClickListener): RecyclerView.ViewHolder(itemView){
         val image: ImageView = itemView.findViewById(R.id.rvHome_image)
         val title: TextView = itemView.findViewById(R.id.rvHome_Title)
         val card: CardView = itemView.findViewById(R.id.rvHome_card)
+
+        init {
+            itemView.setOnClickListener {
+                listener.onItemClick(bindingAdapterPosition)
+            }
+        }
+
 
     }
 }
