@@ -18,9 +18,13 @@ import com.google.firebase.firestore.FirebaseFirestore
 class LoginActivity : AppCompatActivity() {
     lateinit var db: FirebaseFirestore
     private var _userN: MutableList<String> = emptyList<String>().toMutableList()
+    private var _nama: MutableList<String> = emptyList<String>().toMutableList()
     private var _pass: MutableList<String> = emptyList<String>().toMutableList()
     private var _id: MutableList<String> = emptyList<String>().toMutableList()
     private var _isAdmin: MutableList<String> = emptyList<String>().toMutableList()
+    private var _email: MutableList<String> = emptyList<String>().toMutableList()
+    private var _alamat: MutableList<String> = emptyList<String>().toMutableList()
+    private var _nohp: MutableList<String> = emptyList<String>().toMutableList()
     private lateinit var et_email: EditText
     private lateinit var et_password: EditText
     private lateinit var button_login: Button
@@ -59,6 +63,10 @@ class LoginActivity : AppCompatActivity() {
                 for (document in documents) {
                     _userN.add(document.data["username"].toString())
                     _pass.add(document.data["password"].toString())
+                    _nama.add(document.data["nama"].toString())
+                    _email.add(document.data["email"].toString())
+                    _alamat.add(document.data["alamat"].toString())
+                    _nohp.add(document.data["notelp"].toString())
                     _id.add(document.id.toString())
                     _isAdmin.add(document.data["is_admin"].toString())
                     Log.d("CEK DATA", "CEK ${_userN}")
@@ -95,6 +103,11 @@ class LoginActivity : AppCompatActivity() {
                     ).show()
 
                     editor.putString("id_user", _id[x].toString())
+                    editor.putString("username_user", _userN[x].toString())
+                    editor.putString("nama_user", _nama[x].toString())
+                    editor.putString("email_user", _email[x].toString())
+                    editor.putString("nohp_user", _nohp[x].toString())
+                    editor.putString("alamat_user", _alamat[x].toString())
                     editor.apply()
                     if (_isAdmin[x] == "true") {
                         val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
