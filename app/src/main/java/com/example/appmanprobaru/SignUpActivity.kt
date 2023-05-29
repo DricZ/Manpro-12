@@ -71,7 +71,8 @@ class SignUpActivity : AppCompatActivity() {
                             "email" to email.lowercase(),
                             "notelp" to noTelp,
                             "alamat" to alamat,
-                            "nama" to nama
+                            "nama" to nama,
+                            "is_admin" to false
                         )
                         dbAccount.add(user).addOnSuccessListener {
                             Toast.makeText(this, "SignUp Sukses", Toast.LENGTH_SHORT).show()

@@ -1,4 +1,6 @@
 
+import android.content.res.ColorStateList
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -6,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.*
@@ -38,6 +41,10 @@ class btn_home_active : Fragment() {
     private lateinit var btn_mingguan: Button
     private lateinit var btn_bulanan: Button
     private lateinit var btn_insidentil: Button
+    private lateinit var btn_pemuda: Button
+    private lateinit var btn_umum: Button
+    private lateinit var btn_remaja: Button
+    private lateinit var btn_all: Button
 
     private lateinit var adapter: rvHome_Adapter
     private lateinit var recyclerView: RecyclerView
@@ -72,22 +79,52 @@ class btn_home_active : Fragment() {
         val view = inflater.inflate(R.layout.fragment_btn_home_active, container, false)
         passingmodel = activity as Interface_Detail_Event
         main = activity as HomeActivity
+
         btn_harian = view.findViewById<Button>(R.id.button_harian)
+        btn_mingguan = view.findViewById<Button>(R.id.button_mingguan)
+        btn_bulanan = view.findViewById<Button>(R.id.button_bulanan)
+        btn_insidentil = view.findViewById<Button>(R.id.button_Insidentil)
+        btn_pemuda = view.findViewById<Button>(R.id.btn_pemuda)
+        btn_umum = view.findViewById<Button>(R.id.btn_umum)
+        btn_remaja = view.findViewById<Button>(R.id.btn_remaja)
+
         btn_harian.setOnClickListener {
             main.passModel(datalist[0])
         }
-        btn_mingguan = view.findViewById<Button>(R.id.button_mingguan)
+
         btn_mingguan.setOnClickListener {
             main.passCategory("Mingguan")
+//            btn_harian.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_not_active)))
+//            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_primary)))
+//            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_not_active)))
+//            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_not_active)))
+//            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_not_active)))
+//            btn_umum.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_not_active)))
+//            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(ContextCompat.getColor(requireContext(), R.color.btn_not_active)))
+
+
         }
-        btn_bulanan = view.findViewById<Button>(R.id.button_bulanan)
+
         btn_bulanan.setOnClickListener {
             main.passCategory("Bulanan")
         }
-        btn_insidentil = view.findViewById<Button>(R.id.button_Insidentil)
+
         btn_insidentil.setOnClickListener {
             main.passCategory("Insidentil")
         }
+
+        btn_pemuda.setOnClickListener {
+            main.passCategory("Pemuda")
+        }
+
+        btn_umum.setOnClickListener {
+            main.passCategory("Umum")
+        }
+
+        btn_remaja.setOnClickListener {
+            main.passCategory("Remaja")
+        }
+
         return view
     }
 
@@ -113,7 +150,234 @@ class btn_home_active : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         dataInit()
+
+        btn_harian = view.findViewById(R.id.button_harian)
+        btn_mingguan = view.findViewById(R.id.button_mingguan)
+        btn_bulanan = view.findViewById(R.id.button_bulanan)
+        btn_insidentil = view.findViewById(R.id.button_Insidentil)
+        btn_pemuda = view.findViewById(R.id.btn_pemuda)
+        btn_umum = view.findViewById(R.id.btn_umum)
+        btn_remaja = view.findViewById(R.id.btn_remaja)
+        btn_all = view.findViewById(R.id.button_all)
+
+//        btn_harian.setOnClickListener {
+//            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+//            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+//
+//            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+//            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+//
+//        }
+
+        btn_mingguan.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+        }
+
+        btn_bulanan.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+        }
+
+        btn_insidentil.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+        }
+
+        btn_pemuda.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+        }
+
+        btn_umum.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+        }
+
+        btn_remaja.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+        }
+
+        btn_all.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+        }
+
         recyclerView = view.findViewById(R.id.rv_item)
         val layoutManager = GridLayoutManager(context,2)
         val db = Firebase.firestore
