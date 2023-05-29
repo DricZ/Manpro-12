@@ -1,149 +1,199 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white">
 
-
-    <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="291dp"
-        android:layout_height="169dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
-        app:srcCompat="@drawable/mountain_dummy_square" />
-
-    <EditText
-        android:id="@+id/title_event"
-        android:layout_width="330dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_bg_box"
-        android:drawableStart="@drawable/email_icon"
-        android:drawablePadding="10dp"
-        android:hint="Title"
-        android:inputType="textEmailAddress"
-        android:paddingStart="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/live_object_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
-
-    <EditText
-        android:id="@+id/dafevt_nama"
-        android:layout_width="330dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_bg_box"
-        android:drawableStart="@drawable/icon_event"
-        android:drawablePadding="10dp"
-        android:hint="Time"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/live_object_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/title_event" />
-
-    <EditText
-        android:id="@+id/et_username"
-        android:layout_width="330dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_bg_box"
-        android:drawableStart="@drawable/icon_event"
-        android:drawablePadding="10dp"
-        android:hint="Date"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/live_object_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dafevt_nama" />
-
-    <EditText
-        android:id="@+id/et_noTelepon"
-        android:layout_width="330dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_bg_box"
-        android:drawableStart="@drawable/icon_phone"
-        android:drawablePadding="10dp"
-        android:hint="No Telp"
-        android:inputType="number"
-        android:paddingStart="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/live_object_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_username" />
-
-    <EditText
-        android:id="@+id/et_alamat"
-        android:layout_width="330dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/rounded_bg_box"
-        android:drawableStart="@drawable/icon_home"
-        android:drawablePadding="10dp"
-        android:hint="Alamat"
-        android:inputType="text"
-        android:paddingStart="10dp"
-        android:textColor="#000000"
-        android:textColorHint="@color/live_object_bg"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_noTelepon" />
-
-    <Button
-        android:id="@+id/btn_signup"
-        android:layout_width="330dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="68dp"
-        android:backgroundTint="@color/btn_primary"
-        android:text="Daftar"
-        android:textAllCaps="false"
-        app:cornerRadius="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Daftar Event"
-        android:textColor="#000000"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navbarAdmin"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navbar"
-        android:background="@color/gray">
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/addevent_upimage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:onClick="selectImageFromGallery"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/mountain_dummy_square" />
+
+        <EditText
+            android:id="@+id/addevent_title"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_title"
+            android:drawablePadding="10dp"
+            android:hint="Title"
+            android:inputType="textEmailAddress"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_upimage" />
+
+        <EditText
+            android:id="@+id/addevent_desc"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_event"
+            android:drawablePadding="10dp"
+            android:hint="Deskripsi Event"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_kategoriumur" />
+
+        <EditText
+            android:id="@+id/addevent_maxpeserta"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_people"
+            android:drawablePadding="10dp"
+            android:hint="Max peserta"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_alamat" />
+
+        <EditText
+            android:id="@+id/addevent_alamat"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_addlocation"
+            android:drawablePadding="10dp"
+            android:hint="Alamat"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_desc" />
+
+        <Button
+            android:id="@+id/btn_addevent"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="@color/btn_primary"
+            android:text="Add"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_maxpeserta" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Add Event"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
+        <EditText
+            android:id="@+id/addevent_date"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/calendar_icon_black"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Date"
+            android:inputType="date"
+            android:padding="10dp"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_title" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <EditText
+            android:id="@+id/addevent_time"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_time"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="Time"
+            android:inputType="time"
+            android:padding="10dp"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_date" />
+
+        <Spinner
+            android:id="@+id/addevent_kategori"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_kategori"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_time" />
+
+        <Spinner
+            android:id="@+id/addevent_kategoriumur"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawablePadding="10dp"
+            android:padding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_kategori" />
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/navbarAdmin"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:background="@color/gray"
+            app:labelVisibilityMode="unlabeled"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_navbar">
+
+
+        </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

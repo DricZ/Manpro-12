@@ -78,7 +78,7 @@
         android:id="@+id/textView711111"
         android:layout_width="295dp"
         android:layout_height="172dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="32dp"
         android:text="Gedung Nirwana Eksekutif diresmikan pemakaiannya tanggal 29 Februari 2004 dan Gloria Nirwana didewasakan pada tanggal 22 Desember 2018. Di dalamnya terdiri dari ruang kebaktian utama yang dapat menampung 250 orang, kemudian ada 3 kelas sekolah Minggu + perpustakaan, kantor, ruang sound system, dan sebuah pastori yang dilengkapi dengan dapur untuk ditempati oleh mahasiswa praktik."
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"

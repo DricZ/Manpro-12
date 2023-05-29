@@ -27,10 +27,10 @@ class SignUpActivity : AppCompatActivity() {
         et_nama = findViewById<EditText>(R.id.et_nama)
         et_username = findViewById<EditText>(R.id.et_username)
         et_notelp = findViewById<EditText>(R.id.et_noTelepon)
-        et_alamat = findViewById<EditText>(R.id.et_alamat)
+        et_alamat = findViewById<EditText>(R.id.addevent_maxpeserta)
         et_password = findViewById<EditText>(R.id.et_password)
         et_confirm = findViewById<EditText>(R.id.et_confirmPassword)
-        button_signup = findViewById<Button>(R.id.btn_signup)
+        button_signup = findViewById<Button>(R.id.btn_addevent)
 
         // INIT DB
         db = FirebaseFirestore.getInstance()
