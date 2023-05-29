@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
 
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
 
-        if (sharedPreferences?.contains("id_user") == true) {
+        if (sharedPreferences?.getString("role_user", "") == "true") {
             val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
             startActivity(intent)
             finish()

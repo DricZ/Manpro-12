@@ -108,13 +108,16 @@ class LoginActivity : AppCompatActivity() {
                     editor.putString("email_user", _email[x].toString())
                     editor.putString("nohp_user", _nohp[x].toString())
                     editor.putString("alamat_user", _alamat[x].toString())
+                    editor.putString("role_user", _isAdmin[x].toString())
                     editor.apply()
                     if (_isAdmin[x] == "true") {
                         val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
                         startActivity(eIntent)
+                        finish()
                     } else {
                         val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
                         startActivity(eIntent)
+                        finish()
                     }
 
                 }
