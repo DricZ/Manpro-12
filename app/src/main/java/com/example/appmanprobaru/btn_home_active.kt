@@ -170,6 +170,35 @@ class btn_home_active : Fragment() {
 
         val searchView = view.findViewById<SearchView>(R.id.search_bar_home)
 
+        btn_harian.setOnClickListener {
+            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
+            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
+
+            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
+            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            printEvent(recyclerView, "Harian")
+            category = "Harian"
+
+        }
 
         btn_mingguan.setOnClickListener {
             btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
