@@ -12,7 +12,7 @@
     <item
         android:id="@+id/bottom_navbar_people"
         android:title="People"
-        android:icon="@drawable/live_icon"
+        android:icon="@drawable/icon_person"
         />
     <item
         android:id="@+id/bottom_navbar_events"
@@ -23,7 +23,7 @@
     <item
         android:id="@+id/bottom_navbar_logout"
         android:title="Logout"
-        android:icon="@drawable/icon_person"
+        android:icon="@drawable/logout"
         />
 
 </menu>

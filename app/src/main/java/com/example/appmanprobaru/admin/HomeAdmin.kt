@@ -40,31 +40,31 @@ class HomeAdmin : AppCompatActivity() {
         datalist =  arrayListOf<HomeEvent>()
 
         _rvHomeEventAdmin = findViewById<RecyclerView>(R.id.rvHomeEventAdmin)
-//        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
-//        _navbarAdmin.setOnItemSelectedListener {
-//            when (it.itemId){
-//                R.id.bottom_navbar_home->{
-//                    true
-//                }
-//                R.id.bottom_navbar_people->{
-//                    val intent = Intent(this@HomeAdmin, PeopleAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//                R.id.bottom_navbar_events ->{
-//                    val intent = Intent(this@HomeAdmin, eventListAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//                R.id.bottom_navbar_logout->{
-//
-//                    true
-//                }
-//                else ->{
-//                    true
-//                }
-//            }
-//        }
+        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
+        _navbarAdmin.setOnItemSelectedListener {
+            when (it.itemId){
+                R.id.bottom_navbar_home->{
+                    true
+                }
+                R.id.bottom_navbar_people->{
+                    val intent = Intent(this@HomeAdmin, PeopleAdmin::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.bottom_navbar_events ->{
+                    val intent = Intent(this@HomeAdmin, eventListAdmin::class.java)
+                    startActivity(intent)
+                    true
+                }
+                R.id.bottom_navbar_logout->{
+
+                    true
+                }
+                else ->{
+                    true
+                }
+            }
+        }
 
         datainit()
 
