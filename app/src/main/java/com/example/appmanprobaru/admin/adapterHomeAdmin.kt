@@ -1,12 +1,16 @@
 package com.example.appmanprobaru.admin
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.appmanprobaru.R
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class adapterHomeAdmin(private val listForum : ArrayList<HomeEvent>) : RecyclerView.Adapter<adapterHomeAdmin.ListViewHolder>(){
 
@@ -29,6 +33,21 @@ class adapterHomeAdmin(private val listForum : ArrayList<HomeEvent>) : RecyclerV
         holder._tvTitle.setText(HomeEvent.title)
         holder._tvDate.setText(HomeEvent.date)
         holder._tvTime.setText(HomeEvent.time)
+
+
+        val storage = Firebase.storage("gs://manpro-12.appspot.com")
+
+        val storageRef = storage.reference
+
+        // Create a reference with an initial file path and name
+        val pathReference = storageRef.child("events/"+HomeEvent.img).downloadUrl
+
+        pathReference.addOnSuccessListener { uri ->
+            Glide.with(holder.itemView.context)
+                .load(uri)
+                .into(holder._ivImage)
+        }
+
     }
 
     override fun getItemCount(): Int {

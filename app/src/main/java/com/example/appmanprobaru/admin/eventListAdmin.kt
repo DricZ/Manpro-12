@@ -1,16 +1,18 @@
 package com.example.appmanprobaru.admin
 
+import android.R.string
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+
 
 class eventListAdmin : AppCompatActivity() {
     private lateinit var _rvHomeEventAdmin: RecyclerView
@@ -79,12 +81,13 @@ class eventListAdmin : AppCompatActivity() {
                     _id.add(document.id.toString())
                     _name.add(document.data["name"].toString())
                     _img.add(document.data["imgloc"].toString())
-                    _date.add((document.data["date"].toString()))
-//                    Log.d("TimeStampssssss", document.data["date"].toString())
+                    _date.add(((document.data["date"] as com.google.firebase.Timestamp).toDate().toString()))
                 }
                 for (x in 0.._id.size-1){
-                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],_date[x].toString(),_date[x].toString())
+                    val arrayDate: List<String> =_date[x].split(" ")
+                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " "+arrayDate[4])
                     datalist.add(eventdata)
+
                 }
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this)
                 _rvHomeEventAdmin.adapter = adapterHomeAdmin(datalist)
