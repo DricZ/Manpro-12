@@ -38,7 +38,7 @@ class btn_profile_active : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.activity_profile_login, container, false)
+        return inflater.inflate(R.layout.fragment_btn_profile_active, container, false)
     }
 
     companion object {

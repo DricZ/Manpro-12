@@ -8,7 +8,7 @@ import android.widget.Button
 class profile : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.profile)
+        setContentView(R.layout.fragment_btn_profile_active)
 
         val _signupbtn = findViewById<Button>(R.id.signup_btn)
         val _signinbtn = findViewById<Button>(R.id.signin_btn)
