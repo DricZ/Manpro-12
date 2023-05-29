@@ -3,6 +3,7 @@ package com.example.appmanprobaru.admin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
@@ -14,6 +15,7 @@ class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : Recycle
         var tvName : TextView = itemView.findViewById(R.id.tvName)
         var tvDate : TextView = itemView.findViewById(R.id.tvDate)
         var tvTime : TextView = itemView.findViewById(R.id.tvTime)
+        var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -27,6 +29,9 @@ class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : Recycle
         holder.tvName.setText(HomeEvent.title)
         holder.tvDate.setText(HomeEvent.date)
         holder.tvTime.setText(HomeEvent.time)
+        holder._btnDelete.setOnClickListener {
+            
+        }
     }
 
     override fun getItemCount(): Int {
