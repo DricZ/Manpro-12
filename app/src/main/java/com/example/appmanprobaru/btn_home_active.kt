@@ -1,17 +1,20 @@
 
 import android.content.res.ColorStateList
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.core.content.ContextCompat
+import android.widget.SearchView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.appmanprobaru.*
+import com.example.appmanprobaru.HomeActivity
+import com.example.appmanprobaru.Interface_Detail_Event
+import com.example.appmanprobaru.R
+import com.example.appmanprobaru.home_page_recyclerView_Data
+import com.example.appmanprobaru.rvHome_Adapter
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -88,6 +91,7 @@ class btn_home_active : Fragment() {
         btn_umum = view.findViewById<Button>(R.id.btn_umum)
         btn_remaja = view.findViewById<Button>(R.id.btn_remaja)
 
+
         btn_harian.setOnClickListener {
             main.passModel(datalist[0])
         }
@@ -161,33 +165,11 @@ class btn_home_active : Fragment() {
         btn_umum = view.findViewById(R.id.btn_umum)
         btn_remaja = view.findViewById(R.id.btn_remaja)
         btn_all = view.findViewById(R.id.button_all)
+        recyclerView = view.findViewById(R.id.rv_item)
+        var category = ""
 
-//        btn_harian.setOnClickListener {
-//            btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
-//            btn_harian.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
-//
-//            btn_mingguan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_mingguan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//            btn_bulanan.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_bulanan.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//            btn_insidentil.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_insidentil.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//            btn_pemuda.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_pemuda.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//            btn_umum.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_umum.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//            btn_remaja.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_remaja.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//            btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
-//            btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
-//
-//        }
+        val searchView = view.findViewById<SearchView>(R.id.search_bar_home)
+
 
         btn_mingguan.setOnClickListener {
             btn_harian.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
@@ -213,6 +195,9 @@ class btn_home_active : Fragment() {
 
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
+
+            printEvent(recyclerView, "Mingguan")
+            category = "Mingguan"
 
         }
 
@@ -241,6 +226,8 @@ class btn_home_active : Fragment() {
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
 
+            printEvent(recyclerView, "Bulanan")
+            category = "Bulanan"
         }
 
         btn_insidentil.setOnClickListener {
@@ -268,6 +255,8 @@ class btn_home_active : Fragment() {
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
 
+            printEvent(recyclerView, "Insidentil")
+            category = "Insidentil"
         }
 
         btn_pemuda.setOnClickListener {
@@ -295,6 +284,7 @@ class btn_home_active : Fragment() {
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
 
+            printEventUmur(recyclerView, "Pemuda")
         }
 
         btn_umum.setOnClickListener {
@@ -322,6 +312,7 @@ class btn_home_active : Fragment() {
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
 
+            printEventUmur(recyclerView, "Umum")
         }
 
         btn_remaja.setOnClickListener {
@@ -349,6 +340,7 @@ class btn_home_active : Fragment() {
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_not_active)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.black)))
 
+            printEventUmur(recyclerView, "Remaja")
         }
 
         btn_all.setOnClickListener {
@@ -376,15 +368,80 @@ class btn_home_active : Fragment() {
             btn_all.setBackgroundTintList(ColorStateList.valueOf(resources.getColor(R.color.btn_primary)))
             btn_all.setTextColor(ColorStateList.valueOf(resources.getColor(R.color.white)))
 
+            printEvent(recyclerView)
+            category = ""
         }
 
-        recyclerView = view.findViewById(R.id.rv_item)
-        val layoutManager = GridLayoutManager(context,2)
+        initEvent(recyclerView)
+
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+//            override fun onQueryTextSubmit(query: String): Boolean {
+//                // Create a MutableList and add the query to it
+//                val queryList = mutableListOf<String>()
+//                queryList.add(query)
+//
+//                // Use the MutableList in your search function
+//                when (category) {
+//                    "" -> {
+//                        searchEventAll(recyclerView, queryList)
+//                    }
+//                    "Harian", "Mingguan", "Bulanan", "Tahunan" -> {
+//                        searchEvent(recyclerView, queryList, category)
+//                    }
+//                    else -> {
+//                        searchEventUmur(recyclerView, queryList, category)
+//                    }
+//                }
+//
+//                return false
+//            }
+//
+//            override fun onQueryTextChange(newText: String): Boolean {
+//                // This method is called when the text in the SearchView changes
+//                // Add your code here to run a function when the text changes
+//                searchEvent(recyclerView, newText, category)
+//
+//                // Create a MutableList and add the query to it
+//                val queryList = mutableListOf<String>()
+//                queryList.add(newText)
+//
+//                // Use the MutableList in your search function
+//                when (category) {
+//                    "" -> {
+//                        searchEventAll(recyclerView, queryList)
+//                    }
+//                    "Harian", "Mingguan", "Bulanan", "Tahunan" -> {
+//                        searchEvent(recyclerView, queryList, category)
+//                    }
+//                    else -> {
+//                        searchEventUmur(recyclerView, queryList, category)
+//                    }
+//                }
+//
+//                return false
+//            }
+//        })
+
+
+    }
+
+    private fun searchEvent(recyclerView: RecyclerView, query: MutableList<String>, kategori: String) {
+        val layoutManager = GridLayoutManager(context, 2)
         val db = Firebase.firestore
-        var dbevent = db.collection("event")
-        var listdata = arrayListOf<home_page_recyclerView_Data>()
-        dbevent.get()
+        val dbevent = db.collection("event")
+        dbevent.whereArrayContainsAny("name", query).whereEqualTo("category", kategori).get()
             .addOnSuccessListener { documents ->
+                datalist.clear()
+                _id.clear()
+                _name.clear()
+                _img.clear()
+                _desc.clear()
+                _category.clear()
+                _date.clear()
+                _location.clear()
+                _maxPeserta.clear()
+                _kategoriPeserta.clear()
+
                 for (document in documents) {
                     _id.add(document.id.toString())
                     _name.add(document.data["name"].toString())
@@ -397,20 +454,210 @@ class btn_home_active : Fragment() {
                     _kategoriPeserta.add(document.data["kategoripeserta"].toString())
 //                    Log.d("GET DATA", "${document.id} => ${document.data}")
                 }
-                for (x in 0.._id.size-1){
-                    val eventdata = home_page_recyclerView_Data(1, _name[x],_desc[x],_category[x],_date[x],_location[x],_maxPeserta[x],_kategoriPeserta[x], _img[x])
+                for (x in 0.._id.size - 1) {
+                    val eventdata = home_page_recyclerView_Data(
+                        1,
+                        _name[x],
+                        _desc[x],
+                        _category[x],
+                        _date[x],
+                        _location[x],
+                        _maxPeserta[x],
+                        _kategoriPeserta[x],
+                        _img[x]
+                    )
                     datalist.add(eventdata)
                 }
                 recyclerView.layoutManager = layoutManager
                 recyclerView.adapter = rvHome_Adapter(datalist)
-
-
             }
             .addOnFailureListener { exception ->
                 Log.w("GET DATA", "Error getting documents: ", exception)
             }
+    }
 
+    private fun searchEventUmur(recyclerView: RecyclerView, query: MutableList<String>, kategori: String) {
+        val layoutManager = GridLayoutManager(context, 2)
+        val db = Firebase.firestore
+        val dbevent = db.collection("event")
+        dbevent.whereArrayContainsAny("name", query).whereEqualTo("kategoripeserta", kategori).get()
+            .addOnSuccessListener { documents ->
+                datalist.clear()
+                _id.clear()
+                _name.clear()
+                _img.clear()
+                _desc.clear()
+                _category.clear()
+                _date.clear()
+                _location.clear()
+                _maxPeserta.clear()
+                _kategoriPeserta.clear()
 
+                for (document in documents) {
+                    _id.add(document.id.toString())
+                    _name.add(document.data["name"].toString())
+                    _img.add(document.data["imgloc"].toString())
+                    _desc.add(document.data["desc"].toString())
+                    _category.add(document.data["category"].toString())
+                    _date.add(document.data["date"].toString())
+                    _location.add(document.data["location"].toString())
+                    _maxPeserta.add(document.data["maxpeserta"].toString())
+                    _kategoriPeserta.add(document.data["kategoripeserta"].toString())
+//                    Log.d("GET DATA", "${document.id} => ${document.data}")
+                }
+                for (x in 0.._id.size - 1) {
+                    val eventdata = home_page_recyclerView_Data(
+                        1,
+                        _name[x],
+                        _desc[x],
+                        _category[x],
+                        _date[x],
+                        _location[x],
+                        _maxPeserta[x],
+                        _kategoriPeserta[x],
+                        _img[x]
+                    )
+                    datalist.add(eventdata)
+                }
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = rvHome_Adapter(datalist)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET DATA", "Error getting documents: ", exception)
+            }
+    }
+
+    private fun searchEventAll(recyclerView: RecyclerView, query: MutableList<String>) {
+        val layoutManager = GridLayoutManager(context, 2)
+        val db = Firebase.firestore
+        val dbevent = db.collection("event")
+        dbevent.whereArrayContainsAny("name", query).get()
+            .addOnSuccessListener { documents ->
+                datalist.clear()
+                _id.clear()
+                _name.clear()
+                _img.clear()
+                _desc.clear()
+                _category.clear()
+                _date.clear()
+                _location.clear()
+                _maxPeserta.clear()
+                _kategoriPeserta.clear()
+
+                for (document in documents) {
+                    _id.add(document.id.toString())
+                    _name.add(document.data["name"].toString())
+                    _img.add(document.data["imgloc"].toString())
+                    _desc.add(document.data["desc"].toString())
+                    _category.add(document.data["category"].toString())
+                    _date.add(document.data["date"].toString())
+                    _location.add(document.data["location"].toString())
+                    _maxPeserta.add(document.data["maxpeserta"].toString())
+                    _kategoriPeserta.add(document.data["kategoripeserta"].toString())
+//                    Log.d("GET DATA", "${document.id} => ${document.data}")
+                }
+                for (x in 0.._id.size - 1) {
+                    val eventdata = home_page_recyclerView_Data(
+                        1,
+                        _name[x],
+                        _desc[x],
+                        _category[x],
+                        _date[x],
+                        _location[x],
+                        _maxPeserta[x],
+                        _kategoriPeserta[x],
+                        _img[x]
+                    )
+                    datalist.add(eventdata)
+                }
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = rvHome_Adapter(datalist)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET DATA", "Error getting documents: ", exception)
+            }
+    }
+
+    private fun printEvent(recyclerView: RecyclerView, kategori: String) {
+        val layoutManager = GridLayoutManager(context, 2)
+
+        val predicate: (home_page_recyclerView_Data) -> Boolean = { item ->
+            item.category == kategori
+        }
+
+        val datalistFilter = datalist.filter(predicate)
+
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+    }
+
+    private fun printEventUmur(recyclerView: RecyclerView, kategoriPeserta: String) {
+        val layoutManager = GridLayoutManager(context, 2)
+        val predicate: (home_page_recyclerView_Data) -> Boolean = { item ->
+            item.kategoriPeserta == kategoriPeserta
+        }
+
+        val datalistFilter = datalist.filter(predicate)
+
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = rvHome_Adapter(datalistFilter as ArrayList<home_page_recyclerView_Data>)
+    }
+
+    private fun printEvent(recyclerView: RecyclerView) {
+        val layoutManager = GridLayoutManager(context, 2)
+
+        recyclerView.layoutManager = layoutManager
+        recyclerView.adapter = rvHome_Adapter(datalist)
+    }
+
+    private fun initEvent(recyclerView: RecyclerView) {
+        val layoutManager = GridLayoutManager(context, 2)
+        val db = Firebase.firestore
+        val dbevent = db.collection("event")
+        dbevent.get()
+            .addOnSuccessListener { documents ->
+                datalist.clear()
+                _id.clear()
+                _name.clear()
+                _img.clear()
+                _desc.clear()
+                _category.clear()
+                _date.clear()
+                _location.clear()
+                _maxPeserta.clear()
+                _kategoriPeserta.clear()
+                for (document in documents) {
+                    _id.add(document.id.toString())
+                    _name.add(document.data["name"].toString())
+                    _img.add(document.data["imgloc"].toString())
+                    _desc.add(document.data["desc"].toString())
+                    _category.add(document.data["category"].toString())
+                    _date.add(document.data["date"].toString())
+                    _location.add(document.data["location"].toString())
+                    _maxPeserta.add(document.data["maxpeserta"].toString())
+                    _kategoriPeserta.add(document.data["kategoripeserta"].toString())
+//                    Log.d("GET DATA", "${document.id} => ${document.data}")
+                }
+                for (x in 0.._id.size - 1) {
+                    val eventdata = home_page_recyclerView_Data(
+                        1,
+                        _name[x],
+                        _desc[x],
+                        _category[x],
+                        _date[x],
+                        _location[x],
+                        _maxPeserta[x],
+                        _kategoriPeserta[x],
+                        _img[x]
+                    )
+                    datalist.add(eventdata)
+                }
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = rvHome_Adapter(datalist)
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET DATA", "Error getting documents: ", exception)
+            }
     }
 
 

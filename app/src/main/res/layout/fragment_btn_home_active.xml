@@ -14,9 +14,11 @@
 
 
     <SearchView
-        android:id="@+id/search_bar"
+        android:id="@+id/search_bar_home"
+        style="@style/SearchViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColorHint="@color/black"
         android:background="@drawable/rounded_bg_box"
         android:iconifiedByDefault="false"
         android:queryHint="Search"
@@ -50,7 +52,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar"
+        app:layout_constraintTop_toBottomOf="@+id/search_bar_home"
         app:layout_constraintVertical_bias="0.03" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -61,7 +63,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search_bar">
+        app:layout_constraintTop_toBottomOf="@+id/search_bar_home">
 
 
         <Button
