@@ -40,7 +40,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_email" />
 
             <ImageView
-                android:id="@+id/imageView3"
+                android:id="@+id/addevent_upimage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="68dp"
@@ -105,7 +105,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_username" />
 
             <EditText
-                android:id="@+id/et_alamat"
+                android:id="@+id/addevent_maxpeserta"
                 android:layout_width="330dp"
                 android:layout_height="48dp"
                 android:layout_marginTop="24dp"
@@ -138,7 +138,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.493"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/et_alamat" />
+                app:layout_constraintTop_toBottomOf="@+id/addevent_maxpeserta" />
 
             <EditText
                 android:id="@+id/et_confirmPassword"
@@ -159,7 +159,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/et_password" />
 
             <Button
-                android:id="@+id/btn_signup"
+                android:id="@+id/btn_addevent"
                 android:layout_width="330dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"

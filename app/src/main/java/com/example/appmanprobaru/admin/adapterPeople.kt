@@ -26,7 +26,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
 
         holder._tvName.setText(people.name)
         holder._btnDelete.setOnClickListener {
-            
+
         }
     }
 
