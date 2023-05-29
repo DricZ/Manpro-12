@@ -32,7 +32,7 @@ class jemaatListAdmin : AppCompatActivity() {
                     true
                 }
 
-                R.id.bottom_navbar_logout -> {
+                R.id.bottom_navbar_profileadm -> {
 
                     true
                 }

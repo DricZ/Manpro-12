@@ -1,9 +1,14 @@
 package com.example.appmanprobaru
 
+import android.content.Context
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import androidx.fragment.app.Fragment
 import btn_home_active
+import com.example.appmanprobaru.admin.HomeAdmin
+import com.example.appmanprobaru.admin.PeopleAdmin
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
@@ -12,6 +17,15 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_screen_with_navbar)
+
+        val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
+
+        if (sharedPreferences?.contains("id_user") == true) {
+            val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         loadFragment(btn_home_active())
         bottomNav = findViewById<BottomNavigationView>(R.id.bot_nav_static) as BottomNavigationView
         bottomNav.setOnItemSelectedListener {

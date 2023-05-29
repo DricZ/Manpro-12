@@ -1,63 +1,40 @@
 package com.example.appmanprobaru.admin
 
-import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import android.view.View
+import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
-import com.example.appmanprobaru.btn_live_active
-import com.example.appmanprobaru.btn_profile_active
-import com.example.appmanprobaru.home_page_recyclerView_Data
-import com.example.appmanprobaru.rvHome_Adapter
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
-import java.sql.Timestamp
 
 class HomeAdmin : AppCompatActivity() {
-    private lateinit var _rvHomeEventAdmin: RecyclerView
-
-    private lateinit var datalist: ArrayList<HomeEvent>
-
-    private var _id : MutableList<String> = emptyList<String>().toMutableList()
-
-    private var _name : MutableList<String> = emptyList<String>().toMutableList()
-    private var _img : MutableList<String> = emptyList<String>().toMutableList()
-    private var _desc : MutableList<String> = emptyList<String>().toMutableList()
-    private var _location : MutableList<String> = emptyList<String>().toMutableList()
-    private var _date : MutableList<String> = emptyList<String>().toMutableList()
-    private var _category : MutableList<String> = emptyList<String>().toMutableList()
-    private var _maxPeserta : MutableList<String> = emptyList<String>().toMutableList()
-    private var _kategoriPeserta : MutableList<String> = emptyList<String>().toMutableList()
-//    @SuppressLint("MissingInflatedId")
+    lateinit var _navbarAdmin : BottomNavigationView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.home_admin)
-        datalist =  arrayListOf<HomeEvent>()
-
-        _rvHomeEventAdmin = findViewById<RecyclerView>(R.id.rvHomeEventAdmin)
-        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
+        setContentView(R.layout.main_screen_navbar_admin)
+        loadFragment(btn_home_admin())
+        _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
         _navbarAdmin.setOnItemSelectedListener {
             when (it.itemId){
-                R.id.bottom_navbar_home->{
+                R.id.bottom_navbar_homeadm ->{
+                    Log.d("CEK FRAGMENT", "KE KLIK")
+                    loadFragment(btn_home_admin())
                     true
                 }
-                R.id.bottom_navbar_people->{
-                    val intent = Intent(this@HomeAdmin, PeopleAdmin::class.java)
-                    startActivity(intent)
+                R.id.bottom_navbar_people ->{
+                    loadFragment(PeopleAdmin())
                     true
                 }
-                R.id.bottom_navbar_events ->{
-                    val intent = Intent(this@HomeAdmin, eventListAdmin::class.java)
-                    startActivity(intent)
+                R.id.bottom_navbar_eventsadm ->{
+                    loadFragment(addEvent())
                     true
                 }
-                R.id.bottom_navbar_logout->{
-
+                R.id.bottom_navbar_profileadm ->{
+                    Log.d("CEK FRAGMENT", "KE KLIK")
+                    loadFragment(btn_profile_activeadmin())
                     true
                 }
                 else ->{
@@ -66,35 +43,32 @@ class HomeAdmin : AppCompatActivity() {
             }
         }
 
-        datainit()
-
     }
-    private fun datainit(){
-//        val layoutManager = GridLayoutManager(2)
+    private  fun loadFragment(fragment: Fragment){
 
-        val db = Firebase.firestore
-        var dbevent = db.collection("event")
-        dbevent.get()
-            .addOnSuccessListener { documents ->
-                for (document in documents) {
-                    _id.add(document.id.toString())
-                    _name.add(document.data["name"].toString())
-                    _img.add(document.data["imgloc"].toString())
-                    _date.add(((document.data["date"] as com.google.firebase.Timestamp).toDate().toString()))
-//                    Log.d("TimeStampssssss", document.data["date"].toString())
-                }
-                for (x in 0.._id.size-1){
-                    val arrayDate: List<String> =_date[x].split(" ")
-                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " "+arrayDate[4])
-                    datalist.add(eventdata)
-                }
-                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this)
-                _rvHomeEventAdmin.adapter = adapterHomeAdmin(datalist)
-
-
-            }
-            .addOnFailureListener { exception ->
-                Log.w("GET DATA", "Error getting documents: ", exception)
-            }
+        val transaction = supportFragmentManager.beginTransaction()
+        transaction.replace(R.id.Main_fragment_admin, fragment)
+        transaction.commit()
     }
+
+
+
+//    override fun passDetail(model: home_page_recyclerView_Data) {
+//        val bundle = Bundle()
+//        bundle.putString("Name",model.Name)
+//        bundle.putInt("titleImage", model.titleImage)
+//        bundle.putString("desc", model.desc)
+//        bundle.putString("category", model.category)
+//        bundle.putString("date", model.date)
+//        bundle.putString("location", model.location)
+//        bundle.putString("maxPeserta", model.maxPeserta)
+//        bundle.putString("kategoriPeserta", model.kategoriPeserta)
+//        bundle.putString("img", model.img)
+//        val transaction = this.supportFragmentManager.beginTransaction()
+//        val fragmentDetail = detail_event()
+//        fragmentDetail.arguments = bundle
+//        transaction.replace(R.id.Main_fragment_admin, fragmentDetail)
+//        transaction.commit()
+//
+//    }
 }

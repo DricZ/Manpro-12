@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".admin.adminListAdmin">
+    tools:context=".admin.adminListAdmin"
+    android:background="@color/background">
 
     <TextView
         android:id="@+id/textView"
@@ -49,17 +50,4 @@
                 android:layout_height="wrap_content" />
         </LinearLayout>
     </ScrollView>
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/navbarAdmin"
-        android:layout_width="match_parent"
-        android:layout_height="56dp"
-        app:labelVisibilityMode="unlabeled"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_navbar"
-        android:background="@color/gray">
-
-
-    </com.google.android.material.bottomnavigation.BottomNavigationView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

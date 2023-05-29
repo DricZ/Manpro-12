@@ -5,7 +5,7 @@
 
 
     <item
-        android:id="@+id/bottom_navbar_home"
+        android:id="@+id/bottom_navbar_homeadm"
         android:title="Home"
         android:icon="@drawable/icon_home_btn"
         />
@@ -15,15 +15,14 @@
         android:icon="@drawable/icon_person"
         />
     <item
-        android:id="@+id/bottom_navbar_events"
+        android:id="@+id/bottom_navbar_eventsadm"
         android:title="Events"
         android:icon="@drawable/calendar_icon"
         />
 
     <item
-        android:id="@+id/bottom_navbar_logout"
-        android:title="Logout"
+        android:id="@+id/bottom_navbar_profileadm"
         android:icon="@drawable/logout"
-        />
+        android:title="Profile" />
 
 </menu>

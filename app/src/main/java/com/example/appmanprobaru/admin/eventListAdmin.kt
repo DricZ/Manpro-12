@@ -1,6 +1,5 @@
 package com.example.appmanprobaru.admin
 
-import android.R.string
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -59,7 +58,7 @@ class eventListAdmin : AppCompatActivity() {
 
                     true
                 }
-                R.id.bottom_navbar_logout->{
+                R.id.bottom_navbar_profileadm->{
 
                     true
                 }
