@@ -13,6 +13,8 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,8 +83,12 @@ class addEvent : Fragment() {
         var title = view.findViewById<EditText>(R.id.addevent_title)
         var time = view.findViewById<EditText>(R.id.addevent_time)
         var date = view.findViewById<EditText>(R.id.addevent_date)
-//        var kategori = view.findViewById<EditText>(R.id.addevent_kategori)
-        var alamat = view.findViewById<EditText>(R.id.addevent_maxpeserta)
+        var desc = view.findViewById<EditText>(R.id.addevent_desc)
+        var location = view.findViewById<EditText>(R.id.addevent_alamat)
+        var category = view.findViewById<EditText>(R.id.addevent_kategori)
+        var kategoriUmur = view.findViewById<EditText>(R.id.addevent_kategoriumur)
+        var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
+        var image = view.findViewById<EditText>(R.id.addevent_upimage)
 
 //        _navbarAdmin.setOnItemSelectedListener {
 //            when (it.itemId) {
@@ -117,14 +123,16 @@ class addEvent : Fragment() {
 //
 //        }
 
+        
+//        val db = Firebase.firestore
+//        val key = db.collection("YOUR_COLLECTION_NAME").document()
+//        val UniqueID = key.getId()
+//        val dataInput = addEventDataClass(title, desc,  )
+//        val a = db.collection("event").document(UniqueID).set(dataInput)
+
     }
 
-//    val db = Firebase.firestore
-//    val key = db.collection("YOUR_COLLECTION_NAME").document()
-//    val UniqueID = key.getId()
-//    val dataInput = addEventDataClass(title, )
-//    val a = db.collection("event").document(UniqueID).set(dataInput)
-//
+
 
     fun selectImageFromGallery(view: View) {
         val intent = Intent(Intent.ACTION_PICK)
