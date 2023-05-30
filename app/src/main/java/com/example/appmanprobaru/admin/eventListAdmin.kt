@@ -1,3 +1,4 @@
+import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -5,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -89,9 +92,34 @@ class eventListAdmin : Fragment() {
                     datalist.add(eventdata)
 
                 }
+                val adapterE = adapterEventAdmin(datalist)
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
                 _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
 
+                adapterE.setOnItemClickCallback(object : adapterEventAdmin.OnItemClickCallback{
+                    override fun delData(pos: Int) {
+                        AlertDialog.Builder(context!!)
+                            .setTitle("HAPUS DATA")
+                            .setMessage("APAKAH BENAR DATA "+datalist.get(pos).title+" akan dihapus ?")
+                            .setPositiveButton(
+                                "HAPUS",
+                                DialogInterface.OnClickListener{ dialog, which ->
+
+                                }
+                            )
+                            .setNegativeButton(
+                                "BATAL",
+                                DialogInterface.OnClickListener{ dialog, which ->
+                                    Toast.makeText(
+                                        context!!,
+                                        "DATA BATAL DIHAPUS",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            )
+                            .show()
+                    }
+                })
 
             }
             .addOnFailureListener { exception ->
