@@ -1,6 +1,7 @@
 package com.example.appmanprobaru.admin
 
 import android.content.DialogInterface
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,6 +13,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appmanprobaru.ChangePass
 import com.example.appmanprobaru.R
 import com.example.appmanprobaru.home_page_recyclerView_Data
 import com.google.firebase.firestore.FieldPath
@@ -40,6 +42,8 @@ class jemaatListAdmin : Fragment() {
 
     private lateinit var db : FirebaseFirestore
 
+//    private lateinit var _btnFpass : Button
+
 
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -64,6 +68,8 @@ class jemaatListAdmin : Fragment() {
 
         _rvJemaatListJemaat = view.findViewById<RecyclerView>(R.id.rvJemaat)
         val _btnAddJemaat = view.findViewById<Button>(R.id.addJemaat)
+//        _btnFpass = view.findViewById(R.id.btnFpass)
+
 
         _btnAddJemaat.setOnClickListener {
             val newFragment = addJemaat()
@@ -101,7 +107,7 @@ class jemaatListAdmin : Fragment() {
     }
 
     private fun datainit() {
-
+        val bundle = Bundle()
         val db = Firebase.firestore
         val dbpeople = db.collection("account").whereEqualTo("is_admin", false)
         dbpeople.get()
@@ -120,12 +126,43 @@ class jemaatListAdmin : Fragment() {
                         _name[x],
                         _id[x]
                     )
+
                     datalist.add(peopleData)
                 }
                 val adapterP = adapterPeople(datalist)
                 _rvJemaatListJemaat.layoutManager = LinearLayoutManager(context)
                 _rvJemaatListJemaat.adapter = adapterP
                 adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback {
+                    override fun fPass(pos: Int) {
+                        AlertDialog.Builder(context!!)
+                            .setTitle("Accept Forget Password")
+                            .setMessage("Apakah Benar Data " + datalist.get(pos).name + " Akan Dilakukan Forget Password ?")
+                            .setPositiveButton(
+                                "Accept",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    // Handle data deletion here
+                                    val eIntent = Intent(context, ChangePass::class.java)
+                                    eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    bundle.putString("id_user", datalist.get(pos).id.toString())
+                                    bundle.putString("lokasi_awal", "admin")
+
+                                    eIntent.putExtras(bundle)
+                                    startActivity(eIntent)
+                                }
+                            )
+                            .setNegativeButton(
+                                "Batal",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    Toast.makeText(
+                                        context!!,
+                                        "DATA BATAL DIHAPUS",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            )
+                            .show()
+                    }
+
                     override fun delData(pos: Int, id: String) {
                         AlertDialog.Builder(context!!)
                             .setTitle("HAPUS DATA")

@@ -17,6 +17,9 @@
         android:theme="@style/Theme.AppManproBaru"
         tools:targetApi="31">
         <activity
+            android:name=".ChangePass"
+            android:exported="false" />
+        <activity
             android:name=".forgetPassword"
             android:exported="false" />
         <activity
@@ -46,8 +49,8 @@
         <activity
             android:name=".admin.HomeAdmin"
             android:exported="false"
-            android:taskAffinity=".admin"
-            android:noHistory="true"/>
+            android:noHistory="true"
+            android:taskAffinity=".admin" />
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
@@ -60,8 +63,8 @@
         <activity
             android:name=".HomeActivity"
             android:exported="true"
-            android:taskAffinity=".jemaat"
-            android:noHistory="true">
+            android:noHistory="true"
+            android:taskAffinity=".jemaat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -71,7 +74,7 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false"
-            android:taskAffinity=".jemaat"/>
+            android:taskAffinity=".jemaat" />
     </application>
 
 </manifest>

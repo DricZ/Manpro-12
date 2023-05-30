@@ -127,7 +127,8 @@ class addJemaat : Fragment() {
                             "notelp" to noTelp,
                             "alamat" to alamat,
                             "nama" to nama,
-                            "is_admin" to false
+                            "is_admin" to false,
+                            "fpass" to false
                         )
                         dbAccount.add(user).addOnSuccessListener {
                             Toast.makeText(context, "Penambahan Sukses", Toast.LENGTH_SHORT).show()

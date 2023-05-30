@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
+import com.google.firebase.firestore.FirebaseFirestore
 
 class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.Adapter<adapterPeople.ListViewHolder>(){
 
@@ -15,11 +16,14 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
 
     interface OnItemClickCallback {
         fun delData(pos: Int, id: String)
+        fun fPass(pos: Int)
+        fun cekFpass()
     }
 
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var _tvName : TextView = itemView.findViewById(R.id.tvName)
         var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
+        var _btnFpass : Button = itemView.findViewById<Button>(R.id.btnFpass)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -30,7 +34,14 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         var people = listForum[position]
 
+        val db = FirebaseFirestore.getInstance()
+
+        val dbpeople = db.collection("account").whereEqualTo("username", "true")
+
         holder._tvName.setText(people.name)
+        holder._btnFpass.setOnClickListener {
+            onItemClickCallback.fPass(position)
+        }
         holder._btnDelete.setOnClickListener {
             onItemClickCallback.delData(position, people.id)
         }

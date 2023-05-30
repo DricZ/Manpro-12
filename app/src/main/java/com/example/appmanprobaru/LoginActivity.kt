@@ -25,6 +25,7 @@ class LoginActivity : AppCompatActivity() {
     private var _email: MutableList<String> = emptyList<String>().toMutableList()
     private var _alamat: MutableList<String> = emptyList<String>().toMutableList()
     private var _nohp: MutableList<String> = emptyList<String>().toMutableList()
+    private var _fpass: MutableList<String> = emptyList<String>().toMutableList()
     private lateinit var et_email: EditText
     private lateinit var et_password: EditText
     private lateinit var button_login: Button
@@ -46,7 +47,9 @@ class LoginActivity : AppCompatActivity() {
         )
 
         forgot_pass.setOnClickListener {
-
+            val eIntent = Intent(this, forgetPassword::class.java)
+            startActivity(eIntent)
+            finish()
         }
         sign_up.setOnClickListener {
             val signUp = Intent(this, SignUpActivity::class.java)
@@ -69,6 +72,7 @@ class LoginActivity : AppCompatActivity() {
                     _nohp.add(document.data["notelp"].toString())
                     _id.add(document.id.toString())
                     _isAdmin.add(document.data["is_admin"].toString())
+                    _fpass.add(document.data["fpass"].toString())
                     Log.d("CEK DATA", "CEK ${_userN}")
                     Log.d("GET DATA", "${document.id} => ${document.data}")
                 }
@@ -86,6 +90,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun login() {
         var cek = false
+        val bundle = Bundle()
         val email = et_email.text.toString().lowercase()
         val pass = et_password.text.toString()
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
@@ -109,18 +114,29 @@ class LoginActivity : AppCompatActivity() {
                     editor.putString("nohp_user", _nohp[x].toString())
                     editor.putString("alamat_user", _alamat[x].toString())
                     editor.apply()
-                    if (_isAdmin[x] == "true") {
-                        val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
+                    if (_fpass[x] == "true"){
+                        val eIntent = Intent(this@LoginActivity, ChangePass::class.java)
                         eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                        bundle.putString("id_user", _id[x])
+                        bundle.putString("lokasi_awal", "jemaat")
+                        eIntent.putExtras(bundle)
                         startActivity(eIntent)
                         finish()
+                    } else{
+                        if (_isAdmin[x] == "true") {
+                            val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
+                            eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(eIntent)
+                            finish()
 
-                    } else {
-                        val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
-                        eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        startActivity(eIntent)
-                        finish()
+                        } else {
+                            val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
+                            eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                            startActivity(eIntent)
+                            finish()
+                        }
                     }
+
 
                 }
             }

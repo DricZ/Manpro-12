@@ -15,6 +15,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.appmanprobaru.ChangePass
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
@@ -101,7 +102,7 @@ class adminListAdmin : Fragment() {
     }
 
     private fun datainit() {
-
+        val bundle = Bundle()
         val db = Firebase.firestore
         val dbpeople = db.collection("account").whereEqualTo("is_admin", true)
         dbpeople.get()
@@ -113,6 +114,10 @@ class adminListAdmin : Fragment() {
                 for (document in documents) {
                     _name.add(document.data["nama"].toString())
                     _id.add(document.id.toString())
+
+                    if (document.data["fpass"].toString() == "true"){
+
+                    }
 
                 }
                 for (x in 0.._id.size - 1) {
@@ -126,6 +131,36 @@ class adminListAdmin : Fragment() {
                 _rvtAdminListAdmin.layoutManager = LinearLayoutManager(context)
                 _rvtAdminListAdmin.adapter = adapterP
                 adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback{
+                    override fun fPass(pos: Int) {
+                        AlertDialog.Builder(context!!)
+                            .setTitle("Accept Forget Password")
+                            .setMessage("Apakah Benar Data " + datalist.get(pos).name + " Akan Dilakukan Forget Password ?")
+                            .setPositiveButton(
+                                "Accept",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    // Handle data deletion here
+                                    val eIntent = Intent(context, ChangePass::class.java)
+                                    eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+                                    bundle.putString("id_user", datalist.get(pos).id.toString())
+                                    bundle.putString("lokasi_awal", "admin")
+
+                                    eIntent.putExtras(bundle)
+                                    startActivity(eIntent)
+                                }
+                            )
+                            .setNegativeButton(
+                                "Batal",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    Toast.makeText(
+                                        context!!,
+                                        "DATA BATAL DIHAPUS",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            )
+                            .show()
+                    }
+
                     override fun delData(pos: Int, id: String) {
 
                         AlertDialog.Builder(context!!)
