@@ -2,6 +2,7 @@ package com.example.appmanprobaru
 
 import android.content.DialogInterface
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,6 +13,13 @@ import android.widget.PopupMenu
 import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
+import com.example.appmanprobaru.admin.HomeEvent
+import com.example.appmanprobaru.admin.adapterEventAdmin
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -29,6 +37,7 @@ class detail_event : Fragment() {
     private var param2: String? = null
 
     private var name: String? =""
+    private var id: String? =""
     private var desc: String? =""
     private var category: String? =""
     private var date: String? = ""
@@ -72,6 +81,7 @@ class detail_event : Fragment() {
         val view = inflater.inflate(R.layout.fragment_detail_event, container, false)
 
         name = arguments?.getString("Name", "Nan")
+        id = arguments?.getString("id", "Nan")
         desc = arguments?.getString("desc", "Nan")
         category = arguments?.getString("category","Nan")
         date = arguments?.getString("date", "Nan")
@@ -90,10 +100,34 @@ class detail_event : Fragment() {
         event_datar.setOnClickListener {
             showKonfirmasiDaftar()
         }
+        if (id != null){
+            val db = Firebase.firestore
+            var dbevent = db.collection("event").document(id!!)
+            dbevent.get()
+                .addOnSuccessListener { document ->
 
-        event_title.text = name
-        event_deskripsi.text = desc
-        event_tanggal.text = date
+                    name = (document.data?.get("name").toString())
+                    img = (document.data?.get("imgloc").toString())
+                    date = (((document.data?.get("date") as com.google.firebase.Timestamp).toDate()
+                        .toString()))
+                    event_title.text = name
+                    event_deskripsi.text = desc
+                    event_tanggal.text = date
+                    val storage = Firebase.storage("gs://manpro-12.appspot.com")
+
+                    val storageRef = storage.reference
+
+                    // Create a reference with an initial file path and name
+                    val pathReference = storageRef.child("events/"+ img).downloadUrl
+
+                    pathReference.addOnSuccessListener { uri ->
+                        Glide.with(requireContext())
+                            .load(uri)
+                            .into(event_image)
+                    }
+                }
+        }
+
 
 
 
@@ -152,13 +186,16 @@ class detail_event : Fragment() {
 
         pop_daftar_No = dialogView.findViewById(R.id.pop_menu_jemput_No)
         pop_daftar_Yes = dialogView.findViewById(R.id.pop_menu_jemput_Yes)
-
+        val db = Firebase.firestore
         pop_daftar_No.setOnClickListener {
+            val data = registData("", id!!, false)
 
+            db.collection("registration").document(id!!).set(data)
         }
 
         pop_daftar_Yes.setOnClickListener {
-
+            val data = registData("", id!!, true)
+            db.collection("registration").document(id!!).set(data)
         }
         val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         dialogBuilder.setView(dialogView)

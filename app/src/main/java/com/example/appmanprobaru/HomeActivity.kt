@@ -108,7 +108,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
     override fun passDetail(model: home_page_recyclerView_Data) {
         val bundle = Bundle()
         bundle.putString("Name",model.Name)
-        bundle.putInt("titleImage", model.titleImage)
+        bundle.putString("id", model.id)
         bundle.putString("desc", model.desc)
         bundle.putString("category", model.category)
         bundle.putString("date", model.date)
