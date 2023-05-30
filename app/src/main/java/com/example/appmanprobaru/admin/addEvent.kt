@@ -1,18 +1,23 @@
 package com.example.appmanprobaru.admin
 
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.Calendar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -77,45 +82,61 @@ class addEvent : Fragment() {
             selectImageFromGallery(view)
         }
 
+
+
         //        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
         var title = view.findViewById<EditText>(R.id.addevent_title)
-        var time = view.findViewById<EditText>(R.id.addevent_time)
-        var date = view.findViewById<EditText>(R.id.addevent_date)
-//        var kategori = view.findViewById<EditText>(R.id.addevent_kategori)
+        val time = view.findViewById<Button>(R.id.addevent_time)
+        val date = view.findViewById<Button>(R.id.addevent_date)
+        val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
+        val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
         var alamat = view.findViewById<EditText>(R.id.addevent_maxpeserta)
 
-//        _navbarAdmin.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.bottom_navbar_home -> {
-//                    val intent = Intent(this@addEvent, HomeAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                R.id.bottom_navbar_people -> {
-//                    val intent = Intent(this@addEvent, PeopleAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                R.id.bottom_navbar_events -> {
-//                    val intent = Intent(this@addEvent, eventListAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                R.id.bottom_navbar_logout -> {
-//
-//                    true
-//                }
-//
-//                else -> {
-//                    true
-//                }
-//            }
-//
-//
-//        }
+        val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
+        val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
+
+        val adapter = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemskategori)
+        kategori.adapter = adapter
+
+        val adapterum = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemsum)
+        kategoriumur.adapter = adapterum
+
+
+        date.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePickerDialog = DatePickerDialog(
+                view.context,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    date.setText("$selectedDay/$selectedMonth/$selectedYear")
+                },
+                year,
+                month,
+                day
+            )
+            datePickerDialog.show()
+        }
+
+        time.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+
+            val timePickerDialog = TimePickerDialog(
+                view.context,
+                { _, selectedHour, selectedMinute ->
+                    // Do something with the selected time
+                    time.setText("$selectedHour:$selectedMinute")
+                },
+                hour,
+                minute,
+                true
+            )
+            timePickerDialog.show()
+        }
 
     }
 
