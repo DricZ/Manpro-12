@@ -7,7 +7,7 @@
     tools:context=".admin.adminListAdmin">
 
     <Button
-        android:id="@+id/addAdmin"
+        android:id="@+id/addJemaat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
@@ -31,7 +31,7 @@
         android:textSize="16dp"
         android:textFontWeight="600"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/addAdmin" />
+        app:layout_constraintTop_toBottomOf="@+id/addJemaat" />
 
     <TextView
         android:id="@+id/textView5"
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.843"
         app:layout_constraintStart_toEndOf="@+id/textView"
-        app:layout_constraintTop_toBottomOf="@+id/addAdmin" />
+        app:layout_constraintTop_toBottomOf="@+id/addJemaat" />
 
     <ScrollView
         android:layout_width="match_parent"

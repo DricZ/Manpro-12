@@ -27,7 +27,7 @@ class SignUpActivity : AppCompatActivity() {
         et_nama = findViewById<EditText>(R.id.et_nama)
         et_username = findViewById<EditText>(R.id.et_username)
         et_notelp = findViewById<EditText>(R.id.et_noTelepon)
-        et_alamat = findViewById<EditText>(R.id.addevent_maxpeserta)
+        et_alamat = findViewById<EditText>(R.id.et_alamat)
         et_password = findViewById<EditText>(R.id.et_password)
         et_confirm = findViewById<EditText>(R.id.et_confirmPassword)
         button_signup = findViewById<Button>(R.id.btn_addevent)
@@ -57,7 +57,7 @@ class SignUpActivity : AppCompatActivity() {
             Toast.makeText(this,"Semua kolom wajib di isi", Toast.LENGTH_SHORT ).show()
         }
         else if (password != confirmPass){
-            Toast.makeText(this, "Password dan ConfirmPassword tidak sama", Toast.LENGTH_SHORT).show()
+            Toast.makeText(this, "Password dan Confirm Password Tidak Sama", Toast.LENGTH_SHORT).show()
         }
         else{
             Log.d("CEK SBLM QUERY", "BISA MASHOK")

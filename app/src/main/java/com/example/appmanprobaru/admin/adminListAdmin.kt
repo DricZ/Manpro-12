@@ -3,12 +3,19 @@ package com.example.appmanprobaru.admin
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
 private const val ARG_PARAM1 = "param1"
@@ -24,6 +31,14 @@ class adminListAdmin : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var _rvtAdminListAdmin: RecyclerView
+
+    private lateinit var datalist: ArrayList<people>
+
+    private var _id: MutableList<String> = emptyList<String>().toMutableList()
+
+    private var _name: MutableList<String> = emptyList<String>().toMutableList()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,6 +53,20 @@ class adminListAdmin : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.activity_admin_list_admin, container, false)
+
+        datalist = arrayListOf<people>()
+
+        _rvtAdminListAdmin = view.findViewById<RecyclerView>(R.id.rvAdmin)
+        val _btnAddAdmin = view.findViewById<Button>(R.id.addAdmin)
+
+        _btnAddAdmin.setOnClickListener {
+            val newFragment = addAdmin()
+            val transaction = requireActivity().supportFragmentManager.beginTransaction()
+            transaction.replace(R.id.Main_fragment_admin, newFragment)
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
+        datainit()
 
         return view
     }
@@ -59,6 +88,37 @@ class adminListAdmin : Fragment() {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)
                 }
+            }
+    }
+
+    private fun datainit() {
+
+        val db = Firebase.firestore
+        val dbpeople = db.collection("account").whereEqualTo("is_admin", true)
+        dbpeople.get()
+            .addOnSuccessListener { documents ->
+                datalist.clear()
+                _name.clear()
+                _id.clear()
+
+                for (document in documents) {
+                    _name.add(document.data["nama"].toString())
+                    _id.add(document.id.toString())
+
+                }
+                for (x in 0.._id.size - 1) {
+                    val peopleData = people(
+                        _name[x]
+                    )
+                    datalist.add(peopleData)
+                }
+                _rvtAdminListAdmin.layoutManager = LinearLayoutManager(context)
+                _rvtAdminListAdmin.adapter = adapterPeople(datalist)
+
+
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET DATA", "Error getting documents: ", exception)
             }
     }
 }
