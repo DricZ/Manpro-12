@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import com.example.appmanprobaru.HomeActivity
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import eventListAdmin
@@ -16,6 +17,15 @@ class HomeAdmin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_screen_navbar_admin)
+
+        val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
+
+        if (!sharedPreferences.contains("id_user")) {
+            val intent = Intent(this@HomeAdmin, HomeActivity::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         loadFragment(btn_home_admin())
         _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
         _navbarAdmin.setOnItemSelectedListener {

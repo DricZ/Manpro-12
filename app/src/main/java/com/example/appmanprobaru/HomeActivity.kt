@@ -4,23 +4,48 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import btn_home_active
 import com.example.appmanprobaru.admin.HomeAdmin
 import com.example.appmanprobaru.admin.PeopleAdmin
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FieldPath
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
     lateinit var bottomNav : BottomNavigationView
+    lateinit var db: FirebaseFirestore
+    var cekAdmin: Boolean = false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_screen_with_navbar)
 
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
 
-        if (sharedPreferences.getString("role_user", null) == "true") {
+        db = FirebaseFirestore.getInstance()
+
+        val dbAccount = db.collection("account")
+
+        dbAccount.get()
+            .addOnSuccessListener { documents ->
+                for (document in documents) {
+                    if(document.id.toString() == sharedPreferences.getString("id_user", "kosong")){
+                        cekAdmin = true
+                        val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
+                        startActivity(intent)
+                        finish()
+                    }
+
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w("GET DATA", "Error getting documents: ", exception)
+            }
+
+        if (cekAdmin){
             val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
             startActivity(intent)
             finish()
@@ -55,9 +80,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
     }
 
     private  fun loadFragment(fragment: Fragment){
-        val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
-
-        if (sharedPreferences.getString("role_user", null) == "true") {
+        if (cekAdmin){
             val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
             startActivity(intent)
             finish()
