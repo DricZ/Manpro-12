@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -116,7 +117,8 @@ class adminListAdmin : Fragment() {
                 }
                 for (x in 0.._id.size - 1) {
                     val peopleData = people(
-                        _name[x]
+                        _name[x],
+                        _id[x]
                     )
                     datalist.add(peopleData)
                 }
@@ -124,7 +126,7 @@ class adminListAdmin : Fragment() {
                 _rvtAdminListAdmin.layoutManager = LinearLayoutManager(context)
                 _rvtAdminListAdmin.adapter = adapterP
                 adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback{
-                    override fun delData(pos: Int) {
+                    override fun delData(pos: Int, id: String) {
 
                         AlertDialog.Builder(context!!)
                             .setTitle("HAPUS DATA")
@@ -132,6 +134,20 @@ class adminListAdmin : Fragment() {
                             .setPositiveButton(
                                 "HAPUS",
                                 DialogInterface.OnClickListener{ dialog, which ->
+                                    val db = FirebaseFirestore.getInstance()
+                                    val documentPath =
+                                        "account/$id" // Replace with the path of the document you want to delete
+                                    db.document(documentPath)
+                                        .delete()
+                                        .addOnSuccessListener {
+                                            // Handle successful deletion here
+                                        }
+                                        .addOnFailureListener { e ->
+                                            // Handle failure here
+                                        }
+
+                                    datalist.removeAt(pos)
+                                    adapterP.notifyItemRemoved(pos)
 
                                 }
                             )

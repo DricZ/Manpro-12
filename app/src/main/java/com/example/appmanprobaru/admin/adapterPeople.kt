@@ -14,7 +14,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
     private lateinit var onItemClickCallback : OnItemClickCallback
 
     interface OnItemClickCallback {
-        fun delData(pos: Int)
+        fun delData(pos: Int, id: String)
     }
 
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
@@ -32,7 +32,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
 
         holder._tvName.setText(people.name)
         holder._btnDelete.setOnClickListener {
-            onItemClickCallback.delData(position)
+            onItemClickCallback.delData(position, people.id)
         }
     }
 
