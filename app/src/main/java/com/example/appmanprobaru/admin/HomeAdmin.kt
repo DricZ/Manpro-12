@@ -10,10 +10,13 @@ import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.HomeActivity
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import eventListAdmin
 
 class HomeAdmin : AppCompatActivity() {
     lateinit var _navbarAdmin : BottomNavigationView
+    lateinit var db: FirebaseFirestore
+    var cekAdmin: Boolean = true
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_screen_navbar_admin)
@@ -26,6 +29,23 @@ class HomeAdmin : AppCompatActivity() {
             finish()
         }
 
+//        db = FirebaseFirestore.getInstance()
+//
+//        val dbAccount = db.collection("account")
+//
+//        dbAccount.whereEqualTo("is_admin", true).get()
+//            .addOnSuccessListener { documents ->
+//                for (document in documents) {
+//                    if(document.id.toString() == sharedPreferences.getString("id_user", "kosong")){
+//                        cekAdmin = true
+//                    }
+//
+//                }
+//            }
+//            .addOnFailureListener { exception ->
+//                Log.w("GET DATA", "Error getting documents: ", exception)
+//            }
+
         loadFragment(btn_home_admin())
         _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
         _navbarAdmin.setOnItemSelectedListener {
@@ -33,19 +53,23 @@ class HomeAdmin : AppCompatActivity() {
                 R.id.bottom_navbar_homeadm ->{
                     Log.d("CEK FRAGMENT", "KE KLIK")
                     loadFragment(btn_home_admin())
+                    cekAdmin = true
                     true
                 }
                 R.id.bottom_navbar_people ->{
                     loadFragment(PeopleAdmin())
+                    cekAdmin = true
                     true
                 }
                 R.id.bottom_navbar_eventsadm ->{
                     loadFragment(eventListAdmin())
+                    cekAdmin = true
                     true
                 }
                 R.id.bottom_navbar_profileadm ->{
                     Log.d("CEK FRAGMENT", "KE KLIK")
                     loadFragment(btn_profile_activeadmin())
+                    cekAdmin = true
                     true
                 }
                 else ->{
@@ -60,6 +84,12 @@ class HomeAdmin : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.Main_fragment_admin, fragment)
         transaction.commit()
+    }
+
+    override fun onBackPressed() {
+//        if (!cekAdmin){
+//            super.onBackPressed()
+//        }
     }
 
 

@@ -23,9 +23,6 @@
             android:name=".admin.addEvent"
             android:exported="false" />
         <activity
-            android:name=".btn_detail_profile"
-            android:exported="false" />
-        <activity
             android:name=".profile_login"
             android:exported="false" />
         <activity
@@ -38,9 +35,6 @@
             android:name=".admin.jemaatListAdmin"
             android:exported="false" />
         <activity
-            android:name=".admin.eventListAdmin"
-            android:exported="false" />
-        <activity
             android:name=".detail_event"
             android:exported="false" />
         <activity
@@ -48,7 +42,8 @@
             android:exported="false" />
         <activity
             android:name=".admin.HomeAdmin"
-            android:exported="false" />
+            android:exported="false"
+            android:taskAffinity=".admin"/>
         <activity
             android:name=".SignUpActivity"
             android:exported="false" />
@@ -60,7 +55,8 @@
             android:exported="false" />
         <activity
             android:name=".HomeActivity"
-            android:exported="true">
+            android:exported="true"
+            android:taskAffinity=".jemaat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -69,7 +65,8 @@
         </activity>
         <activity
             android:name=".LoginActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:taskAffinity=".jemaat"/>
     </application>
 
 </manifest>

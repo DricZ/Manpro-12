@@ -96,7 +96,7 @@ class addEvent : Fragment() {
 
         val adapterum = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemsum)
         kategoriumur.adapter = adapterum
-        
+
 
         imgclick.setOnClickListener {
             selectImageFromGallery(view)

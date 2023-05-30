@@ -29,7 +29,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
 
         val dbAccount = db.collection("account")
 
-        dbAccount.get()
+        dbAccount.whereEqualTo("is_admin", true).get()
             .addOnSuccessListener { documents ->
                 for (document in documents) {
                     if(document.id.toString() == sharedPreferences.getString("id_user", "kosong")){
