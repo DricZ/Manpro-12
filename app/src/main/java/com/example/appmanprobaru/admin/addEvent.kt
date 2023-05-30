@@ -79,24 +79,14 @@ class addEvent : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
-
-        imgclick.setOnClickListener {
-            selectImageFromGallery(view)
-        }
-
-
-
-        //        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
         var title = view.findViewById<EditText>(R.id.addevent_title)
         val time = view.findViewById<Button>(R.id.addevent_time)
         val date = view.findViewById<Button>(R.id.addevent_date)
         val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
         val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
-        var alamat = view.findViewById<EditText>(R.id.addevent_maxpeserta)
         var desc = view.findViewById<EditText>(R.id.addevent_desc)
         var location = view.findViewById<EditText>(R.id.addevent_alamat)
         var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
-        var image = view.findViewById<EditText>(R.id.addevent_upimage)
 
         val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
         val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
@@ -106,7 +96,11 @@ class addEvent : Fragment() {
 
         val adapterum = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemsum)
         kategoriumur.adapter = adapterum
+        
 
+        imgclick.setOnClickListener {
+            selectImageFromGallery(view)
+        }
 
         date.setOnClickListener {
             val calendar = Calendar.getInstance()
