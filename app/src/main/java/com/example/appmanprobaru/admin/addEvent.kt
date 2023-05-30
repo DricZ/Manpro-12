@@ -123,7 +123,7 @@ class addEvent : Fragment() {
 //
 //        }
 
-        
+
 //        val db = Firebase.firestore
 //        val key = db.collection("YOUR_COLLECTION_NAME").document()
 //        val UniqueID = key.getId()
