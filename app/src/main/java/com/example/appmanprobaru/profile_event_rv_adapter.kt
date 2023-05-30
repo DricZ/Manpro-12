@@ -7,7 +7,10 @@ import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.appmanprobaru.admin.adapterEventAdmin
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 class profile_event_rv_adapter(private val profle_page_data:ArrayList<profile_page_event_recyclerView_Data>):
     RecyclerView.Adapter<profile_event_rv_adapter.ListViewHolder>() {
@@ -36,7 +39,18 @@ class profile_event_rv_adapter(private val profle_page_data:ArrayList<profile_pa
         val CurrentItem = profle_page_data[position]
 
         holder.text.text = CurrentItem.nama
-        holder.text.text = CurrentItem.nama
+        val storage = Firebase.storage("gs://manpro-12.appspot.com")
+
+        val storageRef = storage.reference
+
+        // Create a reference with an initial file path and name
+        val pathReference = storageRef.child("events/"+CurrentItem.image).downloadUrl
+
+        pathReference.addOnSuccessListener { uri ->
+            Glide.with(holder.itemView.context)
+                .load(uri)
+                .into(holder.image)
+        }
     }
 
 
