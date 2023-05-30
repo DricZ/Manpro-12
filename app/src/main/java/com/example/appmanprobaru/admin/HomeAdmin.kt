@@ -10,6 +10,7 @@ import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.HomeActivity
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.firestore.FirebaseFirestore
 import eventListAdmin
 
 class HomeAdmin : AppCompatActivity() {
@@ -58,30 +59,8 @@ class HomeAdmin : AppCompatActivity() {
 
     }
     private  fun loadFragment(fragment: Fragment){
-
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.Main_fragment_admin, fragment)
         transaction.commit()
     }
-
-
-
-//    override fun passDetail(model: home_page_recyclerView_Data) {
-//        val bundle = Bundle()
-//        bundle.putString("Name",model.Name)
-//        bundle.putInt("titleImage", model.titleImage)
-//        bundle.putString("desc", model.desc)
-//        bundle.putString("category", model.category)
-//        bundle.putString("date", model.date)
-//        bundle.putString("location", model.location)
-//        bundle.putString("maxPeserta", model.maxPeserta)
-//        bundle.putString("kategoriPeserta", model.kategoriPeserta)
-//        bundle.putString("img", model.img)
-//        val transaction = this.supportFragmentManager.beginTransaction()
-//        val fragmentDetail = detail_event()
-//        fragmentDetail.arguments = bundle
-//        transaction.replace(R.id.Main_fragment_admin, fragmentDetail)
-//        transaction.commit()
-//
-//    }
 }

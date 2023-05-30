@@ -2,6 +2,8 @@ package com.example.appmanprobaru
 
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -191,6 +193,7 @@ class detail_event : Fragment() {
         dialogBuilder.setView(dialogView)
 
         alertDialog = dialogBuilder.create()
+        alertDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertDialog.show()
     }
 
@@ -224,6 +227,7 @@ class detail_event : Fragment() {
         dialogBuilder.setView(dialogView)
 
         alertJemput = dialogBuilder.create()
+        alertJemput.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
         alertJemput.show()
     }
 }

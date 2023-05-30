@@ -158,6 +158,7 @@ class btn_profile_active : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
             val eIntent = Intent(view.context, HomeActivity::class.java)
+            eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(eIntent)
         }
     }

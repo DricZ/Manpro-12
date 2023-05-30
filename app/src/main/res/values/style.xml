@@ -3,4 +3,8 @@
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
         <item name="android:textColorHint">@android:color/black</item>
     </style>
+
+    <style name="PopUpBackground">
+        <item name="android:popupBackground">@drawable/bg_with_border</item>
+    </style>
 </resources>
