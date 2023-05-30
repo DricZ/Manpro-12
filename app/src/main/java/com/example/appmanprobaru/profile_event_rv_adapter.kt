@@ -1,5 +1,6 @@
 package com.example.appmanprobaru
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +39,12 @@ class profile_event_rv_adapter(private val profle_page_data:ArrayList<profile_pa
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val CurrentItem = profle_page_data[position]
 
+
+        Log.d("SSSSSSSSSSSSS", CurrentItem.id)
+        Log.d("SSSSSSSSSSSSS", CurrentItem.nama)
+        Log.d("SSSSSSSSSSSSS", CurrentItem.image)
         holder.text.text = CurrentItem.nama
+
         val storage = Firebase.storage("gs://manpro-12.appspot.com")
 
         val storageRef = storage.reference

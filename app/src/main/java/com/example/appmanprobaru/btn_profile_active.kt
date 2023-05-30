@@ -184,25 +184,24 @@ class btn_profile_active : Fragment() {
                     for (document in documents){
                         Log.d("HAHAHAHAHAHAHAHA", document.toString())
                         var eventid = document.data["eventID"].toString()
-                            val dbevent = db.collection("registration").document(eventid).get()
-                                .addOnSuccessListener {
-                                    _name =(document.data["name"].toString())
-                                    _img = (document.data["imgloc"].toString())
+                            val dbevent = db.collection("event").document(eventid).get()
+                                .addOnSuccessListener { Doc ->
+                                    var name =(Doc.data?.get("name").toString())
+                                    var img = (Doc.data?.get("imgloc").toString())
                                     val eventdata = profile_page_event_recyclerView_Data(
-                                        document.id,
-                                        _img,
-                                        _name
+                                        Doc.id,
+                                        img,
+                                        name
                                     )
+                                    Log.d("AAAAAAAAAAAAAA", eventdata.toString())
                                     datalist.add(eventdata)
                                     recyclerView.layoutManager = LinearLayoutManager(context)
                                     recyclerView.adapter = profile_event_rv_adapter(datalist)
                             }
-                            recyclerView.layoutManager = LinearLayoutManager(context)
-                            recyclerView.adapter = profile_event_rv_adapter(datalist)
+
 
                         }
-                    recyclerView.layoutManager = LinearLayoutManager(context)
-                    recyclerView.adapter = profile_event_rv_adapter(datalist)
+
 
                 }
         }
