@@ -95,6 +95,7 @@ class detail_event : Fragment() {
         event_deskripsi = view.findViewById(R.id.detail_event_deskripsi)
         event_datar = view.findViewById(R.id.detail_daftar_sekarang)
 
+
         event_datar.setOnClickListener {
             showKonfirmasiDaftar()
         }
@@ -108,9 +109,13 @@ class detail_event : Fragment() {
                     img = (document.data?.get("imgloc").toString())
                     date = (((document.data?.get("date") as com.google.firebase.Timestamp).toDate()
                         .toString()))
+                    val arrayDate: List<String> = date!!.split(" ")
                     event_title.text = name
                     event_deskripsi.text = desc
-                    event_tanggal.text = date
+                    val datetext = arrayDate[1] + " " + arrayDate[2] + " " + arrayDate[5]
+                    val timetext = arrayDate[3]
+                    event_tanggal.text = datetext
+                    event_durasi.text = timetext
                     val storage = Firebase.storage("gs://manpro-12.appspot.com")
 
                     val storageRef = storage.reference
