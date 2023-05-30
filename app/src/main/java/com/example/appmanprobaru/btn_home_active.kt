@@ -611,7 +611,7 @@ class btn_home_active : Fragment() {
                 }
                 for (x in 0.._id.size - 1) {
                     val eventdata = home_page_recyclerView_Data(
-                        1,
+                        _id[x],
                         _name[x],
                         _desc[x],
                         _category[x],
