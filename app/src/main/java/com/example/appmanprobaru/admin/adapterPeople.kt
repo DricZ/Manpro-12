@@ -11,6 +11,12 @@ import com.example.appmanprobaru.R
 
 class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.Adapter<adapterPeople.ListViewHolder>(){
 
+    private lateinit var onItemClickCallback : OnItemClickCallback
+
+    interface OnItemClickCallback {
+        fun delData(pos: Int)
+    }
+
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var _tvName : TextView = itemView.findViewById(R.id.tvName)
         var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
@@ -26,12 +32,16 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
 
         holder._tvName.setText(people.name)
         holder._btnDelete.setOnClickListener {
-
+            onItemClickCallback.delData(position)
         }
     }
 
     override fun getItemCount(): Int {
         return listForum.size
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
     }
 
 }
