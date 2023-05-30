@@ -34,7 +34,7 @@
             android:layout_marginTop="20dp"
             android:gravity="center"
             android:textSize="20sp"
-            android:text="Gereja-Gereja di Seluruh Dunia Mulai Melakukan Retret ke Pergunungan Trawas"
+
             android:textColor="@color/black"
             app:layout_constraintEnd_toEndOf="@id/csLayout"
             app:layout_constraintStart_toStartOf="@id/csLayout"
@@ -72,7 +72,7 @@
             android:layout_marginTop="4dp"
             app:layout_constraintStart_toEndOf="@id/detail_event_image_calendar"
             app:layout_constraintTop_toBottomOf="@id/detail_event_tanggal_text"
-            android:text="23 Maret 2023" />
+            />
 
         <ImageView
             android:id="@+id/detail_event_image_clock"
@@ -94,7 +94,7 @@
             android:layout_marginTop="40dp"
             app:layout_constraintTop_toBottomOf="@id/detail_event_title"
             app:layout_constraintStart_toEndOf="@id/detail_event_image_clock"
-            android:text="Durasi" />
+            android:text="Waktu Mulai" />
 
         <TextView
             android:id="@+id/detail_event_durasi"
@@ -104,7 +104,7 @@
             android:layout_marginStart="4dp"
             app:layout_constraintTop_toBottomOf="@id/detail_event_durasi_text"
             app:layout_constraintStart_toEndOf="@id/detail_event_image_clock"
-            android:text="13.30 - 15.45" />
+             />
 
         <TextView
             android:id="@+id/detail_event_deskripsi"
@@ -116,8 +116,7 @@
             app:layout_constraintTop_toBottomOf="@id/detail_event_image_calendar"
             app:layout_constraintStart_toStartOf="@id/csLayout"
             app:layout_constraintEnd_toEndOf="@id/csLayout"
-            android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent vehicula, risus ut viverra malesuada, turpis magna tincidunt leo, vestibulum vehicula ante nulla eu odio. " />
-
+            />
         <Button
             android:id="@+id/detail_daftar_sekarang"
             android:layout_width="wrap_content"
