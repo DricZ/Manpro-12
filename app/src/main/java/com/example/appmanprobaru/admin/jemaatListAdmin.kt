@@ -1,11 +1,14 @@
 package com.example.appmanprobaru.admin
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -113,9 +116,33 @@ class jemaatListAdmin : Fragment() {
                     )
                     datalist.add(peopleData)
                 }
+                val adapterP = adapterPeople(datalist)
                 _rvJemaatListJemaat.layoutManager = LinearLayoutManager(context)
-                _rvJemaatListJemaat.adapter = adapterPeople(datalist)
+                _rvJemaatListJemaat.adapter = adapterP
+                adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback {
+                    override fun delData(pos: Int) {
+                        AlertDialog.Builder(context!!)
+                            .setTitle("HAPUS DATA")
+                            .setMessage("APAKAH BENAR DATA " + datalist.get(pos).name + " akan dihapus ?")
+                            .setPositiveButton(
+                                "HAPUS",
+                                DialogInterface.OnClickListener { dialog, which ->
 
+                                }
+                            )
+                            .setNegativeButton(
+                                "BATAL",
+                                DialogInterface.OnClickListener { dialog, which ->
+                                    Toast.makeText(
+                                        context!!,
+                                        "DATA BATAL DIHAPUS",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            )
+                            .show()
+                    }
+                })
 
             }
             .addOnFailureListener { exception ->

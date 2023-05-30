@@ -1,5 +1,7 @@
 package com.example.appmanprobaru.admin
 
+import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -8,6 +10,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -26,6 +30,8 @@ private const val ARG_PARAM2 = "param2"
  * Use the [adminListAdmin.newInstance] factory method to
  * create an instance of this fragment.
  */
+
+
 class adminListAdmin : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
@@ -38,6 +44,8 @@ class adminListAdmin : Fragment() {
     private var _id: MutableList<String> = emptyList<String>().toMutableList()
 
     private var _name: MutableList<String> = emptyList<String>().toMutableList()
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -112,8 +120,34 @@ class adminListAdmin : Fragment() {
                     )
                     datalist.add(peopleData)
                 }
+                val adapterP = adapterPeople(datalist)
                 _rvtAdminListAdmin.layoutManager = LinearLayoutManager(context)
-                _rvtAdminListAdmin.adapter = adapterPeople(datalist)
+                _rvtAdminListAdmin.adapter = adapterP
+                adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback{
+                    override fun delData(pos: Int) {
+
+                        AlertDialog.Builder(context!!)
+                            .setTitle("HAPUS DATA")
+                            .setMessage("APAKAH BENAR DATA "+datalist.get(pos).name+" akan dihapus ?")
+                            .setPositiveButton(
+                                "HAPUS",
+                                DialogInterface.OnClickListener{ dialog, which ->
+
+                                }
+                            )
+                            .setNegativeButton(
+                                "BATAL",
+                                DialogInterface.OnClickListener{ dialog, which ->
+                                    Toast.makeText(
+                                        context!!,
+                                        "DATA BATAL DIHAPUS",
+                                        Toast.LENGTH_SHORT
+                                    ).show()
+                                }
+                            )
+                            .show()
+                    }
+                })
 
 
             }

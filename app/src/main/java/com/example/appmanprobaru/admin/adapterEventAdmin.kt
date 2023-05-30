@@ -30,7 +30,7 @@ class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : Recycle
         holder.tvDate.setText(HomeEvent.date)
         holder.tvTime.setText(HomeEvent.time)
         holder._btnDelete.setOnClickListener {
-            
+
         }
     }
 
