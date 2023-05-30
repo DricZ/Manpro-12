@@ -176,11 +176,14 @@ class btn_profile_active : Fragment() {
 
             val db = Firebase.firestore
             val idss = sharedPreferences?.getString("id_user", "")
+            Log.d("HAHAHAHAHAHAHAHA", idss!!)
+
             var dbregist = db.collection("registration").whereEqualTo("accountID", idss)
             dbregist.get()
                 .addOnSuccessListener { documents ->
-                        for (document in documents){
-                            var eventid = document.data["eventID"].toString()
+                    for (document in documents){
+                        Log.d("HAHAHAHAHAHAHAHA", document.toString())
+                        var eventid = document.data["eventID"].toString()
                             val dbevent = db.collection("registration").document(eventid).get()
                                 .addOnSuccessListener {
                                     _name =(document.data["name"].toString())
@@ -194,7 +197,12 @@ class btn_profile_active : Fragment() {
                                     recyclerView.layoutManager = LinearLayoutManager(context)
                                     recyclerView.adapter = profile_event_rv_adapter(datalist)
                             }
-                    }
+                            recyclerView.layoutManager = LinearLayoutManager(context)
+                            recyclerView.adapter = profile_event_rv_adapter(datalist)
+
+                        }
+                    recyclerView.layoutManager = LinearLayoutManager(context)
+                    recyclerView.adapter = profile_event_rv_adapter(datalist)
 
                 }
         }
