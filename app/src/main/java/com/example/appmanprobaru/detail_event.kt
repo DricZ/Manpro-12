@@ -58,6 +58,7 @@ class detail_event : Fragment() {
     private lateinit var pop_daftar_Yes: Button
     private lateinit var pop_jemput_No: Button
     private lateinit var pop_jemput_Yes: Button
+    private lateinit var ids: String
 
 
 
@@ -97,7 +98,18 @@ class detail_event : Fragment() {
 
 
         event_datar.setOnClickListener {
-            showKonfirmasiDaftar()
+            val sharedPreferences = context?.getSharedPreferences("SessionUser", MODE_PRIVATE)
+            val idsss = sharedPreferences?.getString("id_user", "Noid")
+            if (idsss != "Noid"){
+                showKonfirmasiDaftar()
+            }
+            else {
+                val newFragment = btn_profile_active()
+                val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                transaction.replace(R.id.Main_fragment, newFragment)
+                transaction.commit()
+            }
+
         }
         if (id != null){
             val db = Firebase.firestore

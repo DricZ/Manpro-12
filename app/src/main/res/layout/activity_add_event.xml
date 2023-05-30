@@ -120,32 +120,35 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
+        <Button
             android:id="@+id/addevent_date"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_bg_box"
-            android:drawableStart="@drawable/calendar_icon_black"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/calendar_icon_black"
             android:drawablePadding="10dp"
             android:ems="10"
+            android:gravity="left|center_vertical"
             android:hint="Date"
-            android:inputType="date"
+            app:cornerRadius="20dp"
             android:padding="10dp"
             android:textColorHint="@color/live_object_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addevent_title" />
 
-        <EditText
+        <Button
             android:id="@+id/addevent_time"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_bg_box"
-            android:drawableStart="@drawable/icon_time"
+            android:backgroundTint="@color/white"
+            android:drawableLeft="@drawable/icon_time"
             android:drawablePadding="10dp"
+            android:gravity="left|center_vertical"
             android:ems="10"
+            app:cornerRadius="20dp"
             android:hint="Time"
             android:inputType="time"
             android:padding="10dp"
@@ -157,11 +160,12 @@
         <Spinner
             android:id="@+id/addevent_kategori"
             android:layout_width="330dp"
-            android:layout_height="wrap_content"
+            android:layout_height="0dp"
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_bg_box"
             android:drawableStart="@drawable/icon_kategori"
             android:drawablePadding="10dp"
+            android:minHeight="48dp"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -174,6 +178,7 @@
             android:layout_marginTop="24dp"
             android:background="@drawable/rounded_bg_box"
             android:drawablePadding="10dp"
+            android:minHeight="48dp"
             android:padding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"

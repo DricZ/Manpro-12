@@ -1,18 +1,23 @@
 package com.example.appmanprobaru.admin
 
 import android.app.Activity
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
 import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import java.util.Calendar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -74,56 +79,66 @@ class addEvent : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
+        var title = view.findViewById<EditText>(R.id.addevent_title)
+        val time = view.findViewById<Button>(R.id.addevent_time)
+        val date = view.findViewById<Button>(R.id.addevent_date)
+        val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
+        val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
+        var desc = view.findViewById<EditText>(R.id.addevent_desc)
+        var location = view.findViewById<EditText>(R.id.addevent_alamat)
+        var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
+
+        val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
+        val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
+
+        val adapter = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemskategori)
+        kategori.adapter = adapter
+
+        val adapterum = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemsum)
+        kategoriumur.adapter = adapterum
+        
 
         imgclick.setOnClickListener {
             selectImageFromGallery(view)
         }
 
-        //        var _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
-        var title = view.findViewById<EditText>(R.id.addevent_title)
-        var time = view.findViewById<EditText>(R.id.addevent_time)
-        var date = view.findViewById<EditText>(R.id.addevent_date)
-        var desc = view.findViewById<EditText>(R.id.addevent_desc)
-        var location = view.findViewById<EditText>(R.id.addevent_alamat)
-        var category = view.findViewById<EditText>(R.id.addevent_kategori)
-        var kategoriUmur = view.findViewById<EditText>(R.id.addevent_kategoriumur)
-        var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
-        var image = view.findViewById<EditText>(R.id.addevent_upimage)
+        date.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val year = calendar.get(Calendar.YEAR)
+            val month = calendar.get(Calendar.MONTH)
+            val day = calendar.get(Calendar.DAY_OF_MONTH)
 
-//        _navbarAdmin.setOnItemSelectedListener {
-//            when (it.itemId) {
-//                R.id.bottom_navbar_home -> {
-//                    val intent = Intent(this@addEvent, HomeAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                R.id.bottom_navbar_people -> {
-//                    val intent = Intent(this@addEvent, PeopleAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                R.id.bottom_navbar_events -> {
-//                    val intent = Intent(this@addEvent, eventListAdmin::class.java)
-//                    startActivity(intent)
-//                    true
-//                }
-//
-//                R.id.bottom_navbar_logout -> {
-//
-//                    true
-//                }
-//
-//                else -> {
-//                    true
-//                }
-//            }
-//
-//
-//        }
+            val datePickerDialog = DatePickerDialog(
+                view.context,
+                { _, selectedYear, selectedMonth, selectedDay ->
+                    date.setText("$selectedDay/$selectedMonth/$selectedYear")
+                },
+                year,
+                month,
+                day
+            )
+            datePickerDialog.show()
+        }
 
-        
+        time.setOnClickListener {
+            val calendar = Calendar.getInstance()
+            val hour = calendar.get(Calendar.HOUR_OF_DAY)
+            val minute = calendar.get(Calendar.MINUTE)
+
+            val timePickerDialog = TimePickerDialog(
+                view.context,
+                { _, selectedHour, selectedMinute ->
+                    // Do something with the selected time
+                    time.setText("$selectedHour:$selectedMinute")
+                },
+                hour,
+                minute,
+                true
+            )
+            timePickerDialog.show()
+        }
+
+
 //        val db = Firebase.firestore
 //        val key = db.collection("YOUR_COLLECTION_NAME").document()
 //        val UniqueID = key.getId()
