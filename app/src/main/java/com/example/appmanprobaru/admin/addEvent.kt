@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.Calendar
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -91,6 +93,10 @@ class addEvent : Fragment() {
         val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
         val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
         var alamat = view.findViewById<EditText>(R.id.addevent_maxpeserta)
+        var desc = view.findViewById<EditText>(R.id.addevent_desc)
+        var location = view.findViewById<EditText>(R.id.addevent_alamat)
+        var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
+        var image = view.findViewById<EditText>(R.id.addevent_upimage)
 
         val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
         val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
@@ -138,14 +144,16 @@ class addEvent : Fragment() {
             timePickerDialog.show()
         }
 
+
+//        val db = Firebase.firestore
+//        val key = db.collection("YOUR_COLLECTION_NAME").document()
+//        val UniqueID = key.getId()
+//        val dataInput = addEventDataClass(title, desc,  )
+//        val a = db.collection("event").document(UniqueID).set(dataInput)
+
     }
 
-//    val db = Firebase.firestore
-//    val key = db.collection("YOUR_COLLECTION_NAME").document()
-//    val UniqueID = key.getId()
-//    val dataInput = addEventDataClass(title, )
-//    val a = db.collection("event").document(UniqueID).set(dataInput)
-//
+
 
     fun selectImageFromGallery(view: View) {
         val intent = Intent(Intent.ACTION_PICK)
