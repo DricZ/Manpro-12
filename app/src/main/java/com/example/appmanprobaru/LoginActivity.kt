@@ -112,10 +112,13 @@ class LoginActivity : AppCompatActivity() {
                     editor.apply()
                     if (_isAdmin[x] == "true") {
                         val eIntent = Intent(this@LoginActivity, HomeAdmin::class.java)
+                        eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(eIntent)
                         finish()
+
                     } else {
                         val eIntent = Intent(this@LoginActivity, HomeActivity::class.java)
+                        eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
                         startActivity(eIntent)
                         finish()
                     }

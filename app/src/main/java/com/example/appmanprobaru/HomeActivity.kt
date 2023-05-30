@@ -20,7 +20,7 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
 
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
 
-        if (sharedPreferences?.getString("role_user", "") == "true") {
+        if (sharedPreferences.getString("role_user", null) == "true") {
             val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
             startActivity(intent)
             finish()
@@ -55,6 +55,14 @@ class HomeActivity : AppCompatActivity(), Interface_Detail_Event {
     }
 
     private  fun loadFragment(fragment: Fragment){
+        val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
+
+        if (sharedPreferences.getString("role_user", null) == "true") {
+            val intent = Intent(this@HomeActivity, HomeAdmin::class.java)
+            startActivity(intent)
+            finish()
+        }
+
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.Main_fragment,fragment)
         transaction.commit()
