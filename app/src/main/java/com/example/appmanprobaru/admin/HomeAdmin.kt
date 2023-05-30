@@ -20,6 +20,7 @@ class HomeAdmin : AppCompatActivity() {
 
         val sharedPreferences = getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
 
+
         if (!sharedPreferences.contains("id_user")) {
             val intent = Intent(this@HomeAdmin, HomeActivity::class.java)
             startActivity(intent)
@@ -27,6 +28,7 @@ class HomeAdmin : AppCompatActivity() {
         }
 
         loadFragment(btn_home_admin())
+
         _navbarAdmin = findViewById<BottomNavigationView>(R.id.navbarAdmin) as BottomNavigationView
         _navbarAdmin.setOnItemSelectedListener {
             when (it.itemId){
