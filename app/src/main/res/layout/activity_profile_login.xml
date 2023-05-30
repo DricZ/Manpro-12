@@ -21,6 +21,8 @@
             android:paddingEnd="20dp"
             android:paddingBottom="100dp">
 
+
+
             <ImageView
                 android:id="@+id/pplogin"
                 android:layout_width="100dp"
@@ -195,6 +197,17 @@
                             android:layout_height="wrap_content"
                             android:text="alamat"
                             android:textColor="@color/live_object_bg" />
+
+                        <ScrollView
+                            android:id="@+id/tes123"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical" />
+                        </ScrollView>
                     </TableRow>
 
                 </TableLayout>
@@ -265,48 +278,33 @@
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp">
 
-                        <ImageView
-                            android:id="@+id/imageView7"
-                            android:layout_width="113dp"
-                            android:layout_height="73dp"
-                            android:layout_margin="10sp"
-                            app:srcCompat="@drawable/mountain_dummy_square" />
 
-                        <TextView
-                            android:id="@+id/judul_detailevent_profile"
-                            android:layout_width="180dp"
-                            android:layout_height="wrap_content"
-                            android:text="Gereja-Gereja di Seluruh Dunia ..."
-                            android:textColor="@color/black"
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
 
-                    </TableRow>
 
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp">
 
-                        <ImageView
-                            android:id="@+id/imageView8"
-                            android:layout_width="113dp"
-                            android:layout_height="73dp"
-                            android:layout_margin="10sp"
-                            app:srcCompat="@drawable/mountain_dummy_square" />
 
-                        <TextView
-                            android:id="@+id/textView91"
-                            android:layout_width="50dp"
-                            android:layout_height="wrap_content"
-                            android:text="Gereja-Gereja di Seluruh Dunia ..."
-                            android:textColor="@color/black"
-                            android:textSize="17sp"
-                            android:textStyle="bold" />
+
+                        <ScrollView
+                            android:id="@+id/profile_sv_event"
+                            android:layout_width="336dp"
+                            android:layout_height="200dp"
+                            tools:layout_editor_absoluteX="1dp"
+                            tools:layout_editor_absoluteY="1dp">
+
+                            <androidx.recyclerview.widget.RecyclerView
+                                android:id="@+id/profile_rv_event"
+                                android:layout_width="336dp"
+                                android:layout_height="wrap_content"
+                                tools:listitem="@layout/profile_page_event_rv_layout"
+                                />
+
+                        </ScrollView>
+
+
 
                     </TableRow>
+
+
 
                 </TableLayout>
             </androidx.cardview.widget.CardView>
@@ -363,6 +361,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/isi_event" />
+
+
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

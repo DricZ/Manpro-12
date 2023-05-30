@@ -1,7 +1,9 @@
 package com.example.appmanprobaru
 
 import android.annotation.SuppressLint
+import android.app.ActionBar.LayoutParams
 import android.content.Context
+import android.content.DialogInterface
 import android.content.Intent
 import android.opengl.Visibility
 import android.os.Bundle
@@ -12,12 +14,21 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
+import android.widget.TableLayout
+import android.widget.TableRow
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import androidx.cardview.widget.CardView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import btn_home_active
+import com.bumptech.glide.Glide
+import com.example.appmanprobaru.admin.HomeEvent
+import com.example.appmanprobaru.admin.adapterEventAdmin
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,7 +44,24 @@ class btn_profile_active : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
+    private lateinit var  name:String
+    private lateinit var img: String
 
+    private var _id: MutableList<String> = emptyList<String>().toMutableList()
+
+    private var _name: String = ""
+    private var _img: String = ""
+    private var _desc: MutableList<String> = emptyList<String>().toMutableList()
+    private var _location: MutableList<String> = emptyList<String>().toMutableList()
+    private var _date: MutableList<String> = emptyList<String>().toMutableList()
+    private var _category: MutableList<String> = emptyList<String>().toMutableList()
+    private var _maxPeserta: MutableList<String> = emptyList<String>().toMutableList()
+    private var _kategoriPeserta: MutableList<String> = emptyList<String>().toMutableList()
+//    private lateinit var rvview: RecyclerView
+
+    private lateinit var adapter: rvHome_Adapter
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var datalist: ArrayList<profile_page_event_recyclerView_Data>
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -105,7 +133,13 @@ class btn_profile_active : Fragment() {
 
         val sharedPreferences = activity?.getSharedPreferences("SessionUser", Context.MODE_PRIVATE)
 
+
+
         if (sharedPreferences?.contains("id_user") == true) {
+            datalist = arrayListOf<profile_page_event_recyclerView_Data>()
+
+            recyclerView = view.findViewById<RecyclerView>(R.id.profile_rv_event)
+
             _nama.setText(sharedPreferences.getString("nama_user","null"))
             _username.setText(sharedPreferences.getString("username_user","null"))
             _email.setText(sharedPreferences.getString("email_user","null"))
@@ -124,6 +158,10 @@ class btn_profile_active : Fragment() {
                 }
             }
 
+
+
+//            val date: String
+
             _event.setOnClickListener {
                 if (_isievent.visibility == View.VISIBLE){
                     _isievent.visibility = View.GONE
@@ -135,7 +173,41 @@ class btn_profile_active : Fragment() {
                     _dropup11.visibility = View.VISIBLE
                 }
             }
+
+            val db = Firebase.firestore
+            val idss = sharedPreferences?.getString("id_user", "")
+            Log.d("HAHAHAHAHAHAHAHA", idss!!)
+
+            var dbregist = db.collection("registration").whereEqualTo("accountID", idss)
+            dbregist.get()
+                .addOnSuccessListener { documents ->
+                    for (document in documents){
+                        Log.d("HAHAHAHAHAHAHAHA", document.toString())
+                        var eventid = document.data["eventID"].toString()
+                            val dbevent = db.collection("event").document(eventid).get()
+                                .addOnSuccessListener { Doc ->
+                                    var name =(Doc.data?.get("name").toString())
+                                    var img = (Doc.data?.get("imgloc").toString())
+                                    val eventdata = profile_page_event_recyclerView_Data(
+                                        Doc.id,
+                                        img,
+                                        name
+                                    )
+                                    Log.d("AAAAAAAAAAAAAA", eventdata.toString())
+                                    datalist.add(eventdata)
+                                    recyclerView.layoutManager = LinearLayoutManager(context)
+                                    recyclerView.adapter = profile_event_rv_adapter(datalist)
+                            }
+
+
+                        }
+
+
+                }
         }
+
+
+
 
 
 
@@ -161,5 +233,12 @@ class btn_profile_active : Fragment() {
             eIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
             startActivity(eIntent)
         }
+    }
+
+    fun isidata(){
+
+
+
+
     }
 }
