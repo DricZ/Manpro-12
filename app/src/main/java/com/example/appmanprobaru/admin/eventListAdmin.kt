@@ -64,6 +64,11 @@ class eventListAdmin : Fragment() {
         var dbevent = db.collection("event")
         dbevent.get()
             .addOnSuccessListener { documents ->
+                datalist.clear()
+                _id.clear()
+                _name.clear()
+                _img.clear()
+                _date.clear()
                 for (document in documents) {
                     _id.add(document.id.toString())
                     _name.add(document.data["name"].toString())
