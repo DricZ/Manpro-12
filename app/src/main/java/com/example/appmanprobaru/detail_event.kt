@@ -1,25 +1,23 @@
 package com.example.appmanprobaru
 
-import android.content.DialogInterface
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.PopupMenu
-import android.widget.PopupWindow
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.fragment.app.Fragment
+import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
-import com.example.appmanprobaru.admin.HomeEvent
-import com.example.appmanprobaru.admin.adapterEventAdmin
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -187,15 +185,23 @@ class detail_event : Fragment() {
         pop_daftar_No = dialogView.findViewById(R.id.pop_menu_jemput_No)
         pop_daftar_Yes = dialogView.findViewById(R.id.pop_menu_jemput_Yes)
         val db = Firebase.firestore
+        val sharedPreferences = context?.getSharedPreferences("SessionUser", MODE_PRIVATE)
+        val idsss = sharedPreferences?.getString("id_user", "Noid")
+
         pop_daftar_No.setOnClickListener {
-            val data = registData("", id!!, false)
+            val data = registData(idsss!!, id!!, false)
+
 
             db.collection("registration").document(id!!).set(data)
+            alertJemput.hide()
+
         }
 
         pop_daftar_Yes.setOnClickListener {
-            val data = registData("", id!!, true)
+            val data = registData(idsss!!, id!!, true)
             db.collection("registration").document(id!!).set(data)
+            alertJemput.hide()
+
         }
         val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
         dialogBuilder.setView(dialogView)
