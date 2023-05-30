@@ -9,6 +9,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import eventListAdmin
 
 class HomeAdmin : AppCompatActivity() {
     lateinit var _navbarAdmin : BottomNavigationView
@@ -29,7 +30,7 @@ class HomeAdmin : AppCompatActivity() {
                     true
                 }
                 R.id.bottom_navbar_eventsadm ->{
-                    loadFragment(addEvent())
+                    loadFragment(eventListAdmin())
                     true
                 }
                 R.id.bottom_navbar_profileadm ->{

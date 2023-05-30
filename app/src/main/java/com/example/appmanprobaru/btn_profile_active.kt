@@ -127,12 +127,12 @@ class btn_profile_active : Fragment() {
             _event.setOnClickListener {
                 if (_isievent.visibility == View.VISIBLE){
                     _isievent.visibility = View.GONE
-                    _dropdown11.visibility = View.INVISIBLE
-                    _dropup11.visibility = View.VISIBLE
-                } else{
-                    _isievent.visibility = View.VISIBLE
                     _dropdown11.visibility = View.VISIBLE
                     _dropup11.visibility = View.INVISIBLE
+                } else{
+                    _isievent.visibility = View.VISIBLE
+                    _dropdown11.visibility = View.INVISIBLE
+                    _dropup11.visibility = View.VISIBLE
                 }
             }
         }

@@ -76,10 +76,10 @@ class PeopleAdmin : Fragment() {
         val _btnJemaat = view.findViewById<Button>(R.id.btnJemaat)
 
         _btnAdmin.setOnClickListener {
-            loadFragment(addAdmin())
+            loadFragment(adminListAdmin())
         }
         _btnJemaat.setOnClickListener {
-            loadFragment(addJemaat())
+            loadFragment(jemaatListAdmin())
         }
 
     }
