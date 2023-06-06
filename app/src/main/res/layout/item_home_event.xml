@@ -27,14 +27,16 @@
 
         <TextView
             android:id="@+id/TVTitle"
-            android:layout_width="wrap_content"
+            android:layout_width="240dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Title"
+            android:layout_marginTop="14dp"
+            android:text="Title panjang sekali meow meow meow"
             android:textColor="@color/black"
             android:textFontWeight="700"
-            android:textSize="24dp"
+            android:textSize="20dp"
+            android:maxLines="1"
+            android:ellipsize="end"
             app:layout_constraintStart_toEndOf="@+id/IVImg"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -64,10 +66,13 @@
 
         <TextView
             android:id="@+id/TVDate"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="20dp"
             android:text="TextView"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/black"
             app:layout_constraintBottom_toTopOf="@+id/TVTime"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,10 +81,13 @@
 
         <TextView
             android:id="@+id/TVTime"
-            android:layout_width="wrap_content"
+            android:layout_width="190dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
             android:layout_marginBottom="32dp"
             android:text="TextView"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

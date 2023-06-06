@@ -1,3 +1,4 @@
+import android.annotation.SuppressLint
 import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
@@ -36,6 +37,10 @@ class eventListAdmin : Fragment() {
     private var _maxPeserta: MutableList<String> = emptyList<String>().toMutableList()
     private var _kategoriPeserta: MutableList<String> = emptyList<String>().toMutableList()
 
+    private var _latestOldest : Boolean = true
+    private var _finishedUnFinished : Boolean = false
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -46,6 +51,8 @@ class eventListAdmin : Fragment() {
 
         _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvEvent)
         val _btnAddAdmin = view.findViewById<Button>(R.id.addAdmin)
+        val _btnLatestOldest = view.findViewById<Button>(R.id.btnLatestOldest)
+        val _btnFinishedUnFinished = view.findViewById<Button>(R.id.btnFinishedUnFinished)
 
         _btnAddAdmin.setOnClickListener {
             val newFragment = addEvent()
@@ -53,6 +60,25 @@ class eventListAdmin : Fragment() {
             transaction.replace(R.id.Main_fragment_admin, newFragment)
             transaction.addToBackStack(null)
             transaction.commit()
+        }
+        _btnLatestOldest.setOnClickListener {
+         if (_latestOldest){
+            _latestOldest = false
+             _btnLatestOldest.setText("Oldest")
+         }else{
+            _latestOldest = true
+            _btnLatestOldest.setText("Latest")
+         }
+        }
+
+        _btnFinishedUnFinished.setOnClickListener {
+            if (_finishedUnFinished){
+                _finishedUnFinished = false
+                _btnFinishedUnFinished.setText("Unfinished")
+            }else{
+                _finishedUnFinished = true
+                _btnFinishedUnFinished.setText("Finished")
+            }
         }
 
 
