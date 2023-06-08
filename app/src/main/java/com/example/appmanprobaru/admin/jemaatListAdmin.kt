@@ -68,7 +68,7 @@ class jemaatListAdmin : Fragment() {
 
         _rvJemaatListJemaat = view.findViewById<RecyclerView>(R.id.rvJemaat)
         val _btnAddJemaat = view.findViewById<Button>(R.id.addJemaat)
-//        _btnFpass = view.findViewById(R.id.btnFpass)
+//        val _btnFpass = view.findViewById<Button>(R.id.btnFpass)
 
 
         _btnAddJemaat.setOnClickListener {
@@ -109,7 +109,7 @@ class jemaatListAdmin : Fragment() {
     private fun datainit() {
         val bundle = Bundle()
         val db = Firebase.firestore
-        val dbpeople = db.collection("account").whereEqualTo("is_admin", false)
+        val dbpeople = db.collection("account").whereEqualTo("is_admin", false).whereEqualTo("fpass", true)
         dbpeople.get()
             .addOnSuccessListener { documents ->
                 datalist.clear()

@@ -89,7 +89,7 @@
         android:id="@+id/imageView611111"
         android:layout_width="295dp"
         android:layout_height="152dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:background="@drawable/tabelgka"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
