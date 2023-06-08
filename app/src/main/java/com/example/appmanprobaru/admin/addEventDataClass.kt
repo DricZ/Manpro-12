@@ -1,10 +1,12 @@
 package com.example.appmanprobaru.admin
 
+import com.google.firebase.Timestamp
+
 data class addEventDataClass(
     val Name:String,
     val desc:String,
     val category:String,
-    val date:String,
+    val date:Timestamp,
     val location:String,
     val maxPeserta:String,
     val kategoriPeserta:String,

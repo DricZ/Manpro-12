@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.ChangePass
 import com.example.appmanprobaru.R
-import com.example.appmanprobaru.home_page_recyclerView_Data
-import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -68,7 +66,7 @@ class jemaatListAdmin : Fragment() {
 
         _rvJemaatListJemaat = view.findViewById<RecyclerView>(R.id.rvJemaat)
         val _btnAddJemaat = view.findViewById<Button>(R.id.addJemaat)
-//        _btnFpass = view.findViewById(R.id.btnFpass)
+//        val _btnFpass = view.findViewById<Button>(R.id.btnFpass)
 
 
         _btnAddJemaat.setOnClickListener {
@@ -109,7 +107,7 @@ class jemaatListAdmin : Fragment() {
     private fun datainit() {
         val bundle = Bundle()
         val db = Firebase.firestore
-        val dbpeople = db.collection("account").whereEqualTo("is_admin", false)
+        val dbpeople = db.collection("account").whereEqualTo("is_admin", false).whereEqualTo("fpass", true)
         dbpeople.get()
             .addOnSuccessListener { documents ->
                 datalist.clear()
@@ -129,10 +127,10 @@ class jemaatListAdmin : Fragment() {
 
                     datalist.add(peopleData)
                 }
-                val adapterP = adapterPeople(datalist)
+                val adapterP = adapterPeserta(datalist)
                 _rvJemaatListJemaat.layoutManager = LinearLayoutManager(context)
                 _rvJemaatListJemaat.adapter = adapterP
-                adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback {
+                adapterP.setOnItemClickCallback(object : adapterPeserta.OnItemClickCallback {
                     override fun fPass(pos: Int) {
                         AlertDialog.Builder(context!!)
                             .setTitle("Accept Forget Password")
