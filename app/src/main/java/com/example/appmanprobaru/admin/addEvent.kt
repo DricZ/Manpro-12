@@ -195,7 +195,9 @@ class addEvent : Fragment() {
                     location.text.toString(),
                     maxPeserta.text.toString(),
                     kategoriumur.getSelectedItem().toString(),
-                    ""
+                    "",
+                    true,
+                    true
                 )
 
                 val a = db.collection("event").document(UniqueID).set(dataInput).addOnSuccessListener {
