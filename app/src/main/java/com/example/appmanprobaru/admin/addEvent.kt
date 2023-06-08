@@ -46,6 +46,7 @@ class addEvent : Fragment() {
     private var param2: String? = null
     private val SELECT_IMAGE_REQUEST_CODE = 1
     private lateinit var imageUri : String
+    private lateinit var imgclick : ImageView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -88,7 +89,7 @@ class addEvent : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
+        imgclick = view.findViewById(R.id.addevent_upimage)
         var title = view.findViewById<EditText>(R.id.addevent_title)
         val time = view.findViewById<Button>(R.id.addevent_time)
         val date = view.findViewById<Button>(R.id.addevent_date)
@@ -242,8 +243,27 @@ class addEvent : Fragment() {
         super.onActivityResult(requestCode, resultCode, data)
 
         if (requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-            val selectedImageUri = data?.data
-            // Use the selectedImageUri to display the selected image in an ImageView or upload it to a server
+            try {
+                val selectedImageUri = data?.data
+                if (!requireActivity().isDestroyed) {
+                    // Start a load with Glide
+                    activity?.let {
+                        Glide.with(it)
+                            .load(selectedImageUri)
+                            .into(imgclick)
+                    }
+                }
+                // Use the selectedImageUri to display the selected image in an ImageView or upload it to a server
+            } catch (e: Exception) {
+                // Handle the exception here
+                Log.e("MyFragment", "Error accessing selected image", e)
+            }
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Cancel any pending loads with Glide
+        Glide.with(this).clear(imgclick)
     }
 }
