@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -49,6 +50,8 @@
             android:drawableStart="@drawable/icon_event"
             android:drawablePadding="10dp"
             android:hint="Deskripsi Event"
+            android:ellipsize="end"
+            android:maxLines="1"
             android:inputType="text"
             android:paddingStart="10dp"
             android:textColor="#000000"
@@ -170,16 +173,39 @@
             app:layout_constraintTop_toBottomOf="@+id/addevent_kategori" />
 
         <TextView
-            android:id="@+id/textView8"
+            android:id="@+id/textView13"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="323dp"
-            android:text="TextView"
+            android:layout_marginTop="30dp"
+            android:text="Peserta"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_maxpeserta" />
+            app:layout_constraintTop_toBottomOf="@id/addevent_maxpeserta" />
+
+        <ScrollView
+            android:id="@+id/scrollview1"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textView13">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPeserta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </LinearLayout>
+
+        </ScrollView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

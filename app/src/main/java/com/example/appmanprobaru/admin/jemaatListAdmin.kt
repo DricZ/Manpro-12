@@ -15,8 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.ChangePass
 import com.example.appmanprobaru.R
-import com.example.appmanprobaru.home_page_recyclerView_Data
-import com.google.firebase.firestore.FieldPath
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -129,10 +127,10 @@ class jemaatListAdmin : Fragment() {
 
                     datalist.add(peopleData)
                 }
-                val adapterP = adapterPeople(datalist)
+                val adapterP = adapterPeserta(datalist)
                 _rvJemaatListJemaat.layoutManager = LinearLayoutManager(context)
                 _rvJemaatListJemaat.adapter = adapterP
-                adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback {
+                adapterP.setOnItemClickCallback(object : adapterPeserta.OnItemClickCallback {
                     override fun fPass(pos: Int) {
                         AlertDialog.Builder(context!!)
                             .setTitle("Accept Forget Password")
