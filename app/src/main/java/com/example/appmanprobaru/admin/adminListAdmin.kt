@@ -1,9 +1,7 @@
 package com.example.appmanprobaru.admin
 
-import android.content.Context
 import android.content.DialogInterface
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -17,7 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.ChangePass
 import com.example.appmanprobaru.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -127,10 +124,10 @@ class adminListAdmin : Fragment() {
                     )
                     datalist.add(peopleData)
                 }
-                val adapterP = adapterPeople(datalist)
+                val adapterP = adapterPeserta(datalist)
                 _rvtAdminListAdmin.layoutManager = LinearLayoutManager(context)
                 _rvtAdminListAdmin.adapter = adapterP
-                adapterP.setOnItemClickCallback(object : adapterPeople.OnItemClickCallback{
+                adapterP.setOnItemClickCallback(object : adapterPeserta.OnItemClickCallback{
                     override fun fPass(pos: Int) {
                         AlertDialog.Builder(context!!)
                             .setTitle("Accept Forget Password")
