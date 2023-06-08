@@ -61,6 +61,7 @@ class detail_event : Fragment() {
     private lateinit var pop_jemput_No: Button
     private lateinit var pop_jemput_Yes: Button
     private lateinit var ids: String
+    private var adminPickup: Boolean = false
 
 
 
@@ -118,11 +119,14 @@ class detail_event : Fragment() {
             var dbevent = db.collection("event").document(id!!)
             dbevent.get()
                 .addOnSuccessListener { document ->
-
                     name = (document.data?.get("name").toString())
                     img = (document.data?.get("imgloc").toString())
                     date = (((document.data?.get("date") as com.google.firebase.Timestamp).toDate()
                         .toString()))
+                    adminPickup = (document.data?.get("adminPickup") as Boolean)
+                    if (adminPickup){
+                        //TODO
+                    }
                     val arrayDate: List<String> = date!!.split(" ")
                     event_title.text = name
                     event_deskripsi.text = desc

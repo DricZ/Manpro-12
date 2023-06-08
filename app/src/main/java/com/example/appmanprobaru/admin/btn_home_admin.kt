@@ -116,7 +116,7 @@ class btn_home_admin : Fragment() {
                 }
                 for (x in 0.._id.size-1){
                     val arrayDate: List<String> =_date[x].split(" ")
-                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " "+arrayDate[4])
+                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " WIB")
                     datalist.add(eventdata)
                 }
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this.context)
