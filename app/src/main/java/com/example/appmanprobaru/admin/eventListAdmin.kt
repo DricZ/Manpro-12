@@ -113,7 +113,7 @@ class eventListAdmin : Fragment() {
                         _img[x],
                         _name[x],
                         arrayDate[1] + " " + arrayDate[2] + " " + arrayDate[5],
-                        arrayDate[3] + " " + arrayDate[4]
+                        arrayDate[3] + " WIB"
                     )
                     datalist.add(eventdata)
 
