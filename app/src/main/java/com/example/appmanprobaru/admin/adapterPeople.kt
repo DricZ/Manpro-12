@@ -17,7 +17,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
     interface OnItemClickCallback {
         fun delData(pos: Int, id: String)
         fun fPass(pos: Int)
-        fun cekFpass()
+//        fun cekFpass()
     }
 
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){

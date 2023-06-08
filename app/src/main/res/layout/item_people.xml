@@ -34,7 +34,6 @@
         android:id="@+id/btnDelete"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
-<<<<<<< Updated upstream
         android:layout_marginStart="24dp"
         android:layout_marginTop="10dp"
         android:backgroundTint="@color/red"
@@ -42,16 +41,5 @@
         android:textColor="@color/black"
         android:textSize="12dp"
         app:layout_constraintStart_toEndOf="@+id/btnFpass"
-=======
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="@color/red"
-        android:text="Non Activate"
-        android:textColor="@color/black"
-        android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.841"
-        app:layout_constraintStart_toEndOf="@+id/tvName"
->>>>>>> Stashed changes
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
