@@ -101,4 +101,8 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
+    <string name="non_activate">Non Activate</string>
+    <string name="title_panjang_sekali_meow_meow_meow">Title panjang sekali meow meow meow</string>
+    <string name="opsi">Opsi</string>
+    <string name="nama">Nama</string>
 </resources>
