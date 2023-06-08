@@ -197,7 +197,7 @@ class addEvent : Fragment() {
                     maxPeserta.text.toString(),
                     kategoriumur.getSelectedItem().toString(),
                     "",
-                    true,
+                    false,
                     true
                 )
 

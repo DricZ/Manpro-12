@@ -52,6 +52,7 @@ class btn_home_admin : Fragment() {
     private var _maxPeserta : MutableList<String> = emptyList<String>().toMutableList()
     private var _kategoriPeserta : MutableList<String> = emptyList<String>().toMutableList()
     private var _timestamp: MutableList<Timestamp> = emptyList<Timestamp>().toMutableList()
+    private var _status: MutableList<Boolean> = emptyList<Boolean>().toMutableList()
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -117,10 +118,11 @@ class btn_home_admin : Fragment() {
                     _date.add(((document.data["date"] as com.google.firebase.Timestamp).toDate().toString()))
 //                    Log.d("TimeStampssssss", document.data["date"].toString())
                     _timestamp.add((document.data["date"] as com.google.firebase.Timestamp))
+                    _status.add((document.data["status"] as Boolean))
                 }
                 for (x in 0.._id.size-1){
                     val arrayDate: List<String> =_date[x].split(" ")
-                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " WIB", _timestamp[x])
+                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " WIB", _timestamp[x], _status[x])
                     datalist.add(eventdata)
                 }
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this.context)

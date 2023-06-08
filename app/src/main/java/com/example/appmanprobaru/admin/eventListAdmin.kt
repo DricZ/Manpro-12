@@ -23,6 +23,7 @@ class eventListAdmin : Fragment() {
     private lateinit var _rvHomeEventAdmin: RecyclerView
 
     private lateinit var datalist: ArrayList<HomeEvent>
+    private lateinit var datalistAll: ArrayList<HomeEvent>
 
     private var _id: MutableList<String> = emptyList<String>().toMutableList()
 
@@ -35,6 +36,7 @@ class eventListAdmin : Fragment() {
     private var _category: MutableList<String> = emptyList<String>().toMutableList()
     private var _maxPeserta: MutableList<String> = emptyList<String>().toMutableList()
     private var _kategoriPeserta: MutableList<String> = emptyList<String>().toMutableList()
+    private var _status: MutableList<Boolean> = emptyList<Boolean>().toMutableList()
 
     private var _latestOldest : Boolean = true
     private var _finishedUnFinished : Boolean = false
@@ -47,6 +49,7 @@ class eventListAdmin : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_event_list_admin, container, false)
         datalist = arrayListOf<HomeEvent>()
+        datalistAll = arrayListOf<HomeEvent>()
 
         _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvEvent)
         val _btnAddAdmin = view.findViewById<Button>(R.id.addAdmin)
@@ -80,17 +83,39 @@ class eventListAdmin : Fragment() {
             if (_finishedUnFinished){
                 _finishedUnFinished = false
                 _btnFinishedUnFinished.setText("Unfinished")
-
+                sort()
+                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
             }else{
                 _finishedUnFinished = true
                 _btnFinishedUnFinished.setText("Finished")
-
+                sort()
+                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
             }
         }
 
 
         datainit()
         return view
+    }
+
+    fun sort(){
+        datalist.clear()
+        for (doc in datalistAll){
+            if (_finishedUnFinished) {
+
+                if (doc.status) {
+                    datalist.add(doc)
+                }
+            }
+            else {
+                if (!doc.status) {
+                    datalist.add(doc)
+                }
+            }
+        }
+        bubbleSort(datalist.size)
     }
     fun bubbleSort(n: Int) {
         var i: Int
@@ -152,6 +177,8 @@ class eventListAdmin : Fragment() {
                         ((document.data["date"] as com.google.firebase.Timestamp).toDate().toString())
                     )
                     _timestamp.add((document.data["date"] as com.google.firebase.Timestamp))
+                    _status.add((document.data["status"] as Boolean))
+
                 }
                 for (x in 0.._id.size - 1) {
                     val arrayDate: List<String> = _date[x].split(" ")
@@ -161,12 +188,14 @@ class eventListAdmin : Fragment() {
                         _name[x],
                         arrayDate[1] + " " + arrayDate[2] + " " + arrayDate[5],
                         arrayDate[3] + " WIB",
-                        _timestamp[x]
+                        _timestamp[x],
+                        _status[x]
                     )
                     datalist.add(eventdata)
+                    datalistAll.add(eventdata)
 
                 }
-                bubbleSort(datalist.size)
+                sort()
                 Log.d("TIMESTAMP", _timestamp[1].toString())
                 val adapterE = adapterEventAdmin(datalist)
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)

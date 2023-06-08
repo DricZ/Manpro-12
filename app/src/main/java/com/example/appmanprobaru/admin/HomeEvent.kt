@@ -8,5 +8,6 @@ data class HomeEvent(
     var title:String,
     var date:String,
     var time:String,
-    var timestamp: Timestamp
+    var timestamp: Timestamp,
+    var status: Boolean
 )
