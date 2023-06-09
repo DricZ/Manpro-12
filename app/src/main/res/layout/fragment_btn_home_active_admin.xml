@@ -37,11 +37,13 @@
 
             <Button
                 android:id="@+id/button"
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_width="329dp"
+                android:layout_height="43dp"
                 android:backgroundTint="@color/gray"
-                android:text="Go to front"
+                android:text="@string/go_to_front"
                 android:textColor="@color/black"
+                android:textSize="15sp"
+                app:cornerRadius="15dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
