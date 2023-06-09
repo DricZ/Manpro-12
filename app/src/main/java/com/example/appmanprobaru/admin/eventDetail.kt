@@ -136,11 +136,12 @@ class eventDetail : Fragment() {
 
                             val eventpeople = people(
                                 document.data?.get("nama").toString(),
-                                document.id
+                                document.id,
+                                document.data?.get("notelp").toString()
                             )
                             datalist.add(eventpeople)
                             _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
-                            _rvHomeEventAdmin.adapter = adapterPeserta(datalist)
+                            _rvHomeEventAdmin.adapter = adapterPeople(datalist)
                         }
                 }
             }
