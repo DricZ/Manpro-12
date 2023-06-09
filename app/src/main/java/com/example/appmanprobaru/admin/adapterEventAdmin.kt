@@ -20,7 +20,7 @@ class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : Recycle
         var tvName : TextView = itemView.findViewById(R.id.tvName)
         var tvDate : TextView = itemView.findViewById(R.id.tvDate)
         var tvTime : TextView = itemView.findViewById(R.id.tvTime)
-        var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
+        var _btnDelete : Button = itemView.findViewById(R.id.btnDeleteEv)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -43,7 +43,7 @@ class adapterEventAdmin (private val listForum : ArrayList<HomeEvent>) : Recycle
         return listForum.size
     }
 
-    fun setOnItemClickCallback(onItemClickCallback: adapterEventAdmin.OnItemClickCallback){
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback){
         this.onItemClickCallback = onItemClickCallback
     }
 }

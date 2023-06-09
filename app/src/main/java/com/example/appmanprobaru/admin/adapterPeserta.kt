@@ -21,8 +21,8 @@ class adapterPeserta (private val listForum : ArrayList<people>) : RecyclerView.
 
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var _tvName : TextView = itemView.findViewById(R.id.tvName)
-        var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
-        var _tvJemputan : TextView = itemView.findViewById<TextView>(R.id.tvJemputan)
+        var _btnDelete : Button = itemView.findViewById(R.id.btnDelete)
+        var _tvJemputan : TextView = itemView.findViewById(R.id.tvJemputan)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {

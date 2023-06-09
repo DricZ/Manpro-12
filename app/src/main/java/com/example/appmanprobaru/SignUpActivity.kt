@@ -73,7 +73,8 @@ class SignUpActivity : AppCompatActivity() {
                             "alamat" to alamat,
                             "nama" to nama,
                             "is_admin" to false,
-                            "fpass" to false
+                            "fpass" to false,
+                            "status" to true
                         )
                         dbAccount.add(user).addOnSuccessListener {
                             Toast.makeText(this, "SignUp Sukses", Toast.LENGTH_SHORT).show()

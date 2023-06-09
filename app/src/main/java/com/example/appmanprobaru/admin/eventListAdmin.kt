@@ -16,6 +16,7 @@ import com.example.appmanprobaru.admin.HomeEvent
 import com.example.appmanprobaru.admin.adapterEventAdmin
 import com.example.appmanprobaru.admin.addEvent
 import com.google.firebase.Timestamp
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -205,11 +206,24 @@ class eventListAdmin : Fragment() {
                     override fun delData(pos: Int) {
                         AlertDialog.Builder(context!!)
                             .setTitle("HAPUS DATA")
-                            .setMessage("APAKAH BENAR DATA "+datalist.get(pos).title+" akan dihapus ?")
+                            .setMessage("Apakah Benar Event "+datalist.get(pos).title+" Akan Dihapus ?")
                             .setPositiveButton(
                                 "HAPUS",
                                 DialogInterface.OnClickListener{ dialog, which ->
+                                    val db = FirebaseFirestore.getInstance()
+                                    val documentPath =
+                                        "account/$id" // Replace with the path of the document you want to delete
+                                    db.document(documentPath)
+                                        .update("status", true)
+                                        .addOnSuccessListener {
+                                            // Handle successful deletion here
+                                        }
+                                        .addOnFailureListener { e ->
+                                            // Handle failure here
+                                        }
 
+                                    datalist.removeAt(pos)
+                                    adapterE.notifyItemRemoved(pos)
                                 }
                             )
                             .setNegativeButton(
