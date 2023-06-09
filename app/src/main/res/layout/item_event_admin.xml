@@ -45,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/tvTime" />
 
     <Button
-        android:id="@+id/btnDelete"
+        android:id="@+id/btnDeleteEv"
         android:layout_width="108dp"
         android:layout_height="49dp"
         android:layout_marginStart="100dp"

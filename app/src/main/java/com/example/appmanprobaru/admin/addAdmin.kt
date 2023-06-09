@@ -126,7 +126,8 @@ class addAdmin : Fragment() {
                             "alamat" to alamat,
                             "nama" to nama,
                             "is_admin" to true,
-                            "fpass" to false
+                            "fpass" to false,
+                            "status" to true
                         )
                         dbAccount.add(user).addOnSuccessListener {
                             Toast.makeText(context, "Penambahan Sukses", Toast.LENGTH_SHORT).show()

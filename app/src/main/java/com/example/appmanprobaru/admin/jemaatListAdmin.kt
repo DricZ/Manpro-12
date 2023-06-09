@@ -107,7 +107,7 @@ class jemaatListAdmin : Fragment() {
     private fun datainit() {
         val bundle = Bundle()
         val db = Firebase.firestore
-        val dbpeople = db.collection("account").whereEqualTo("is_admin", false).whereEqualTo("fpass", true)
+        val dbpeople = db.collection("account").whereEqualTo("is_admin", false).whereEqualTo("status", true)
         dbpeople.get()
             .addOnSuccessListener { documents ->
                 datalist.clear()
@@ -163,8 +163,8 @@ class jemaatListAdmin : Fragment() {
 
                     override fun delData(pos: Int, id: String) {
                         AlertDialog.Builder(context!!)
-                            .setTitle("HAPUS DATA")
-                            .setMessage("APAKAH BENAR DATA " + datalist.get(pos).name + " akan dihapus ?")
+                            .setTitle("Nonaktifkan Jemaat!")
+                            .setMessage("Apakah Benar Jemaat " + datalist.get(pos).name + " Akan Dinonaktifkan?")
                             .setPositiveButton(
                                 "HAPUS",
                                 DialogInterface.OnClickListener { dialog, which ->
@@ -173,7 +173,7 @@ class jemaatListAdmin : Fragment() {
                                     val documentPath =
                                         "account/$id" // Replace with the path of the document you want to delete
                                     db.document(documentPath)
-                                        .delete()
+                                        .update("status", false)
                                         .addOnSuccessListener {
                                             // Handle successful deletion here
                                         }

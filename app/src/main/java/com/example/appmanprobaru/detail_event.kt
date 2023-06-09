@@ -1,11 +1,9 @@
 package com.example.appmanprobaru
 
 import android.content.Context.MODE_PRIVATE
-import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +12,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
-import androidx.preference.PreferenceManager
 import com.bumptech.glide.Glide
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -213,7 +210,7 @@ class detail_event : Fragment() {
         val idsss = sharedPreferences?.getString("id_user", "Noid")
 
         pop_daftar_No.setOnClickListener {
-            val data = registData(idsss!!, id!!, false)
+            val data = registData(idsss!!, id!!, false, true)
 
 
             db.collection("registration").document(id!!).set(data)
@@ -222,7 +219,7 @@ class detail_event : Fragment() {
         }
 
         pop_daftar_Yes.setOnClickListener {
-            val data = registData(idsss!!, id!!, true)
+            val data = registData(idsss!!, id!!, true, true)
             db.collection("registration").document(id!!).set(data)
             alertJemput.hide()
 
