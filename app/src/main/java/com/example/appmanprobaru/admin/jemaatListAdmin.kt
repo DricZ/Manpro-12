@@ -38,8 +38,6 @@ class jemaatListAdmin : Fragment() {
 
     private var _name: MutableList<String> = emptyList<String>().toMutableList()
 
-    private var _telp: MutableList<String> = emptyList<String>().toMutableList()
-
     private lateinit var db : FirebaseFirestore
 
 //    private lateinit var _btnFpass : Button
@@ -115,7 +113,6 @@ class jemaatListAdmin : Fragment() {
                 datalist.clear()
                 _name.clear()
                 _id.clear()
-                _telp.clear()
 
                 for (document in documents) {
                     _name.add(document.data["nama"].toString())
@@ -125,8 +122,7 @@ class jemaatListAdmin : Fragment() {
                 for (x in 0.._id.size - 1) {
                     val peopleData = people(
                         _name[x],
-                        _id[x],
-                        _telp[x]
+                        _id[x]
                     )
 
                     datalist.add(peopleData)

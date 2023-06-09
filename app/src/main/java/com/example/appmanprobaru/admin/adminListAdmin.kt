@@ -44,8 +44,6 @@ class adminListAdmin : Fragment() {
 
     private var _name: MutableList<String> = emptyList<String>().toMutableList()
 
-    private var _telp: MutableList<String> = emptyList<String>().toMutableList()
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -109,12 +107,10 @@ class adminListAdmin : Fragment() {
                 datalist.clear()
                 _name.clear()
                 _id.clear()
-                _telp.clear()
 
                 for (document in documents) {
                     _name.add(document.data["nama"].toString())
                     _id.add(document.id.toString())
-                    _telp.add(document.data["notelp"].toString())
 
                     if (document.data["fpass"].toString() == "true"){
 
@@ -124,8 +120,7 @@ class adminListAdmin : Fragment() {
                 for (x in 0.._id.size - 1) {
                     val peopleData = people(
                         _name[x],
-                        _id[x],
-                        _telp[x]
+                        _id[x]
                     )
                     datalist.add(peopleData)
                 }
