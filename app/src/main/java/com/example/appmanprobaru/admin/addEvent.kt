@@ -179,8 +179,11 @@ class addEvent : Fragment() {
                 kategoriumur.getSelectedItem().toString()  != "Pilih Kategori 2")
             {
                 val db = Firebase.firestore
-                val key = db.collection("YOUR_COLLECTION_NAME").document()
+                val key = db.collection("event").document()
                 val UniqueID = key.getId()
+
+
+
                 val UniqueJPG = "$UniqueID.jpg"
                 val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
                 val dates = formatter.parse(dateString)
