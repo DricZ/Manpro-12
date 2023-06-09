@@ -45,6 +45,8 @@ class adminListAdmin : Fragment() {
     private var _name: MutableList<String> = emptyList<String>().toMutableList()
     private var _notelp: MutableList<String> = emptyList<String>().toMutableList()
 
+    private var _telp: MutableList<String> = emptyList<String>().toMutableList()
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

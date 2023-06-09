@@ -16,7 +16,6 @@
             android:layout_height="100dp"
             android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
-            android:clickable="true"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +63,7 @@
             android:drawableStart="@drawable/icon_people"
             android:drawablePadding="10dp"
             android:hint="Max peserta"
+            android:enabled="false"
             android:inputType="text"
             android:paddingStart="10dp"
             android:textColor="#000000"
@@ -81,6 +81,7 @@
             android:drawableStart="@drawable/icon_addlocation"
             android:drawablePadding="10dp"
             android:hint="Alamat"
+            android:enabled="false"
             android:inputType="text"
             android:padding="10dp"
             android:textColorHint="@color/live_object_bg"
@@ -95,6 +96,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:text="Event Detail"
+            android:enabled="false"
             android:textColor="#000000"
             android:textSize="25dp"
             android:textStyle="bold"
@@ -159,12 +161,12 @@
             android:layout_marginTop="24dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btnFilter">
+            app:layout_constraintTop_toBottomOf="@+id/btnFilter">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvPeserta"

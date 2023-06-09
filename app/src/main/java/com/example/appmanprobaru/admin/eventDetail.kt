@@ -5,6 +5,8 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -101,13 +103,14 @@ class eventDetail : Fragment() {
         _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvPeserta)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
-        var title = view.findViewById<TextView>(R.id.tvTitle)
-        val time = view.findViewById<TextView>(R.id.tvTimeEvent)
-        val date = view.findViewById<TextView>(R.id.tvDateEvent)
-
-        var desc = view.findViewById<EditText>(R.id.addevent_desc)
-        var location = view.findViewById<EditText>(R.id.addevent_alamat)
-        var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
+        val time = view.findViewById<TextView>(R.id.tvDateEvent)
+        val date = view.findViewById<TextView>(R.id.tvTimeEvent)
+//        val kategori = view.findViewById<TextView>(R.id.addevent_kategori)
+//        val kategoriumur = view.findViewById<TextView>(R.id.addevent_kategoriumur)
+        val desc = view.findViewById<EditText>(R.id.addevent_desc)
+        val location = view.findViewById<EditText>(R.id.addevent_alamat)
+        val maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
 
         var _btnFilter = view.findViewById<Button>(R.id.btnFilter)
         _btnFilter.setOnClickListener {
@@ -127,35 +130,25 @@ class eventDetail : Fragment() {
             }
         }
         val db = Firebase.firestore
-        var dbevent = db.collection("event").document(id!!)
-        dbevent.get()
-            .addOnSuccessListener { document ->
-                title.text = (document.data?.get("name").toString())
+        db.collection("event").document(id.toString()).get().addOnSuccessListener { document ->
 
-                var img = (document.data?.get("imgloc").toString())
-                var dates = (((document.data?.get("date") as com.google.firebase.Timestamp).toDate()
-                    .toString()))
-                val arrayDate: List<String> = dates!!.split(" ")
-                val datetext = arrayDate[1] + " " + arrayDate[2] + " " + arrayDate[5]
-                val timetext = arrayDate[3]
-                date.text = datetext
-                time.text = timetext
-                desc.setText(document.data?.get("desc").toString())
-                location.setText(document.data?.get("location").toString())
-                maxPeserta.setText(document.data?.get("maxPeserta").toString())
+            title.setText(document.getString("name"))
+            val timestamp = document.getTimestamp("date")
+            if (timestamp != null) {
+                val dates = timestamp.toDate()
+                val calendar = Calendar.getInstance()
+                calendar.time = dates
+                val day = calendar.get(Calendar.DAY_OF_MONTH)
+                val month = calendar.get(Calendar.MONTH)
+                val year = calendar.get(Calendar.YEAR)
+//                val times = calendar.get(Calendar.)
+                val hour = calendar.get(Calendar.HOUR_OF_DAY)
+                val minute = calendar.get(Calendar.MINUTE)
+                val second = calendar.get(Calendar.SECOND)
+                // Gunakan nilai hour, minute, dan second di sini
 
-                val storage = Firebase.storage("gs://manpro-12.appspot.com")
-
-                val storageRef = storage.reference
-
-                // Create a reference with an initial file path and name
-                val pathReference = storageRef.child("events/"+ img).downloadUrl
-
-                pathReference.addOnSuccessListener { uri ->
-                    Glide.with(requireContext())
-                        .load(uri)
-                        .into(imgclick)
-                }
+                date.text = "$day/$month/$year"
+                time.text = "$hour:$minute:$second"
             }
         val buttonsimpan = view.findViewById<Button>(R.id.btnSimpan)
         buttonsimpan.setOnClickListener {
@@ -175,6 +168,27 @@ class eventDetail : Fragment() {
                 Toast.LENGTH_SHORT
             ).show()
 
+
+
+            desc.setText(document.getString("desc").toString())
+            location.setText(document.getString("location").toString())
+            maxPeserta.setText(document.getString("maxPeserta").toString())
+
+            Log.d("CEK IMG", document.getString("imgloc").toString())
+
+            val storage = Firebase.storage("gs://manpro-12.appspot.com")
+
+            val storageRef = storage.reference
+
+            // Create a reference with an initial file path and name
+            val pathReference =
+                storageRef.child("events/" + document.getString("imgloc").toString()).downloadUrl
+
+            pathReference.addOnSuccessListener { uri ->
+                Glide.with(this)
+                    .load(uri)
+                    .into(imgclick)
+            }
         }
         var dbregist = db.collection("registration").whereEqualTo("eventID", id!!)
             .get().addOnSuccessListener { documents ->
@@ -199,44 +213,6 @@ class eventDetail : Fragment() {
             selectImageFromGallery(view)
         }
 
-        date.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val year = calendar.get(Calendar.YEAR)
-            val month = calendar.get(Calendar.MONTH)
-            val day = calendar.get(Calendar.DAY_OF_MONTH)
-
-            val datePickerDialog = DatePickerDialog(
-                view.context,
-                { _, selectedYear, selectedMonth, selectedDay ->
-                    date.setText("$selectedDay/$selectedMonth/$selectedYear")
-                },
-                year,
-                month,
-                day
-            )
-            datePickerDialog.show()
-        }
-
-        time.setOnClickListener {
-            val calendar = Calendar.getInstance()
-            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-            val minute = calendar.get(Calendar.MINUTE)
-
-            val timePickerDialog = TimePickerDialog(
-                view.context,
-                { _, selectedHour, selectedMinute ->
-                    // Do something with the selected time
-                    time.setText("$selectedHour:$selectedMinute")
-                },
-                hour,
-                minute,
-                true
-            )
-            timePickerDialog.show()
-        }
-
-
-//        val db = Firebase.firestore
 //        val key = db.collection("YOUR_COLLECTION_NAME").document()
 //        val UniqueID = key.getId()
 //        val dataInput = addEventDataClass(title, desc,  )

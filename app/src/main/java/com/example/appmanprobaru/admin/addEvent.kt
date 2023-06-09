@@ -92,7 +92,7 @@ class addEvent : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imgclick = view.findViewById(R.id.addevent_upimage)
-        var title = view.findViewById<EditText>(R.id.tvTitle)
+        val title = view.findViewById<EditText>(R.id.tvTitle)
         val time = view.findViewById<Button>(R.id.tvTimeEvent)
         val date = view.findViewById<Button>(R.id.tvDateEvent)
         val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
@@ -103,7 +103,7 @@ class addEvent : Fragment() {
         var addbutton = view.findViewById<Button>(R.id.btn_addevent)
         val isPenjemputan = view.findViewById<CheckBox>(R.id.isPenjemputan)
         val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
-        val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
+        val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja", "Dewasa")
 
         val adapter = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemskategori)
         kategori.adapter = adapter
