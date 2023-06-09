@@ -104,7 +104,6 @@ class btn_home_admin : Fragment() {
 
         datainit()
 
-
     }
 
     private fun datainit(){
@@ -114,6 +113,12 @@ class btn_home_admin : Fragment() {
         var dbevent = db.collection("event")
         dbevent.get()
             .addOnSuccessListener { documents ->
+                datalist.clear()
+                _name.clear()
+                _id.clear()
+                _date.clear()
+                _timestamp.clear()
+                _status.clear()
                 for (document in documents) {
                     _id.add(document.id.toString())
                     _name.add(document.data["name"].toString())

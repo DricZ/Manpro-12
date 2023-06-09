@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
 import com.google.firebase.firestore.FirebaseFirestore
 
-class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.Adapter<adapterPeople.ListViewHolder>(){
+class adapterPeople (private val listForum : ArrayList<peopleeventDetail>) : RecyclerView.Adapter<adapterPeople.ListViewHolder>(){
 
     private lateinit var onItemClickCallback : OnItemClickCallback
 
