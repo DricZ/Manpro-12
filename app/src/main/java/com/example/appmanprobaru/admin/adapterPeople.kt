@@ -22,7 +22,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var _tvName : TextView = itemView.findViewById(R.id.tvName)
         var _btnDelete : Button = itemView.findViewById<Button>(R.id.btnDelete)
-        var _btnFpass : Button = itemView.findViewById<Button>(R.id.btnFpass)
+        var _tvTelp : TextView = itemView.findViewById<TextView>(R.id.tvTelp)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -38,9 +38,7 @@ class adapterPeople (private val listForum : ArrayList<people>) : RecyclerView.A
         val dbpeople = db.collection("account").whereEqualTo("username", "true")
 
         holder._tvName.setText(people.name)
-        holder._btnFpass.setOnClickListener {
-            onItemClickCallback.fPass(position)
-        }
+        holder._tvTelp.setText(people.telp)
         holder._btnDelete.setOnClickListener {
             onItemClickCallback.delData(position, people.id)
         }

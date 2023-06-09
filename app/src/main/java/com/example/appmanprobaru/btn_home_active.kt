@@ -496,7 +496,6 @@ class btn_home_active : Fragment() {
         adapter.setOnItemClickListener(object : rvHome_Adapter.onItemClickListener{
             override fun onItemClick(position: Int) {
                 println("TOASTNYA DISINI")
-
                 home_active.passDetail(datalistFilter2[position])
             }
         })

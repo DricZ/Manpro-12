@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.util.Log
@@ -12,18 +11,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appmanprobaru.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import java.util.Calendar
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
+import java.util.Calendar
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -40,6 +40,9 @@ class eventDetail : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private val SELECT_IMAGE_REQUEST_CODE = 1
+    private lateinit var _rvHomeEventAdmin: RecyclerView
+
+    private lateinit var datalist: ArrayList<people>
 
     private var id: String? =""
 
@@ -83,72 +86,22 @@ class eventDetail : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        datalist = arrayListOf<people>()
+        _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvPeserta)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
-        val title = view.findViewById<EditText>(R.id.addevent_title)
-        val time = view.findViewById<Button>(R.id.addevent_time)
-        val date = view.findViewById<Button>(R.id.addevent_date)
-        val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
-        val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
+        val title = view.findViewById<TextView>(R.id.tvTitle)
+        val time = view.findViewById<TextView>(R.id.tvDateEvent)
+        val date = view.findViewById<TextView>(R.id.tvTimeEvent)
+//        val kategori = view.findViewById<TextView>(R.id.addevent_kategori)
+//        val kategoriumur = view.findViewById<TextView>(R.id.addevent_kategoriumur)
         val desc = view.findViewById<EditText>(R.id.addevent_desc)
         val location = view.findViewById<EditText>(R.id.addevent_alamat)
         val maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
 
-//        Log.d("CEK ID", id.toString())
-
-        val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
-        val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja", "Dewasa")
-
-        val adapter = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemskategori)
-        kategori.adapter = adapter
-
-        val adapterum = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemsum)
-        kategoriumur.adapter = adapterum
-
-
-//        imgclick.setOnClickListener {
-//            selectImageFromGallery(view)
-//        }
-
-//        date.setOnClickListener {
-//            val calendar = Calendar.getInstance()
-//            val year = calendar.get(Calendar.YEAR)
-//            val month = calendar.get(Calendar.MONTH)
-//            val day = calendar.get(Calendar.DAY_OF_MONTH)
-//
-//            val datePickerDialog = DatePickerDialog(
-//                view.context,
-//                { _, selectedYear, selectedMonth, selectedDay ->
-//                    date.setText("$selectedDay/$selectedMonth/$selectedYear")
-//                },
-//                year,
-//                month,
-//                day
-//            )
-//            datePickerDialog.show()
-//        }
-//
-//        time.setOnClickListener {
-//            val calendar = Calendar.getInstance()
-//            val hour = calendar.get(Calendar.HOUR_OF_DAY)
-//            val minute = calendar.get(Calendar.MINUTE)
-//
-//            val timePickerDialog = TimePickerDialog(
-//                view.context,
-//                { _, selectedHour, selectedMinute ->
-//                    // Do something with the selected time
-//                    time.setText("$selectedHour:$selectedMinute")
-//                },
-//                hour,
-//                minute,
-//                true
-//            )
-//            timePickerDialog.show()
-//        }
-
 
         val db = Firebase.firestore
-        db.collection("event").document(id.toString()).get().addOnSuccessListener{ document ->
+        db.collection("event").document(id.toString()).get().addOnSuccessListener { document ->
 
             title.setText(document.getString("name"))
             val timestamp = document.getTimestamp("date")
@@ -170,26 +123,8 @@ class eventDetail : Fragment() {
             }
 
 
-
-            val kategoriValue = document.getString("category")
-            val kategoriumurValue = document.getString("kategoriPeserta")
-
-            val kategoriAdapter = kategori.adapter
-            val kategoriumurAdapter = kategoriumur.adapter
-
-            for (i in 0 until kategoriAdapter.count) {
-                if (kategoriAdapter.getItem(i) == kategoriValue) {
-                    kategori.setSelection(i)
-                    break
-                }
-            }
-
-            for (i in 0 until kategoriumurAdapter.count) {
-                if (kategoriumurAdapter.getItem(i) == kategoriumurValue) {
-                    kategoriumur.setSelection(i)
-                    break
-                }
-            }
+//            kategori.setText(document.getString("category"))
+//            kategoriumur.setText(document.getString("kategoriPeserta"))
 
             desc.setText(document.getString("desc").toString())
             location.setText(document.getString("location").toString())
@@ -202,14 +137,34 @@ class eventDetail : Fragment() {
             val storageRef = storage.reference
 
             // Create a reference with an initial file path and name
-            val pathReference = storageRef.child("events/"+ document.getString("imgloc").toString()).downloadUrl
+            val pathReference =
+                storageRef.child("events/" + document.getString("imgloc").toString()).downloadUrl
 
             pathReference.addOnSuccessListener { uri ->
                 Glide.with(this)
                     .load(uri)
                     .into(imgclick)
             }
+        }
+        var dbregist = db.collection("registration").whereEqualTo("eventID", id!!)
+            .get().addOnSuccessListener { documents ->
+                for(doc in documents){
+                    var dbacc = db.collection("account").document(doc.data["accountID"].toString()).get()
+                        .addOnSuccessListener { document ->
 
+                            val eventpeople = people(
+                                document.getString("nama").toString(),
+                                document.id,
+                                document.getString("notelp").toString()
+                            )
+                            datalist.add(eventpeople)
+                            _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                            _rvHomeEventAdmin.adapter = adapterPeople(datalist)
+                        }
+                }
+            }
+        imgclick.setOnClickListener {
+            selectImageFromGallery(view)
         }
 
 //        val key = db.collection("YOUR_COLLECTION_NAME").document()
@@ -221,18 +176,18 @@ class eventDetail : Fragment() {
 
 
 
-//    fun selectImageFromGallery(view: View) {
-//        val intent = Intent(Intent.ACTION_PICK)
-//        intent.type = "image/*"
-//        startActivityForResult(intent, SELECT_IMAGE_REQUEST_CODE)
-//    }
-//
-//    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-//        super.onActivityResult(requestCode, resultCode, data)
-//
-//        if (requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
-//            val selectedImageUri = data?.data
-//            // Use the selectedImageUri to display the selected image in an ImageView or upload it to a server
-//        }
-//    }
+    fun selectImageFromGallery(view: View) {
+        val intent = Intent(Intent.ACTION_PICK)
+        intent.type = "image/*"
+        startActivityForResult(intent, SELECT_IMAGE_REQUEST_CODE)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
+            val selectedImageUri = data?.data
+            // Use the selectedImageUri to display the selected image in an ImageView or upload it to a server
+        }
+    }
 }

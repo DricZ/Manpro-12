@@ -2,5 +2,6 @@ package com.example.appmanprobaru.admin
 
 data class people(
     var name: String,
-    var id: String
+    var id: String,
+    var telp: String
 )

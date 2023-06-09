@@ -121,9 +121,7 @@ class detail_event : Fragment() {
                     date = (((document.data?.get("date") as com.google.firebase.Timestamp).toDate()
                         .toString()))
                     adminPickup = (document.data?.get("adminPickup") as Boolean)
-                    if (adminPickup){
-                        //TODO
-                    }
+
                     val arrayDate: List<String> = date!!.split(" ")
                     event_title.text = name
                     event_deskripsi.text = desc
@@ -187,7 +185,18 @@ class detail_event : Fragment() {
         }
 
         pop_daftar_Yes.setOnClickListener {
-            showKonfirmasiJemput()
+            val db = Firebase.firestore
+            val sharedPreferences = context?.getSharedPreferences("SessionUser", MODE_PRIVATE)
+            val idsss = sharedPreferences?.getString("id_user", "Noid")
+            if (adminPickup){
+                showKonfirmasiJemput()
+            }
+            else{
+                val data = registData(idsss!!, id!!, false, true)
+                db.collection("registration").document(id!!).set(data)
+            }
+            alertDialog.hide()
+
         }
 
         val dialogBuilder: AlertDialog.Builder = AlertDialog.Builder(requireContext())
