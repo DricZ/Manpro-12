@@ -10,7 +10,7 @@ data class addEventDataClass(
     val location:String,
     val maxPeserta:String,
     val kategoriPeserta:String,
-    val img:String,
+    val imgloc:String,
     val status:Boolean,
     val adminPickup:Boolean
 )

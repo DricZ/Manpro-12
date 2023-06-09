@@ -4,6 +4,7 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,24 +12,23 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.Toast
-import androidx.core.net.toUri
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
-import com.example.appmanprobaru.ChangePass
 import com.example.appmanprobaru.R
 import com.google.firebase.*
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.app
-import com.google.firebase.storage.ktx.storage
+import com.google.firebase.storage.FirebaseStorage
 import eventListAdmin
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
+
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -45,8 +45,10 @@ class addEvent : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private val SELECT_IMAGE_REQUEST_CODE = 1
-    private lateinit var imageUri : String
+//    private lateinit var imageUri : String
     private lateinit var imgclick : ImageView
+    private lateinit var imageUri: Uri
+    private lateinit var dataInput : addEventDataClass
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -99,6 +101,7 @@ class addEvent : Fragment() {
         var location = view.findViewById<EditText>(R.id.addevent_alamat)
         var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
         var addbutton = view.findViewById<Button>(R.id.btn_addevent)
+        val isPenjemputan = view.findViewById<CheckBox>(R.id.isPenjemputan)
         val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
         val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
 
@@ -179,19 +182,22 @@ class addEvent : Fragment() {
                 kategoriumur.getSelectedItem().toString()  != "Pilih Kategori 2")
             {
                 val db = Firebase.firestore
-                val key = db.collection("event").document()
-                val UniqueID = key.getId()
+//                var UniqueID = ""
+//                val key = db.collection("event").add(dataInput)
+//                key.addOnSuccessListener { documentReference ->
+//                    UniqueID = documentReference.id
+//                    // Gunakan uniqueID di sini
+//                }
 
 
-
-                val UniqueJPG = "$UniqueID.jpg"
                 val formatter = SimpleDateFormat("dd/MM/yyyy HH:mm:ss")
                 val dates = formatter.parse(dateString)
                 val dateObject = Date()
                 val timestamp = Timestamp(dates!!)
                 Log.d("TryingDate", dates.toString())
                 Log.d("TryingDate", timestamp.toString())
-                val dataInput = addEventDataClass(
+
+                var dataInput = addEventDataClass(
                     title.text.toString(),
                     desc.text.toString(),
                     kategori.getSelectedItem().toString(),
@@ -201,19 +207,57 @@ class addEvent : Fragment() {
                     kategoriumur.getSelectedItem().toString(),
                     "",
                     false,
-                    true
+                    isPenjemputan.isChecked()
                 )
 
-                val a = db.collection("event").document(UniqueID).set(dataInput).addOnSuccessListener {
-                    Toast.makeText(
-                        context,
-                        "Success Adding Event!",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    val newFragment = eventListAdmin()
-                    val transaction = requireActivity().supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.Main_fragment_admin, newFragment)
-                    transaction.commit()
+
+                val a = db.collection("event").add(dataInput).addOnSuccessListener { documentReference ->
+                    val UniqueID = documentReference.id
+                    val UniqueJPG = "$UniqueID.jpg"
+
+                    dataInput = addEventDataClass(
+                        title.text.toString(),
+                        desc.text.toString(),
+                        kategori.getSelectedItem().toString(),
+                        timestamp,
+                        location.text.toString(),
+                        maxPeserta.text.toString(),
+                        kategoriumur.getSelectedItem().toString(),
+                        UniqueJPG,
+                        false,
+                        isPenjemputan.isChecked()
+                    )
+
+                    db.collection("event").document(UniqueID).set(dataInput)
+
+                    // Buat referensi penyimpanan dari aplikasi kita
+                    val storageRef = FirebaseStorage.getInstance().reference
+
+                    // Buat referensi ke "foldername/filename.jpg"
+                    val imageRef = storageRef.child("events/$UniqueJPG")
+
+                    // Mengunggah file
+                    val uploadTask = imageRef.putFile(imageUri)
+
+                    uploadTask
+                        .addOnSuccessListener {
+                        Toast.makeText(
+                            context,
+                            "Success Adding Event!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                        val newFragment = eventListAdmin()
+                        val transaction = requireActivity().supportFragmentManager.beginTransaction()
+                        transaction.replace(R.id.Main_fragment_admin, newFragment)
+                        transaction.commit()
+                    }
+                        .addOnFailureListener{
+                        Toast.makeText(
+                            context,
+                            "Failed Upload Image!",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
                 }
 
 
@@ -248,6 +292,7 @@ class addEvent : Fragment() {
         if (requestCode == SELECT_IMAGE_REQUEST_CODE && resultCode == Activity.RESULT_OK) {
             try {
                 val selectedImageUri = data?.data
+                imageUri = selectedImageUri!!
                 if (!requireActivity().isDestroyed) {
                     // Start a load with Glide
                     activity?.let {
