@@ -37,6 +37,8 @@ class btn_home_admin : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var home_active : HomeAdmin
+
     private lateinit var _rvHomeEventAdmin: RecyclerView
 
     private lateinit var datalist: ArrayList<HomeEvent>
@@ -102,6 +104,7 @@ class btn_home_admin : Fragment() {
 
         datainit()
 
+
     }
 
     private fun datainit(){
@@ -125,8 +128,16 @@ class btn_home_admin : Fragment() {
                     val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " WIB", _timestamp[x], _status[x])
                     datalist.add(eventdata)
                 }
+                val adapterHA = adapterHomeAdmin(datalist)
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this.context)
-                _rvHomeEventAdmin.adapter = adapterHomeAdmin(datalist)
+                _rvHomeEventAdmin.adapter = adapterHA
+                adapterHA.setOnItemClickCallback(object : adapterHomeAdmin.OnItemClickCallback{
+                    override fun clicked(pos: Int, id: String) {
+                        //home_active.passID(id)
+                        loadFragment(eventDetail(),id)
+                    }
+
+                })
 
 
             }
@@ -134,6 +145,13 @@ class btn_home_admin : Fragment() {
                 Log.w("GET DATA", "Error getting documents: ", exception)
             }
     }
-
-
+    private fun loadFragment(fragment: Fragment, data:String){
+        val bundle = Bundle()
+        bundle.putString("id", data)
+        val transaction = parentFragmentManager.beginTransaction()
+        fragment.arguments = bundle
+        transaction.replace(R.id.Main_fragment_admin, fragment)
+        transaction.addToBackStack(null)
+        transaction.commit()
+    }
 }

@@ -37,6 +37,8 @@ class eventDetail : Fragment() {
     private var param2: String? = null
     private val SELECT_IMAGE_REQUEST_CODE = 1
 
+    private var id: String? =""
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -51,7 +53,7 @@ class eventDetail : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_event_detail_admin, container, false)
-
+        id = arguments?.getString("id", "Nan")
         return view
     }
 

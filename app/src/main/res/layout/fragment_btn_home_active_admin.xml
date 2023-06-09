@@ -35,19 +35,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
-                android:id="@+id/button"
-                android:layout_width="329dp"
-                android:layout_height="43dp"
-                android:backgroundTint="@color/gray"
-                android:text="@string/go_to_front"
-                android:textColor="@color/black"
-                android:textSize="15sp"
-                app:cornerRadius="15dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvHomeEventAdmin"
                 android:layout_width="match_parent"
@@ -55,8 +42,7 @@
                 android:layout_margin="40dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/button" />
+                app:layout_constraintStart_toStartOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 

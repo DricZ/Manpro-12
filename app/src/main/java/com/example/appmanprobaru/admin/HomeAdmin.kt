@@ -9,6 +9,8 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.HomeActivity
 import com.example.appmanprobaru.R
+import com.example.appmanprobaru.detail_event
+import com.example.appmanprobaru.home_page_recyclerView_Data
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.firestore.FirebaseFirestore
 import eventListAdmin
@@ -62,5 +64,16 @@ class HomeAdmin : AppCompatActivity() {
         val transaction = supportFragmentManager.beginTransaction()
         transaction.replace(R.id.Main_fragment_admin, fragment)
         transaction.commit()
+    }
+
+    fun passID(data: String) {
+        val bundle = Bundle()
+        bundle.putString("id", data)
+        val transaction = this.supportFragmentManager.beginTransaction()
+        val fragmentDetail = eventDetail()
+        fragmentDetail.arguments = bundle
+        transaction.replace(R.id.Main_fragment_admin, fragmentDetail)
+        transaction.commit()
+
     }
 }

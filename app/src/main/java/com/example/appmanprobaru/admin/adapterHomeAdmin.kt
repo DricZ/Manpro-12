@@ -6,7 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.android.car.ui.toolbar.`ToolbarControllerAdapterV1$ToolbarAdapterState$$ExternalSyntheticStaticInterfaceCall0`
 import com.bumptech.glide.Glide
 import com.example.appmanprobaru.R
 import com.google.firebase.ktx.Firebase
@@ -14,11 +16,18 @@ import com.google.firebase.storage.ktx.storage
 
 class adapterHomeAdmin(private val listForum : ArrayList<HomeEvent>) : RecyclerView.Adapter<adapterHomeAdmin.ListViewHolder>(){
 
+    private lateinit var onItemClickCallback : OnItemClickCallback
+
+    interface OnItemClickCallback {
+        fun clicked(pos: Int, id: String)
+    }
+
     inner class ListViewHolder(itemView : View) : RecyclerView.ViewHolder(itemView){
         var _ivImage : ImageView = itemView.findViewById(R.id.IVImg)
         var _tvTitle : TextView = itemView.findViewById(R.id.TVTitle)
         var _tvDate : TextView = itemView.findViewById(R.id.TVDate)
         var _tvTime : TextView = itemView.findViewById(R.id.TVTime)
+        var _card : ConstraintLayout = itemView.findViewById(R.id.card)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
@@ -33,6 +42,9 @@ class adapterHomeAdmin(private val listForum : ArrayList<HomeEvent>) : RecyclerV
         holder._tvTitle.setText(HomeEvent.title)
         holder._tvDate.setText(HomeEvent.date)
         holder._tvTime.setText(HomeEvent.time)
+        holder._card.setOnClickListener {
+            onItemClickCallback.clicked(position, HomeEvent.id)
+        }
 
 
         val storage = Firebase.storage("gs://manpro-12.appspot.com")
@@ -52,5 +64,9 @@ class adapterHomeAdmin(private val listForum : ArrayList<HomeEvent>) : RecyclerV
 
     override fun getItemCount(): Int {
         return listForum.size
+    }
+
+    fun setOnItemClickCallback(onItemClickCallback: adapterHomeAdmin.OnItemClickCallback){
+        this.onItemClickCallback = onItemClickCallback
     }
 }
