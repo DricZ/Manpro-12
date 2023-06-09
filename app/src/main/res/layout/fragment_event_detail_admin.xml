@@ -23,19 +23,15 @@
             app:layout_constraintTop_toBottomOf="@+id/textView12"
             app:srcCompat="@drawable/mountain_dummy_square" />
 
-        <EditText
-            android:id="@+id/addevent_title"
+        <TextView
+            android:id="@+id/tvTitle"
             android:layout_width="330dp"
-            android:layout_height="48dp"
+            android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_bg_box"
-            android:drawableStart="@drawable/icon_title"
             android:drawablePadding="10dp"
-            android:hint="Title"
-            android:inputType="textEmailAddress"
-            android:paddingStart="10dp"
             android:textColor="#000000"
-            android:textColorHint="@color/live_object_bg"
+            android:text="Title"
+            android:textSize="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.493"
             app:layout_constraintStart_toStartOf="parent"
@@ -49,16 +45,16 @@
             android:background="@drawable/rounded_bg_box"
             android:drawableStart="@drawable/icon_event"
             android:drawablePadding="10dp"
-            android:hint="Deskripsi Event"
             android:ellipsize="end"
-            android:maxLines="1"
+            android:hint="Deskripsi Event"
             android:inputType="text"
+            android:maxLines="1"
             android:paddingStart="10dp"
             android:textColor="#000000"
             android:textColorHint="@color/live_object_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_kategoriumur" />
+            app:layout_constraintTop_toBottomOf="@+id/tvTimeEvent" />
 
         <EditText
             android:id="@+id/addevent_maxpeserta"
@@ -108,69 +104,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <Button
-            android:id="@+id/addevent_date"
+        <TextView
+            android:id="@+id/tvDateEvent"
             android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
-            android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/calendar_icon_black"
-            android:drawablePadding="10dp"
-            android:ems="10"
-            android:gravity="left|center_vertical"
-            android:hint="Date"
-            app:cornerRadius="20dp"
-            android:padding="10dp"
+            android:text="Date"
+            android:textSize="20dp"
+            android:textColor="#000000"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/tvTimeEvent"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Time"
+            android:textSize="20dp"
+            android:textColor="@color/black"
             android:textColorHint="@color/live_object_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_title" />
-
-        <Button
-            android:id="@+id/addevent_time"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:backgroundTint="@color/white"
-            android:drawableLeft="@drawable/icon_time"
-            android:drawablePadding="10dp"
-            android:gravity="left|center_vertical"
-            android:ems="10"
-            app:cornerRadius="20dp"
-            android:hint="Time"
-            android:inputType="time"
-            android:padding="10dp"
-            android:textColorHint="@color/live_object_bg"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_date" />
-
-        <Spinner
-            android:id="@+id/addevent_kategori"
-            android:layout_width="330dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_bg_box"
-            android:drawableStart="@drawable/icon_kategori"
-            android:drawablePadding="10dp"
-            android:minHeight="48dp"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_time" />
-
-        <Spinner
-            android:id="@+id/addevent_kategoriumur"
-            android:layout_width="330dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:background="@drawable/rounded_bg_box"
-            android:drawablePadding="10dp"
-            android:minHeight="48dp"
-            android:padding="10dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_kategori" />
+            app:layout_constraintTop_toBottomOf="@+id/tvDateEvent" />
 
         <TextView
             android:id="@+id/textView13"

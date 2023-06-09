@@ -4,7 +4,6 @@ import android.app.Activity
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,12 +13,10 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import com.example.appmanprobaru.R
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import java.util.Calendar
-import com.google.firebase.firestore.ktx.firestore
-import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -81,9 +78,9 @@ class eventDetail : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
-        var title = view.findViewById<EditText>(R.id.addevent_title)
-        val time = view.findViewById<Button>(R.id.addevent_time)
-        val date = view.findViewById<Button>(R.id.addevent_date)
+        var title = view.findViewById<TextView>(R.id.tvTitle)
+        val time = view.findViewById<TextView>(R.id.tvTimeEvent)
+        val date = view.findViewById<TextView>(R.id.tvDateEvent)
         val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
         val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
         var desc = view.findViewById<EditText>(R.id.addevent_desc)
