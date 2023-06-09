@@ -1,6 +1,5 @@
 import android.annotation.SuppressLint
 import android.content.DialogInterface
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -13,11 +12,10 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appmanprobaru.R
-import com.example.appmanprobaru.admin.HomeAdmin
 import com.example.appmanprobaru.admin.HomeEvent
 import com.example.appmanprobaru.admin.adapterEventAdmin
 import com.example.appmanprobaru.admin.addEvent
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -25,6 +23,7 @@ class eventListAdmin : Fragment() {
     private lateinit var _rvHomeEventAdmin: RecyclerView
 
     private lateinit var datalist: ArrayList<HomeEvent>
+    private lateinit var datalistAll: ArrayList<HomeEvent>
 
     private var _id: MutableList<String> = emptyList<String>().toMutableList()
 
@@ -33,9 +32,11 @@ class eventListAdmin : Fragment() {
     private var _desc: MutableList<String> = emptyList<String>().toMutableList()
     private var _location: MutableList<String> = emptyList<String>().toMutableList()
     private var _date: MutableList<String> = emptyList<String>().toMutableList()
+    private var _timestamp: MutableList<Timestamp> = emptyList<Timestamp>().toMutableList()
     private var _category: MutableList<String> = emptyList<String>().toMutableList()
     private var _maxPeserta: MutableList<String> = emptyList<String>().toMutableList()
     private var _kategoriPeserta: MutableList<String> = emptyList<String>().toMutableList()
+    private var _status: MutableList<Boolean> = emptyList<Boolean>().toMutableList()
 
     private var _latestOldest : Boolean = true
     private var _finishedUnFinished : Boolean = false
@@ -48,6 +49,7 @@ class eventListAdmin : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.activity_event_list_admin, container, false)
         datalist = arrayListOf<HomeEvent>()
+        datalistAll = arrayListOf<HomeEvent>()
 
         _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvEvent)
         val _btnAddAdmin = view.findViewById<Button>(R.id.addAdmin)
@@ -65,9 +67,15 @@ class eventListAdmin : Fragment() {
          if (_latestOldest){
             _latestOldest = false
              _btnLatestOldest.setText("Oldest")
+             bubbleSort(datalist.size)
+             _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+             _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
          }else{
             _latestOldest = true
             _btnLatestOldest.setText("Latest")
+             bubbleSort(datalist.size)
+             _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+             _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
          }
         }
 
@@ -75,9 +83,15 @@ class eventListAdmin : Fragment() {
             if (_finishedUnFinished){
                 _finishedUnFinished = false
                 _btnFinishedUnFinished.setText("Unfinished")
+                sort()
+                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
             }else{
                 _finishedUnFinished = true
                 _btnFinishedUnFinished.setText("Finished")
+                sort()
+                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)
             }
         }
 
@@ -86,6 +100,63 @@ class eventListAdmin : Fragment() {
         return view
     }
 
+    fun sort(){
+        datalist.clear()
+        for (doc in datalistAll){
+            if (_finishedUnFinished) {
+
+                if (doc.status) {
+                    datalist.add(doc)
+                }
+            }
+            else {
+                if (!doc.status) {
+                    datalist.add(doc)
+                }
+            }
+        }
+        bubbleSort(datalist.size)
+    }
+    fun bubbleSort(n: Int) {
+        var i: Int
+        var j: Int
+        var temp: HomeEvent
+        var swapped: Boolean
+        i = 0
+        while (i < n - 1) {
+            swapped = false
+            j = 0
+            while (j < n - i - 1) {
+                if (_latestOldest) {
+                    if (datalist[j].timestamp.compareTo(datalist[j + 1].timestamp) == -1) {
+                        // Swap arr[j] and arr[j+1]
+                        temp = datalist[j]
+                        datalist[j] = datalist[j + 1]
+                        datalist[j + 1] = temp
+                        swapped = true
+                    }
+                }
+                else {
+                    if (datalist[j].timestamp.compareTo(datalist[j + 1].timestamp) == 1) {
+                        // Swap arr[j] and arr[j+1]
+                        temp = datalist[j]
+                        datalist[j] = datalist[j + 1]
+                        datalist[j + 1] = temp
+                        swapped = true
+                    }
+                }
+                j++
+            }
+
+
+            // If no two elements were
+
+
+            // swapped by inner loop, then break
+            if (swapped == false) break
+            i++
+        }
+    }
     private fun datainit() {
 // val layoutManager = GridLayoutManager(2)
 
@@ -105,6 +176,9 @@ class eventListAdmin : Fragment() {
                     _date.add(
                         ((document.data["date"] as com.google.firebase.Timestamp).toDate().toString())
                     )
+                    _timestamp.add((document.data["date"] as com.google.firebase.Timestamp))
+                    _status.add((document.data["status"] as Boolean))
+
                 }
                 for (x in 0.._id.size - 1) {
                     val arrayDate: List<String> = _date[x].split(" ")
@@ -113,11 +187,16 @@ class eventListAdmin : Fragment() {
                         _img[x],
                         _name[x],
                         arrayDate[1] + " " + arrayDate[2] + " " + arrayDate[5],
-                        arrayDate[3] + " WIB"
+                        arrayDate[3] + " WIB",
+                        _timestamp[x],
+                        _status[x]
                     )
                     datalist.add(eventdata)
+                    datalistAll.add(eventdata)
 
                 }
+                sort()
+                Log.d("TIMESTAMP", _timestamp[1].toString())
                 val adapterE = adapterEventAdmin(datalist)
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
                 _rvHomeEventAdmin.adapter = adapterEventAdmin(datalist)

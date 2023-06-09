@@ -17,6 +17,7 @@ import com.example.appmanprobaru.Interface_Detail_Event
 import com.example.appmanprobaru.R
 import com.example.appmanprobaru.home_page_recyclerView_Data
 import com.example.appmanprobaru.rvHome_Adapter
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
@@ -50,6 +51,9 @@ class btn_home_admin : Fragment() {
     private var _category : MutableList<String> = emptyList<String>().toMutableList()
     private var _maxPeserta : MutableList<String> = emptyList<String>().toMutableList()
     private var _kategoriPeserta : MutableList<String> = emptyList<String>().toMutableList()
+    private var _timestamp: MutableList<Timestamp> = emptyList<Timestamp>().toMutableList()
+    private var _status: MutableList<Boolean> = emptyList<Boolean>().toMutableList()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -113,10 +117,12 @@ class btn_home_admin : Fragment() {
                     _img.add(document.data["imgloc"].toString())
                     _date.add(((document.data["date"] as com.google.firebase.Timestamp).toDate().toString()))
 //                    Log.d("TimeStampssssss", document.data["date"].toString())
+                    _timestamp.add((document.data["date"] as com.google.firebase.Timestamp))
+                    _status.add((document.data["status"] as Boolean))
                 }
                 for (x in 0.._id.size-1){
                     val arrayDate: List<String> =_date[x].split(" ")
-                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " WIB")
+                    val eventdata =HomeEvent(_id[x], _img[x],_name[x],arrayDate[1] + " "+arrayDate[2] + " " + arrayDate[5],arrayDate[3] + " WIB", _timestamp[x], _status[x])
                     datalist.add(eventdata)
                 }
                 _rvHomeEventAdmin.layoutManager = LinearLayoutManager(this.context)
