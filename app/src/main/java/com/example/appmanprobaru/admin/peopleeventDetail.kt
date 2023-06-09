@@ -1,7 +1,8 @@
 package com.example.appmanprobaru.admin
 
-data class people(
+data class peopleeventDetail(
     var name: String,
     var id: String,
     var telp: String,
+    var needPickup: Boolean
 )

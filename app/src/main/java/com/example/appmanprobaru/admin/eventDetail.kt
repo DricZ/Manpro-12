@@ -10,16 +10,13 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
+import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.appmanprobaru.R
+import com.google.firebase.Timestamp
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.ktx.storage
@@ -41,8 +38,11 @@ class eventDetail : Fragment() {
     private var param2: String? = null
     private val SELECT_IMAGE_REQUEST_CODE = 1
     private lateinit var _rvHomeEventAdmin: RecyclerView
+    private var filter:Boolean = true
 
-    private lateinit var datalist: ArrayList<people>
+    private lateinit var datalist: ArrayList<peopleeventDetail>
+    private lateinit var datalistAll: ArrayList<peopleeventDetail>
+
 
     private var id: String? =""
 
@@ -83,10 +83,23 @@ class eventDetail : Fragment() {
                 }
             }
     }
-
+    fun sort(){
+        datalist.clear()
+        for (doc in datalistAll){
+            if (filter) {
+                if (doc.needPickup) {
+                    datalist.add(doc)
+                }
+            }
+            else {
+                datalist.add(doc)
+            }
+        }
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        datalist = arrayListOf<people>()
+        datalist = arrayListOf<peopleeventDetail>()
+        datalistAll = arrayListOf<peopleeventDetail>()
         _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvPeserta)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
@@ -99,7 +112,23 @@ class eventDetail : Fragment() {
         val location = view.findViewById<EditText>(R.id.addevent_alamat)
         val maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
 
+        var _btnFilter = view.findViewById<Button>(R.id.btnFilter)
+        _btnFilter.setOnClickListener {
+            if (filter){
+                filter = false
+                _btnFilter.setText("Jemputan")
+                sort()
+                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                _rvHomeEventAdmin.adapter = adapterPeople(datalist)
+            }else{
+                filter = true
+                _btnFilter.setText("All")
+                sort()
+                _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                _rvHomeEventAdmin.adapter = adapterPeople(datalist)
 
+            }
+        }
         val db = Firebase.firestore
         db.collection("event").document(id.toString()).get().addOnSuccessListener { document ->
 
@@ -121,10 +150,25 @@ class eventDetail : Fragment() {
                 date.text = "$day/$month/$year"
                 time.text = "$hour:$minute:$second"
             }
+        val buttonsimpan = view.findViewById<Button>(R.id.btnSimpan)
+        buttonsimpan.setOnClickListener {
+
+            val db = Firebase.firestore
+            var dbevent = db.collection("event")
+            var dbregist = db.collection("event").document(id!!).get()
+                .addOnSuccessListener { document ->
+                    var data = addEventDataClass(document.data?.get("name").toString(),desc.text.toString(), document.data?.get("category").toString(),document.data?.get("date") as Timestamp, location.text.toString(), maxPeserta.text.toString(), document.data?.get("kategoriPeserta").toString(), document.data?.get("imgloc").toString(), document.data?.get("status") as Boolean, document.data?.get("adminPickup") as Boolean )
+                    dbevent.document(id!!).set(data)
+                }
 
 
-//            kategori.setText(document.getString("category"))
-//            kategoriumur.setText(document.getString("kategoriPeserta"))
+            Toast.makeText(
+                context,
+                "Success Edit Event!",
+                Toast.LENGTH_SHORT
+            ).show()
+
+
 
             desc.setText(document.getString("desc").toString())
             location.setText(document.getString("location").toString())
@@ -152,12 +196,14 @@ class eventDetail : Fragment() {
                     var dbacc = db.collection("account").document(doc.data["accountID"].toString()).get()
                         .addOnSuccessListener { document ->
 
-                            val eventpeople = people(
-                                document.getString("nama").toString(),
+                            val eventpeople = peopleeventDetail(
+                                document.data?.get("nama").toString(),
                                 document.id,
-                                document.getString("notelp").toString()
+                                document.data?.get("notelp").toString(),
+                                doc.data["need_pickup"] as Boolean
                             )
                             datalist.add(eventpeople)
+                            datalistAll.add(eventpeople)
                             _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
                             _rvHomeEventAdmin.adapter = adapterPeople(datalist)
                         }

@@ -43,6 +43,7 @@ class adminListAdmin : Fragment() {
     private var _id: MutableList<String> = emptyList<String>().toMutableList()
 
     private var _name: MutableList<String> = emptyList<String>().toMutableList()
+    private var _notelp: MutableList<String> = emptyList<String>().toMutableList()
 
 
 
@@ -107,10 +108,11 @@ class adminListAdmin : Fragment() {
                 datalist.clear()
                 _name.clear()
                 _id.clear()
-
+                _notelp.clear()
                 for (document in documents) {
                     _name.add(document.data["nama"].toString())
                     _id.add(document.id.toString())
+                    _notelp.add(document.data["notelp"].toString())
 
                     if (document.data["fpass"].toString() == "true"){
 
@@ -120,7 +122,9 @@ class adminListAdmin : Fragment() {
                 for (x in 0.._id.size - 1) {
                     val peopleData = people(
                         _name[x],
-                        _id[x]
+                        _id[x],
+                        _notelp[x]
+
                     )
                     datalist.add(peopleData)
                 }
