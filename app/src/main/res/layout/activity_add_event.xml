@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/background">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -104,7 +104,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.506"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/addevent_maxpeserta" />
+            app:layout_constraintTop_toBottomOf="@+id/isPenjemputan" />
 
         <TextView
             android:id="@+id/textView12"
@@ -131,9 +131,9 @@
             android:ems="10"
             android:gravity="left|center_vertical"
             android:hint="Date"
-            app:cornerRadius="20dp"
             android:padding="10dp"
             android:textColorHint="@color/live_object_bg"
+            app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addevent_title" />
@@ -146,13 +146,13 @@
             android:backgroundTint="@color/white"
             android:drawableLeft="@drawable/icon_time"
             android:drawablePadding="10dp"
-            android:gravity="left|center_vertical"
             android:ems="10"
-            app:cornerRadius="20dp"
+            android:gravity="left|center_vertical"
             android:hint="Time"
             android:inputType="time"
             android:padding="10dp"
             android:textColorHint="@color/live_object_bg"
+            app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addevent_date" />
@@ -183,6 +183,16 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/addevent_kategori" />
+
+        <CheckBox
+            android:id="@+id/isPenjemputan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/menyediakan_penjemputan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_maxpeserta" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
