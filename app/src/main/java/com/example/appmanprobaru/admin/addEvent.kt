@@ -92,7 +92,7 @@ class addEvent : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         imgclick = view.findViewById(R.id.addevent_upimage)
-        var title = view.findViewById<EditText>(R.id.tvTitle)
+        val title = view.findViewById<EditText>(R.id.tvTitle)
         val time = view.findViewById<Button>(R.id.tvTimeEvent)
         val date = view.findViewById<Button>(R.id.tvDateEvent)
         val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
