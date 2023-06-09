@@ -9,13 +9,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.appmanprobaru.R
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import java.util.Calendar
 
 // TODO: Rename parameter arguments, choose names that match
@@ -33,6 +38,9 @@ class eventDetail : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
     private val SELECT_IMAGE_REQUEST_CODE = 1
+    private lateinit var _rvHomeEventAdmin: RecyclerView
+
+    private lateinit var datalist: ArrayList<people>
 
     private var id: String? =""
 
@@ -76,27 +84,66 @@ class eventDetail : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        datalist = arrayListOf<people>()
+        _rvHomeEventAdmin = view.findViewById<RecyclerView>(R.id.rvPeserta)
 
         val imgclick = view.findViewById<ImageView>(R.id.addevent_upimage)
         var title = view.findViewById<TextView>(R.id.tvTitle)
         val time = view.findViewById<TextView>(R.id.tvTimeEvent)
         val date = view.findViewById<TextView>(R.id.tvDateEvent)
-        val kategori = view.findViewById<Spinner>(R.id.addevent_kategori)
-        val kategoriumur = view.findViewById<Spinner>(R.id.addevent_kategoriumur)
+
         var desc = view.findViewById<EditText>(R.id.addevent_desc)
         var location = view.findViewById<EditText>(R.id.addevent_alamat)
         var maxPeserta = view.findViewById<EditText>(R.id.addevent_maxpeserta)
 
-        val itemskategori = arrayOf("Pilih Kategori 1","Harian", "Mingguan", "Bulanan", "Insidentil")
-        val itemsum = arrayOf("Pilih Kategori 2","Umum", "Pemuda", "Remaja")
 
-        val adapter = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemskategori)
-        kategori.adapter = adapter
+        val db = Firebase.firestore
+        var dbevent = db.collection("event").document(id!!)
+        dbevent.get()
+            .addOnSuccessListener { document ->
+                title.text = (document.data?.get("name").toString())
 
-        val adapterum = ArrayAdapter(view.context, R.layout.spinner_item_layout, itemsum)
-        kategoriumur.adapter = adapterum
+                var img = (document.data?.get("imgloc").toString())
+                var dates = (((document.data?.get("date") as com.google.firebase.Timestamp).toDate()
+                    .toString()))
+                val arrayDate: List<String> = dates!!.split(" ")
+                val datetext = arrayDate[1] + " " + arrayDate[2] + " " + arrayDate[5]
+                val timetext = arrayDate[3]
+                date.text = datetext
+                time.text = timetext
+                desc.setText(document.data?.get("desc").toString())
+                location.setText(document.data?.get("location").toString())
+                maxPeserta.setText(document.data?.get("maxPeserta").toString())
 
+                val storage = Firebase.storage("gs://manpro-12.appspot.com")
 
+                val storageRef = storage.reference
+
+                // Create a reference with an initial file path and name
+                val pathReference = storageRef.child("events/"+ img).downloadUrl
+
+                pathReference.addOnSuccessListener { uri ->
+                    Glide.with(requireContext())
+                        .load(uri)
+                        .into(imgclick)
+                }
+            }
+        var dbregist = db.collection("registration").whereEqualTo("eventID", id!!)
+            .get().addOnSuccessListener { documents ->
+                for(doc in documents){
+                    var dbacc = db.collection("account").document(doc.data["accountID"].toString()).get()
+                        .addOnSuccessListener { document ->
+
+                            val eventpeople = people(
+                                document.data?.get("nama").toString(),
+                                document.id
+                            )
+                            datalist.add(eventpeople)
+                            _rvHomeEventAdmin.layoutManager = LinearLayoutManager(context)
+                            _rvHomeEventAdmin.adapter = adapterPeserta(datalist)
+                        }
+                }
+            }
         imgclick.setOnClickListener {
             selectImageFromGallery(view)
         }
