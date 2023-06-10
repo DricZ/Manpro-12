@@ -1,0 +1,138 @@
+[
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/event_box_layout.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/event_box_layout.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/profile_page_event_rv_layout.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/profile_page_event_rv_layout.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_event_list_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_event_list_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_btn_home_active.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_btn_home_active.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_btn_home_active_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_btn_home_active_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_profile_login.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_profile_login.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_add_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_add_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/item_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/item_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/custom_layout_for_recyclerview.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/custom_layout_for_recyclerview.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/main_screen_with_navbar.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/main_screen_with_navbar.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_btn_profile_active.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_btn_profile_active.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_detail_event.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_detail_event.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/main_screen_navbar_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/main_screen_navbar_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/item_peserta.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/item_peserta.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/item_people.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/item_people.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/pop_menu_daftar.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/pop_menu_daftar.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_sign_up.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_sign_up.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_btn_live_active.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_btn_live_active.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_btn_about_us_active.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_btn_about_us_active.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_jemaat_list_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_jemaat_list_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/spinner_item_layout.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/spinner_item_layout.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/event.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/event.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/profile.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/profile.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_add_jemaat.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_add_jemaat.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_forget_password.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_forget_password.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_people_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_people_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_add_event.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_add_event.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/item_home_event.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/item_home_event.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/item_event_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/item_event_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_change_pass.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_change_pass.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/pop_menu_jemput.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/pop_menu_jemput.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/activity_admin_list_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/activity_admin_list_admin.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/login.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/login.xml"
+    },
+    {
+        "merged": "com.example.appmanprobaru.app-mergeDebugResources-5:/layout/fragment_event_detail_admin.xml",
+        "source": "com.example.appmanprobaru.app-main-8:/layout/fragment_event_detail_admin.xml"
+    }
+]

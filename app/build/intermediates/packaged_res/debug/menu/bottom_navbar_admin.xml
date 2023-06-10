@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+
+    <item
+        android:id="@+id/bottom_navbar_homeadm"
+        android:title="Home"
+        android:icon="@drawable/icon_home_btn"
+        />
+    <item
+        android:id="@+id/bottom_navbar_people"
+        android:title="People"
+        android:icon="@drawable/icon_person"
+        />
+    <item
+        android:id="@+id/bottom_navbar_eventsadm"
+        android:title="Events"
+        android:icon="@drawable/calendar_icon"
+        />
+
+    <item
+        android:id="@+id/bottom_navbar_profileadm"
+        android:icon="@drawable/logout"
+        android:title="Profile" />
+
+</menu>

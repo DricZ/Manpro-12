@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/addevent_upimage"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="24dp"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView12"
+            app:srcCompat="@drawable/mountain_dummy_square" />
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:drawablePadding="10dp"
+            android:text="Title"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <EditText
+            android:id="@+id/addevent_desc"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_event"
+            android:drawablePadding="10dp"
+            android:ellipsize="end"
+            android:hint="Deskripsi Event"
+            android:inputType="text"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTimeEvent" />
+
+        <EditText
+            android:id="@+id/addevent_maxpeserta"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_people"
+            android:drawablePadding="10dp"
+            android:hint="Max peserta"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_alamat" />
+
+        <EditText
+            android:id="@+id/addevent_alamat"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_addlocation"
+            android:drawablePadding="10dp"
+            android:hint="Alamat"
+            android:inputType="text"
+            android:padding="10dp"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.506"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_desc" />
+
+        <TextView
+            android:id="@+id/textView12"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Event Detail"
+            android:textColor="#000000"
+            android:textSize="25dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <TextView
+            android:id="@+id/tvDateEvent"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:text="Date"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+        <TextView
+            android:id="@+id/tvTimeEvent"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:text="Time"
+            android:textColor="@color/black"
+            android:textColorHint="@color/live_object_bg"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+        <TextView
+            android:id="@+id/textView13"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Peserta"
+            android:textColor="#000000"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btnSimpan" />
+
+        <Button
+            android:id="@+id/btnFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/gray"
+            android:text=""
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.117"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView13" />
+
+        <ScrollView
+            android:id="@+id/scrollview1"
+            android:layout_width="match_parent"
+            android:layout_height="500dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnFilter">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvPeserta"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+
+            </LinearLayout>
+
+        </ScrollView>
+
+        <Button
+            android:id="@+id/btnSimpan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Simpan"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_maxpeserta" />
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Title"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/addevent_upimage" />
+
+        <TextView
+            android:id="@+id/textView10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.099"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvTitle" />
+
+        <TextView
+            android:id="@+id/textView15"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.105"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDateEvent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

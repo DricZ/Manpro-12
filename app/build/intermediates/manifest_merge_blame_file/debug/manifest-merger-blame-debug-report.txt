@@ -1,0 +1,329 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.example.appmanprobaru"
+4    android:versionCode="1"
+5    android:versionName="1.0" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="21"
+8-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml
+9        android:targetSdkVersion="33" />
+9-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml
+10
+11    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+11-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:5:5-6:67
+11-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:6:9-64
+12    <uses-permission android:name="android.permission.INTERNET" />
+12-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:7:5-67
+12-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:7:22-64
+13
+14    <queries>
+14-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:26:5-31:15
+15        <provider
+15-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:27:9-30:67
+16            android:name="com.android.car.ui.plugin.PluginNameProvider"
+16-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:28:13-72
+17            android:authorities="com.android.car.ui.plugin" />
+17-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:29:13-60
+18        <!-- Needs to be explicitly declared on Android R+ -->
+19        <package android:name="com.google.android.apps.maps" />
+19-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:33:9-64
+19-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:33:18-61
+20    </queries> <!-- Include required permissions for Google Maps API to run. -->
+21    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+21-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:23:5-79
+21-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:23:22-76
+22
+23    <uses-feature
+23-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:26:5-28:35
+24        android:glEsVersion="0x00020000"
+24-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:27:9-41
+25        android:required="true" />
+25-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:28:9-32
+26
+27    <permission
+27-->[androidx.core:core:1.10.1] C:\Users\Audrico\.gradle\caches\transforms-3\07660dd93380fa02796bde6e098cf376\transformed\core-1.10.1\AndroidManifest.xml:22:5-24:47
+28        android:name="com.example.appmanprobaru.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+28-->[androidx.core:core:1.10.1] C:\Users\Audrico\.gradle\caches\transforms-3\07660dd93380fa02796bde6e098cf376\transformed\core-1.10.1\AndroidManifest.xml:23:9-81
+29        android:protectionLevel="signature" />
+29-->[androidx.core:core:1.10.1] C:\Users\Audrico\.gradle\caches\transforms-3\07660dd93380fa02796bde6e098cf376\transformed\core-1.10.1\AndroidManifest.xml:24:9-44
+30
+31    <uses-permission android:name="com.example.appmanprobaru.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+31-->[androidx.core:core:1.10.1] C:\Users\Audrico\.gradle\caches\transforms-3\07660dd93380fa02796bde6e098cf376\transformed\core-1.10.1\AndroidManifest.xml:26:5-97
+31-->[androidx.core:core:1.10.1] C:\Users\Audrico\.gradle\caches\transforms-3\07660dd93380fa02796bde6e098cf376\transformed\core-1.10.1\AndroidManifest.xml:26:22-94
+32
+33    <application
+33-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:9:5-77:19
+34        android:allowBackup="true"
+34-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:10:9-35
+35        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+35-->[androidx.core:core:1.10.1] C:\Users\Audrico\.gradle\caches\transforms-3\07660dd93380fa02796bde6e098cf376\transformed\core-1.10.1\AndroidManifest.xml:28:18-86
+36        android:dataExtractionRules="@xml/data_extraction_rules"
+36-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:11:9-65
+37        android:debuggable="true"
+38        android:enableOnBackInvokedCallback="true"
+38-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:17:9-51
+39        android:fullBackupContent="@xml/backup_rules"
+39-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:12:9-54
+40        android:icon="@mipmap/ic_launcher"
+40-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:13:9-43
+41        android:label="@string/app_name"
+41-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:14:9-41
+42        android:supportsRtl="true"
+42-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:15:9-35
+43        android:testOnly="true"
+44        android:theme="@style/Theme.AppManproBaru" >
+44-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:16:9-51
+45        <activity
+45-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:19:9-21:40
+46            android:name="com.example.appmanprobaru.ChangePass"
+46-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:20:13-39
+47            android:exported="false" />
+47-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:21:13-37
+48        <activity
+48-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:22:9-24:40
+49            android:name="com.example.appmanprobaru.forgetPassword"
+49-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:23:13-43
+50            android:exported="false" />
+50-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:24:13-37
+51        <activity
+51-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:25:9-27:40
+52            android:name="com.example.appmanprobaru.admin.addAdmin"
+52-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:26:13-43
+53            android:exported="false" />
+53-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:27:13-37
+54        <activity
+54-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:28:9-30:40
+55            android:name="com.example.appmanprobaru.admin.addEvent"
+55-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:29:13-43
+56            android:exported="false" />
+56-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:30:13-37
+57        <activity
+57-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:31:9-33:40
+58            android:name="com.example.appmanprobaru.profile_login"
+58-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:32:13-42
+59            android:exported="false" />
+59-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:33:13-37
+60        <activity
+60-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:34:9-36:40
+61            android:name="com.example.appmanprobaru.admin.addJemaat"
+61-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:35:13-44
+62            android:exported="false" />
+62-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:36:13-37
+63        <activity
+63-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:37:9-39:40
+64            android:name="com.example.appmanprobaru.admin.adminListAdmin"
+64-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:38:13-49
+65            android:exported="false" />
+65-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:39:13-37
+66        <activity
+66-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:40:9-42:40
+67            android:name="com.example.appmanprobaru.admin.jemaatListAdmin"
+67-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:41:13-50
+68            android:exported="false" />
+68-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:42:13-37
+69        <activity
+69-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:43:9-45:40
+70            android:name="com.example.appmanprobaru.detail_event"
+70-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:44:13-41
+71            android:exported="false" />
+71-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:45:13-37
+72        <activity
+72-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:46:9-48:40
+73            android:name="com.example.appmanprobaru.admin.PeopleAdmin"
+73-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:47:13-46
+74            android:exported="false" />
+74-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:48:13-37
+75        <activity
+75-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:49:9-52:45
+76            android:name="com.example.appmanprobaru.admin.HomeAdmin"
+76-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:50:13-44
+77            android:exported="false"
+77-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:51:13-37
+78            android:taskAffinity=".admin" />
+78-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:52:13-42
+79        <activity
+79-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:53:9-55:40
+80            android:name="com.example.appmanprobaru.SignUpActivity"
+80-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:54:13-43
+81            android:exported="false" />
+81-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:55:13-37
+82        <activity
+82-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:56:9-58:40
+83            android:name="com.example.appmanprobaru.event"
+83-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:57:13-34
+84            android:exported="false" />
+84-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:58:13-37
+85        <activity
+85-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:59:9-61:40
+86            android:name="com.example.appmanprobaru.profile"
+86-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:60:13-36
+87            android:exported="false" />
+87-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:61:13-37
+88        <activity
+88-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:62:9-72:20
+89            android:name="com.example.appmanprobaru.HomeActivity"
+89-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:63:13-41
+90            android:exported="true"
+90-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:64:13-36
+91            android:noHistory="true"
+91-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:65:13-37
+92            android:taskAffinity=".jemaat" >
+92-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:66:13-43
+93            <intent-filter>
+93-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:67:13-71:29
+94                <action android:name="android.intent.action.MAIN" />
+94-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:68:17-69
+94-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:68:25-66
+95
+96                <category android:name="android.intent.category.LAUNCHER" />
+96-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:70:17-77
+96-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:70:27-74
+97            </intent-filter>
+98        </activity>
+99        <activity
+99-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:73:9-76:46
+100            android:name="com.example.appmanprobaru.LoginActivity"
+100-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:74:13-42
+101            android:exported="false"
+101-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:75:13-37
+102            android:taskAffinity=".jemaat" />
+102-->C:\Manpro12\Manpro-12\app\src\main\AndroidManifest.xml:76:13-43
+103
+104        <service
+104-->[com.google.firebase:firebase-storage-ktx:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\282dde89a9673b0ff078f88d1b17896a\transformed\firebase-storage-ktx-20.2.0\AndroidManifest.xml:11:9-17:19
+105            android:name="com.google.firebase.components.ComponentDiscoveryService"
+105-->[com.google.firebase:firebase-storage-ktx:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\282dde89a9673b0ff078f88d1b17896a\transformed\firebase-storage-ktx-20.2.0\AndroidManifest.xml:12:13-84
+106            android:directBootAware="true"
+106-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:34:13-43
+107            android:exported="false" >
+107-->[com.google.firebase:firebase-storage-ktx:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\282dde89a9673b0ff078f88d1b17896a\transformed\firebase-storage-ktx-20.2.0\AndroidManifest.xml:13:13-37
+108            <meta-data
+108-->[com.google.firebase:firebase-storage-ktx:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\282dde89a9673b0ff078f88d1b17896a\transformed\firebase-storage-ktx-20.2.0\AndroidManifest.xml:14:13-16:85
+109                android:name="com.google.firebase.components:com.google.firebase.storage.ktx.FirebaseStorageKtxRegistrar"
+109-->[com.google.firebase:firebase-storage-ktx:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\282dde89a9673b0ff078f88d1b17896a\transformed\firebase-storage-ktx-20.2.0\AndroidManifest.xml:15:17-122
+110                android:value="com.google.firebase.components.ComponentRegistrar" />
+110-->[com.google.firebase:firebase-storage-ktx:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\282dde89a9673b0ff078f88d1b17896a\transformed\firebase-storage-ktx-20.2.0\AndroidManifest.xml:16:17-82
+111            <meta-data
+111-->[com.google.firebase:firebase-firestore-ktx:24.6.0] C:\Users\Audrico\.gradle\caches\transforms-3\24e7330570b47843fdf359fdcf9e2339\transformed\firebase-firestore-ktx-24.6.0\AndroidManifest.xml:14:13-16:85
+112                android:name="com.google.firebase.components:com.google.firebase.firestore.ktx.FirebaseFirestoreKtxRegistrar"
+112-->[com.google.firebase:firebase-firestore-ktx:24.6.0] C:\Users\Audrico\.gradle\caches\transforms-3\24e7330570b47843fdf359fdcf9e2339\transformed\firebase-firestore-ktx-24.6.0\AndroidManifest.xml:15:17-126
+113                android:value="com.google.firebase.components.ComponentRegistrar" />
+113-->[com.google.firebase:firebase-firestore-ktx:24.6.0] C:\Users\Audrico\.gradle\caches\transforms-3\24e7330570b47843fdf359fdcf9e2339\transformed\firebase-firestore-ktx-24.6.0\AndroidManifest.xml:16:17-82
+114            <meta-data
+114-->[com.google.firebase:firebase-common-ktx:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\158df5b5000b2ea404acd85d148264cc\transformed\firebase-common-ktx-20.3.2\AndroidManifest.xml:14:13-16:85
+115                android:name="com.google.firebase.components:com.google.firebase.ktx.FirebaseCommonKtxRegistrar"
+115-->[com.google.firebase:firebase-common-ktx:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\158df5b5000b2ea404acd85d148264cc\transformed\firebase-common-ktx-20.3.2\AndroidManifest.xml:15:17-113
+116                android:value="com.google.firebase.components.ComponentRegistrar" />
+116-->[com.google.firebase:firebase-common-ktx:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\158df5b5000b2ea404acd85d148264cc\transformed\firebase-common-ktx-20.3.2\AndroidManifest.xml:16:17-82
+117            <meta-data
+117-->[com.google.firebase:firebase-firestore:24.6.0] C:\Users\Audrico\.gradle\caches\transforms-3\3120717a89f81af0a7487fc9a99f59f4\transformed\firebase-firestore-24.6.0\AndroidManifest.xml:19:13-21:85
+118                android:name="com.google.firebase.components:com.google.firebase.firestore.FirestoreRegistrar"
+118-->[com.google.firebase:firebase-firestore:24.6.0] C:\Users\Audrico\.gradle\caches\transforms-3\3120717a89f81af0a7487fc9a99f59f4\transformed\firebase-firestore-24.6.0\AndroidManifest.xml:20:17-111
+119                android:value="com.google.firebase.components.ComponentRegistrar" />
+119-->[com.google.firebase:firebase-firestore:24.6.0] C:\Users\Audrico\.gradle\caches\transforms-3\3120717a89f81af0a7487fc9a99f59f4\transformed\firebase-firestore-24.6.0\AndroidManifest.xml:21:17-82
+120            <meta-data
+120-->[com.google.firebase:firebase-storage:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\f007abbfa9dff3bd4cd63646c5d3a639\transformed\firebase-storage-20.2.0\AndroidManifest.xml:32:13-34:85
+121                android:name="com.google.firebase.components:com.google.firebase.storage.StorageRegistrar"
+121-->[com.google.firebase:firebase-storage:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\f007abbfa9dff3bd4cd63646c5d3a639\transformed\firebase-storage-20.2.0\AndroidManifest.xml:33:17-107
+122                android:value="com.google.firebase.components.ComponentRegistrar" />
+122-->[com.google.firebase:firebase-storage:20.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\f007abbfa9dff3bd4cd63646c5d3a639\transformed\firebase-storage-20.2.0\AndroidManifest.xml:34:17-82
+123        </service>
+124
+125        <provider
+125-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:34:9-39:71
+126            android:name="com.android.car.ui.core.CarUiInstaller"
+126-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:35:13-66
+127            android:authorities="com.example.appmanprobaru.CarUiInstaller"
+127-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:36:13-66
+128            android:directBootAware="true"
+128-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:37:13-43
+129            android:exported="false"
+129-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:38:13-37
+130            android:process="@string/car_ui_installer_process_name" />
+130-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:39:13-68
+131        <provider
+131-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:40:9-45:79
+132            android:name="com.android.car.ui.core.SearchResultsProvider"
+132-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:41:13-73
+133            android:authorities="com.example.appmanprobaru.SearchResultsProvider"
+133-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:42:13-73
+134            android:exported="true"
+134-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:43:13-36
+135            android:process="@string/car_ui_installer_process_name"
+135-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:44:13-68
+136            android:readPermission="com.android.car.ui.READ_SEARCH_RESULTS" /> <!-- Needs to be explicitly declared on P+ -->
+136-->[com.android.car.ui:car-ui-lib:2.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\832b70d98772724fbe03dcc5732917e6\transformed\car-ui-lib-2.0.0\AndroidManifest.xml:45:13-76
+137        <uses-library
+137-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:39:9-41:40
+138            android:name="org.apache.http.legacy"
+138-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:40:13-50
+139            android:required="false" />
+139-->[com.google.android.gms:play-services-maps:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\2788b0c4b203d0bbfc01ac43c09b848a\transformed\play-services-maps-18.1.0\AndroidManifest.xml:41:13-37
+140
+141        <activity
+141-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Audrico\.gradle\caches\transforms-3\4ba6ca249919faeaaf28091903499946\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:9-22:45
+142            android:name="com.google.android.gms.common.api.GoogleApiActivity"
+142-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Audrico\.gradle\caches\transforms-3\4ba6ca249919faeaaf28091903499946\transformed\play-services-base-18.0.1\AndroidManifest.xml:20:19-85
+143            android:exported="false"
+143-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Audrico\.gradle\caches\transforms-3\4ba6ca249919faeaaf28091903499946\transformed\play-services-base-18.0.1\AndroidManifest.xml:22:19-43
+144            android:theme="@android:style/Theme.Translucent.NoTitleBar" />
+144-->[com.google.android.gms:play-services-base:18.0.1] C:\Users\Audrico\.gradle\caches\transforms-3\4ba6ca249919faeaaf28091903499946\transformed\play-services-base-18.0.1\AndroidManifest.xml:21:19-78
+145
+146        <provider
+146-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:25:9-30:39
+147            android:name="com.google.firebase.provider.FirebaseInitProvider"
+147-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:26:13-77
+148            android:authorities="com.example.appmanprobaru.firebaseinitprovider"
+148-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:27:13-72
+149            android:directBootAware="true"
+149-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:28:13-43
+150            android:exported="false"
+150-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:29:13-37
+151            android:initOrder="100" />
+151-->[com.google.firebase:firebase-common:20.3.2] C:\Users\Audrico\.gradle\caches\transforms-3\86c0b5ddde98e12797b99bcf1dc87c5b\transformed\firebase-common-20.3.2\AndroidManifest.xml:30:13-36
+152
+153        <meta-data
+153-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\7ccd49d86efb70c9fcf160a1e8959fa9\transformed\play-services-basement-18.1.0\AndroidManifest.xml:21:9-23:69
+154            android:name="com.google.android.gms.version"
+154-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\7ccd49d86efb70c9fcf160a1e8959fa9\transformed\play-services-basement-18.1.0\AndroidManifest.xml:22:13-58
+155            android:value="@integer/google_play_services_version" />
+155-->[com.google.android.gms:play-services-basement:18.1.0] C:\Users\Audrico\.gradle\caches\transforms-3\7ccd49d86efb70c9fcf160a1e8959fa9\transformed\play-services-basement-18.1.0\AndroidManifest.xml:23:13-66
+156
+157        <uses-library
+157-->[androidx.window:window:1.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\ac77d15b430773f3f17289c9c9958a63\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+158            android:name="androidx.window.extensions"
+158-->[androidx.window:window:1.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\ac77d15b430773f3f17289c9c9958a63\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+159            android:required="false" />
+159-->[androidx.window:window:1.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\ac77d15b430773f3f17289c9c9958a63\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+160        <uses-library
+160-->[androidx.window:window:1.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\ac77d15b430773f3f17289c9c9958a63\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+161            android:name="androidx.window.sidecar"
+161-->[androidx.window:window:1.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\ac77d15b430773f3f17289c9c9958a63\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+162            android:required="false" />
+162-->[androidx.window:window:1.0.0] C:\Users\Audrico\.gradle\caches\transforms-3\ac77d15b430773f3f17289c9c9958a63\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+163
+164        <provider
+164-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+165            android:name="androidx.startup.InitializationProvider"
+165-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:25:13-67
+166            android:authorities="com.example.appmanprobaru.androidx-startup"
+166-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:26:13-68
+167            android:exported="false" >
+167-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:27:13-37
+168            <meta-data
+168-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+169                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+169-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:30:17-75
+170                android:value="androidx.startup" />
+170-->[androidx.emoji2:emoji2:1.2.0] C:\Users\Audrico\.gradle\caches\transforms-3\22e41496550764fa5016ed7d8a7acb66\transformed\emoji2-1.2.0\AndroidManifest.xml:31:17-49
+171            <meta-data
+171-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Audrico\.gradle\caches\transforms-3\776e8c1876fd29368079663d003dc7b2\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:31:13-33:52
+172                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+172-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Audrico\.gradle\caches\transforms-3\776e8c1876fd29368079663d003dc7b2\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:32:17-78
+173                android:value="androidx.startup" />
+173-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\Audrico\.gradle\caches\transforms-3\776e8c1876fd29368079663d003dc7b2\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
+174        </provider>
+175    </application>
+176
+177</manifest>

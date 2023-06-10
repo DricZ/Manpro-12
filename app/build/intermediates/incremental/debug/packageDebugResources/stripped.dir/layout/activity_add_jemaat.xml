@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background">
+
+        <EditText
+            android:id="@+id/jemaat_nama"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_person"
+            android:drawablePadding="10dp"
+            android:hint="Nama"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_email" />
+
+        <ImageView
+            android:id="@+id/imgajasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="68dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/logo_gka_1" />
+
+        <EditText
+            android:id="@+id/jemaat_email"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="212dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/email_icon"
+            android:drawablePadding="10dp"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/jemaat_username"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_person"
+            android:drawablePadding="10dp"
+            android:hint="Username"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_nama" />
+
+        <EditText
+            android:id="@+id/jemaat_noTelepon"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_phone"
+            android:drawablePadding="10dp"
+            android:hint="No Telp"
+            android:inputType="number"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_username" />
+
+        <EditText
+            android:id="@+id/jemaat_alamat"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_home"
+            android:drawablePadding="10dp"
+            android:hint="Alamat"
+            android:inputType="text"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_noTelepon" />
+
+        <EditText
+            android:id="@+id/jemaat_password"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_lock_locked"
+            android:drawablePadding="10dp"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_alamat" />
+
+        <EditText
+            android:id="@+id/jemaat_confirmPassword"
+            android:layout_width="330dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="24dp"
+            android:background="@drawable/rounded_bg_box"
+            android:drawableStart="@drawable/icon_lock_locked"
+            android:drawablePadding="10dp"
+            android:hint="Confirm Password"
+            android:inputType="textPassword"
+            android:paddingStart="10dp"
+            android:textColor="#000000"
+            android:textColorHint="@color/live_object_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_password" />
+
+        <Button
+            android:id="@+id/btn_addJemaat"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:layout_marginBottom="16dp"
+            android:backgroundTint="@color/btn_primary"
+            android:text="Add New Jemaat"
+            android:textAllCaps="false"
+            app:cornerRadius="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.493"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/jemaat_confirmPassword" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
